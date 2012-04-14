@@ -17,3 +17,6 @@ scalacOptions ++= "-deprecation" :: "-unchecked" :: Nil
 libraryDependencies ++=
 	"org.scalatest" %% "scalatest" % "latest.release" % "test" ::
 	Nil
+
+// Download and create Eclipse source attachments for library dependencies
+// EclipseKeys.withSource := true
