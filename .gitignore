@@ -1,3 +1,5 @@
+# .gitignore
+
 # sbt
 target/
 
@@ -11,6 +13,7 @@ logs/
 *.bak
 *.old
 *.tmp
+nohup.out
 tmp/
 
 # vim
