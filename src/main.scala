@@ -15,9 +15,5 @@
  */
 package project
 
-/**
- *
- * @author Marconi Lanna
- */
 class Main {
 }

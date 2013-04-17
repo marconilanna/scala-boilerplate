@@ -15,10 +15,6 @@
  */
 package test
 
-/**
- *
- * @author Marconi Lanna
- */
 class Test extends org.scalatest.FunSuite {
 	test("Test") {
 		assert(1 === 1)

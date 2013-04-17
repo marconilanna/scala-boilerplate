@@ -4,7 +4,7 @@ PROJECT
 PROJECT DESCRIPTION
 
 License
-=======
+-------
 
 Copyright 2012 Marconi Lanna
 
