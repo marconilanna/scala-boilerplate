@@ -12,7 +12,16 @@ scalaSource in Test <<= baseDirectory(_ / "test")
 
 javaSource in Test <<= baseDirectory(_ / "test")
 
-scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xlint")
+scalacOptions ++= Seq(
+	  "-deprecation"
+	, "-feature"
+	, "-unchecked"
+	, "-Xfatal-warnings"
+	, "-Xlint"
+	, "-Yno-adapted-args"
+	, "-Ywarn-all"
+	, "-Ywarn-dead-code"
+)
 
 libraryDependencies ++= Seq(
 	  "org.scalatest" %% "scalatest" % "latest.release" % "test"
