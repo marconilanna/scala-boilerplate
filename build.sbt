@@ -2,7 +2,7 @@ name := "PROJECT"
 
 version := "0.1"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.11.0"
 
 scalaSource in Compile <<= baseDirectory(_ / "src")
 
@@ -19,7 +19,6 @@ scalacOptions ++= Seq(
 	, "-Xfatal-warnings"
 	, "-Xlint"
 	, "-Yno-adapted-args"
-	, "-Ywarn-all"
 	, "-Ywarn-dead-code"
 )
 
