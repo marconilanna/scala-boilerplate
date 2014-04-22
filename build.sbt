@@ -24,7 +24,7 @@ scalacOptions ++= Seq(
 
 libraryDependencies ++= Seq(
 	  "org.scalatest" %% "scalatest" % "latest.release" % "test"
-//	, "com.typesafe"  %  "config"    % "0.4.0"
+//	, "com.typesafe"  %  "config"    % "1.2.0"
 )
 
 incOptions := incOptions.value.withNameHashing(true)
