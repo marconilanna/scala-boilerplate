@@ -27,6 +27,8 @@ libraryDependencies ++= Seq(
 //	, "com.typesafe"  %  "config"    % "0.4.0"
 )
 
+incOptions := incOptions.value.withNameHashing(true)
+
 // Download and create Eclipse source attachments for library dependencies
 // EclipseKeys.withSource := true
 
