@@ -13,13 +13,13 @@ scalaSource in Test <<= baseDirectory(_ / "test")
 javaSource in Test <<= baseDirectory(_ / "test")
 
 scalacOptions ++= Seq(
-	  "-deprecation"
-	, "-feature"
-	, "-unchecked"
-	, "-Xfatal-warnings"
-	, "-Xlint"
-	, "-Yno-adapted-args"
-	, "-Ywarn-dead-code"
+	  "-deprecation"          // Emit warning and location for usages of deprecated APIs.
+	, "-feature"              // Emit warning and location for usages of features that should be imported explicitly.
+	, "-unchecked"            // Enable additional warnings where generated code depends on assumptions.
+	, "-Xfatal-warnings"      // Fail the compilation if there are any warnings.
+	, "-Xlint"                // Enable recommended additional warnings.
+	, "-Yno-adapted-args"     // Do not adapt an argument list to match the receiver.
+	, "-Ywarn-dead-code"      // Warn when dead code is identified.
 )
 
 libraryDependencies ++= Seq(
