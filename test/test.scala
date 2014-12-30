@@ -15,10 +15,15 @@
  */
 package test
 
+import org.mockito.Mockito._
 import org.scalatest.FunSuite
+import org.scalatest.mock.MockitoSugar
 
-class Test extends FunSuite {
+class Test extends FunSuite with MockitoSugar {
 	test("Test") {
-		assert(1 === 1)
+		val obj = mock[AnyRef]
+		when(obj.toString) thenReturn "obj"
+
+		assert(obj.toString === "obj")
 	}
 }
