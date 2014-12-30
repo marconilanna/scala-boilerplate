@@ -21,8 +21,6 @@ scalacOptions ++= Seq(
 ,
 	"-unchecked"            // Enable additional warnings where generated code depends on assumptions
 ,
-	"-Xdev"                 // Issue warnings about anything which seems amiss
-,
 	"-Xfatal-warnings"      // Fail the compilation if there are any warnings
 ,
 	"-Xlint:_"              // Enable all specific warnings (see list below)
