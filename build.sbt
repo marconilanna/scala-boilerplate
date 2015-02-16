@@ -83,9 +83,28 @@ unsound-match              Pattern match may not be typesafe
 */
 
 libraryDependencies ++= Seq(
-//    "com.typesafe"                             % "config"                   % "1.2.1"
-    "org.mockito"                              % "mockito-core"             % "1.10.19"    % "test"
-  , "org.scalatest"                           %% "scalatest"                % "2.2.4"      % "test"
+//  "commons-codec"                     % "commons-codec"                    % "1.10"
+//  "commons-io"                        % "commons-io"                       % "2.4"
+//  "commons-validator"                 % "commons-validator"                % "1.4.1"
+//  "joda-time"                         % "joda-time"                        % "2.7"
+//  "mysql"                             % "mysql-connector-java"             % "5.1.34"
+//  "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.4"
+//  "com.google.guava"                  % "guava"                            % "18.0"
+//  "com.ibm.icu"                       % "icu4j"                            % "54.1.1"
+//  "com.typesafe"                      % "config"                           % "1.2.1"
+//  "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.1.0"
+//  "com.typesafe.slick"               %% "slick"                            % "2.1.0"
+//  "com.univocity"                     % "univocity-parsers"                % "1.3.1"
+//  "org.apache.commons"                % "commons-compress"                 % "1.9"
+//  "org.apache.commons"                % "commons-lang3"                    % "3.3.2"
+//  "org.apache.httpcomponents"         % "httpclient"                       % "4.4"
+//  "org.joda"                          % "joda-money"                       % "0.10.0"
+//  "org.jsoup"                         % "jsoup"                            % "1.8.1"
+
+//  "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
+//  "org.scalamock"                    %% "scalamock-scalatest-support"      % "3.2.1"        % Test
+    "org.scalatest"                    %% "scalatest"                        % "2.2.4"        % Test
+//  "org.seleniumhq.selenium"           % "selenium-java"                    % "2.44.0"       % Test
 )
 
 // Improved incremental compilation
