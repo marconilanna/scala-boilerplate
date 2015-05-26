@@ -30,24 +30,44 @@ javaSource in Test := baseDirectory.value / "test"
 resourceDirectory in Test := (scalaSource in Test).value / "resources"
 
 scalacOptions ++= Seq(
-    "-deprecation"          // Emit warning and location for usages of deprecated APIs
-  , "-encoding", "UTF-8"    // Specify character encoding used by source files
-  , "-feature"              // Emit warning and location for usages of features that should be imported explicitly
-//  , "-language:_"           // Enable or disable language features (see list below)
-//  , "-optimise"             // Generates faster bytecode by applying optimisations to the program
-  , "-target:jvm-1.7"       // Target platform for object files
-  , "-unchecked"            // Enable additional warnings where generated code depends on assumptions
-// Doesn't play well with ScalaTest
-//  , "-Xdev"                 // Indicates user is a developer - issue warnings about anything which seems amiss
-  , "-Xfatal-warnings"      // Fail the compilation if there are any warnings
-  , "-Xlint:_"              // Enable or disable specific warnings (see list below)
-  , "-Yno-adapted-args"     // Do not adapt an argument list to match the receiver
-  , "-Ywarn-dead-code"      // Warn when dead code is identified
-// Not really useful
-//  , "-Ywarn-numeric-widen"  // Warn when numerics are widened
-  , "-Ywarn-unused"         // Warn when local and private vals, vars, defs, and types are are unused
-  , "-Ywarn-unused-import"  // Warn when imports are unused
-  , "-Ywarn-value-discard"  // Warn when non-Unit expression results are unused
+  // Emit warning and location for usages of deprecated APIs
+    "-deprecation"
+  // Specify character encoding used by source files
+  , "-encoding", "UTF-8"
+  // Emit warning and location for usages of features that should be imported explicitly
+  , "-feature"
+  // Enable or disable language features (see list below)
+  //, "-language:_"
+  // Generates faster bytecode by applying optimisations to the program
+  //, "-optimise"
+  // Target platform for object files
+  , "-target:jvm-1.8"
+  // Enable additional warnings where generated code depends on assumptions
+  , "-unchecked"
+  // Indicates user is a developer - issue warnings about anything which seems amiss
+  //, "-Xdev"                         // Doesn't play well with ScalaTest
+  // Fail the compilation if there are any warnings
+  , "-Xfatal-warnings"
+  // Turn on future language features
+  , "-Xfuture"
+  // Enable or disable specific warnings (see list below)
+  , "-Xlint:_"
+  // Do not adapt an argument list to match the receiver
+  , "-Yno-adapted-args"
+  // Compile without importing scala.*, java.lang.*, or Predef
+  //, "-Yno-imports"
+  // Compile without importing Predef
+  //, "-Yno-predef"
+  // Warn when dead code is identified
+  , "-Ywarn-dead-code"
+  // Warn when numerics are widened
+  //, "-Ywarn-numeric-widen"          // Not really useful
+  // Warn when local and private vals, vars, defs, and types are are unused
+  , "-Ywarn-unused"
+  // Warn when imports are unused
+  , "-Ywarn-unused-import"
+  // Warn when non-Unit expression results are unused
+  , "-Ywarn-value-discard"
 )
 
 /*
@@ -123,7 +143,7 @@ showSuccess := true
 showTiming := true
 
 shellPrompt := { state =>
-  import scala.Console.{CYAN,RESET}
+  import scala.Console.{CYAN, RESET}
   val p = Project.extract(state)
   val name = p.getOpt(sbt.Keys.name) getOrElse p.currentProject.id
   s"[$CYAN$name$RESET] $$ "
