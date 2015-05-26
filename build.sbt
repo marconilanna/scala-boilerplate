@@ -135,6 +135,15 @@ incOptions := incOptions.value.withNameHashing(true)
 // Improved dependency management
 updateOptions := updateOptions.value.withCachedResolution(true)
 
+// Create a default Scala style task to run with tests
+scalastyleConfig := baseDirectory.value / "project" / "scalastyle-config.xml"
+
+lazy val testScalastyle = taskKey[Unit]("testScalastyle")
+
+testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask("").value
+
+(test in Test) <<= (test in Test) dependsOn testScalastyle
+
 // Download and create Eclipse source attachments for library dependencies
 // EclipseKeys.withSource := true
 

@@ -15,8 +15,10 @@
  */
 package project
 
-object Main {
-	def main(args: Array[String]): Unit = {
-		args foreach { println _ }
-	}
+import com.typesafe.scalalogging.StrictLogging
+
+object Main extends StrictLogging {
+  def main(args: Array[String]): Unit = {
+    args foreach { logger info _ }
+  }
 }
