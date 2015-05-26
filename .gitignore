@@ -19,6 +19,13 @@ tmp/
 # vim
 .*.sw[a-z]
 
+# IntelliJ
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
 # Eclipse
 .cache
 .classpath
