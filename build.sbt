@@ -144,6 +144,24 @@ testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask
 
 (test in Test) <<= (test in Test) dependsOn testScalastyle
 
+wartremoverErrors ++= Seq(
+    Wart.Any
+  , Wart.Any2StringAdd
+  , Wart.AsInstanceOf
+  , Wart.EitherProjectionPartial
+  , Wart.IsInstanceOf
+  , Wart.ListOps
+  //, Wart.NonUnitStatements
+  , Wart.Nothing
+  , Wart.Null
+  , Wart.OptionPartial
+  , Wart.Product
+  , Wart.Return
+  , Wart.Serializable
+  , Wart.Throw
+  , Wart.Var
+)
+
 // Download and create Eclipse source attachments for library dependencies
 // EclipseKeys.withSource := true
 
