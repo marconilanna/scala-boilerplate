@@ -1,6 +1,8 @@
 PROJECT
 =======
 
+[![Build Status](https://travis-ci.org/marconilanna/scala-boilerplate.svg)](https://travis-ci.org/marconilanna/scala-boilerplate)
+
 PROJECT DESCRIPTION
 
 License
