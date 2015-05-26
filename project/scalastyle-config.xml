@@ -47,7 +47,7 @@
   </check>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">println</parameter>
+      <parameter name="regex">\bprintln\b</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true" level="error"/>
