@@ -102,27 +102,30 @@ type-parameter-shadow      A local type parameter shadows a type already in scop
 unsound-match              Pattern match may not be typesafe
 */
 
+// Commonly used libraries
 libraryDependencies ++= Seq(
     "commons-codec"                     % "commons-codec"                    % "1.10"
   , "commons-io"                        % "commons-io"                       % "2.4"
   , "commons-validator"                 % "commons-validator"                % "1.4.1"
   , "joda-time"                         % "joda-time"                        % "2.7"
   , "mysql"                             % "mysql-connector-java"             % "5.1.35"
+  , "ch.qos.logback"                    % "logback-classic"                  % "1.1.3"
   , "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.4"
   , "com.google.guava"                  % "guava"                            % "18.0"
   , "com.ibm.icu"                       % "icu4j"                            % "55.1"
-  , "com.typesafe"                      % "config"                           % "1.2.1"
+  , "com.typesafe"                      % "config"                           % "1.3.0"
   , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.1.0"
-  , "com.typesafe.slick"               %% "slick"                            % "2.1.0"
-  , "com.univocity"                     % "univocity-parsers"                % "1.5.1"
+  , "com.typesafe.slick"               %% "slick"                            % "3.0.0"
+  , "com.univocity"                     % "univocity-parsers"                % "1.5.5"
   , "org.apache.commons"                % "commons-compress"                 % "1.9"
   , "org.apache.commons"                % "commons-lang3"                    % "3.4"
+  , "org.apache.commons"                % "commons-math3"                    % "3.5"
   , "org.apache.httpcomponents"         % "httpclient"                       % "4.4.1"
   , "org.joda"                          % "joda-money"                       % "0.10.0"
   , "org.jsoup"                         % "jsoup"                            % "1.8.2"
   , "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
-  , "org.scalamock"                    %% "scalamock-scalatest-support"      % "3.2.1"        % Test
-  , "org.scalatest"                    %% "scalatest"                        % "2.2.4"        % Test
+  , "org.scalamock"                    %% "scalamock-scalatest-support"      % "3.2.2"        % Test
+  , "org.scalatest"                    %% "scalatest"                        % "2.2.5"        % Test
   , "org.seleniumhq.selenium"           % "selenium-java"                    % "2.45.0"       % Test
 )
 
