@@ -17,7 +17,22 @@ name := "PROJECT"
 
 version := "0.1"
 
-scalaVersion := "2.11.6"
+// organization := "org.example"
+
+// organizationName := "Example, Inc."
+
+// organizationHomepage := Some(url("http://example.org"))
+
+// homepage := Some(url("http://project.org"))
+
+startYear := Some(2015)
+
+description := "PROJECT DESCRIPTION"
+
+licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
+// "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
+
+scalaVersion := "2.11.7"
 
 scalaSource in Compile := baseDirectory.value / "src"
 
@@ -36,6 +51,8 @@ scalacOptions ++= Seq(
   , "-encoding", "UTF-8"
   // Emit warning and location for usages of features that should be imported explicitly
   , "-feature"
+  // Set level of generated debugging info: none, source, line, vars, notailcalls
+  , "-g:vars"
   // Enable or disable language features (see list below)
   //, "-language:_"
   // Generates faster bytecode by applying optimisations to the program
@@ -46,18 +63,24 @@ scalacOptions ++= Seq(
   , "-unchecked"
   // Indicates user is a developer - issue warnings about anything which seems amiss
   //, "-Xdev"                         // Doesn't play well with ScalaTest
+  // Enable experimental extensions
+  , "-Xexperimental"
   // Fail the compilation if there are any warnings
   , "-Xfatal-warnings"
   // Turn on future language features
   , "-Xfuture"
   // Enable or disable specific warnings (see list below)
   , "-Xlint:_"
+  // Emit inlining warnings
+  , "-Yinline-warnings"
   // Do not adapt an argument list to match the receiver
   , "-Yno-adapted-args"
   // Compile without importing scala.*, java.lang.*, or Predef
   //, "-Yno-imports"
   // Compile without importing Predef
   //, "-Yno-predef"
+  // Enable optimizations
+  , "-Yopt:_"
   // Warn when dead code is identified
   , "-Ywarn-dead-code"
   // Warn when numerics are widened
@@ -80,9 +103,9 @@ higherKinds          Allow higher-kinded types
 implicitConversions  Allow definition of implicit functions called views
 postfixOps           Allow postfix operator notation, such as `1 to 10 toList'
 reflectiveCalls      Allow reflective access to members of structural types
-*/
 
-/*
+*//*
+
 scalac -Xlint:help
 
 adapted-args               Warn if an argument list is modified to match the receiver
@@ -98,8 +121,27 @@ option-implicit            Option.apply used implicit view
 package-object-classes     Class or object defined in package object
 poly-implicit-overload     Parameterized overloaded implicit methods are not visible as view bounds
 private-shadow             A private field (or class parameter) shadows a superclass field
+stars-align                Pattern sequence wildcard must align with sequence component
 type-parameter-shadow      A local type parameter shadows a type already in scope
 unsound-match              Pattern match may not be typesafe
+
+*//*
+
+scalac -Yopt:help
+
+compact-locals      Eliminate empty slots in the sequence of local variables
+empty-labels        Eliminate and collapse redundant labels in the bytecode
+empty-line-numbers  Eliminate unnecessary line number information
+inline-global       Inline methods from any source, including classfiles on the compile classpath
+inline-project      Inline only methods defined in the files being compiled
+nullness-tracking   Track nullness / non-nullness of local variables and apply optimizations
+simplify-jumps      Simplify branching instructions, eliminate unnecessary ones
+unreachable-code    Eliminate unreachable code, exception handlers protecting no instructions, debug information of eliminated variables
+l:none              Don't enable any optimizations
+l:default           Enable default optimizations: unreachable-code
+l:method            Enable intra-method optimizations: unreachable-code,simplify-jumps,empty-line-numbers,empty-labels,compact-locals,nullness-tracking
+l:project           Enable cross-method optimizations within the current project: l:method,inline-project
+l:classpath         Enable cross-method optimizations across the entire classpath: l:project,inline-global
 */
 
 // Commonly used libraries
@@ -107,8 +149,8 @@ libraryDependencies ++= Seq(
     "commons-codec"                     % "commons-codec"                    % "1.10"
   , "commons-io"                        % "commons-io"                       % "2.4"
   , "commons-validator"                 % "commons-validator"                % "1.4.1"
-  , "joda-time"                         % "joda-time"                        % "2.7"
-  , "mysql"                             % "mysql-connector-java"             % "5.1.35"
+  , "joda-time"                         % "joda-time"                        % "2.8.1"
+  , "mysql"                             % "mysql-connector-java"             % "5.1.36"
   , "ch.qos.logback"                    % "logback-classic"                  % "1.1.3"
   , "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.4"
   , "com.google.guava"                  % "guava"                            % "18.0"
@@ -116,17 +158,18 @@ libraryDependencies ++= Seq(
   , "com.typesafe"                      % "config"                           % "1.3.0"
   , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.1.0"
   , "com.typesafe.slick"               %% "slick"                            % "3.0.0"
-  , "com.univocity"                     % "univocity-parsers"                % "1.5.5"
+  , "com.univocity"                     % "univocity-parsers"                % "1.5.6"
   , "org.apache.commons"                % "commons-compress"                 % "1.9"
   , "org.apache.commons"                % "commons-lang3"                    % "3.4"
   , "org.apache.commons"                % "commons-math3"                    % "3.5"
-  , "org.apache.httpcomponents"         % "httpclient"                       % "4.4.1"
+  , "org.apache.httpcomponents"         % "httpclient"                       % "4.5"
   , "org.joda"                          % "joda-money"                       % "0.10.0"
   , "org.jsoup"                         % "jsoup"                            % "1.8.2"
+  , "org.scalactic"                    %% "scalactic"                        % "2.2.5"
   , "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
   , "org.scalamock"                    %% "scalamock-scalatest-support"      % "3.2.2"        % Test
   , "org.scalatest"                    %% "scalatest"                        % "2.2.5"        % Test
-  , "org.seleniumhq.selenium"           % "selenium-java"                    % "2.45.0"       % Test
+  , "org.seleniumhq.selenium"           % "selenium-java"                    % "2.46.0"       % Test
 )
 
 // Improved incremental compilation
@@ -137,6 +180,8 @@ updateOptions := updateOptions.value.withCachedResolution(true)
 
 // Create a default Scala style task to run with tests
 scalastyleConfig := baseDirectory.value / "project" / "scalastyle-config.xml"
+
+scalastyleFailOnError := true
 
 lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 
@@ -161,6 +206,16 @@ wartremoverErrors ++= Seq(
   , Wart.Throw
   , Wart.Var
 )
+
+ScoverageSbtPlugin.ScoverageKeys.coverageMinimum := 90
+
+ScoverageSbtPlugin.ScoverageKeys.coverageFailOnMinimum := true
+
+ScoverageSbtPlugin.ScoverageKeys.coverageOutputCobertua := false
+
+ScoverageSbtPlugin.ScoverageKeys.coverageOutputHTML := true
+
+ScoverageSbtPlugin.ScoverageKeys.coverageOutputXML := false
 
 // Download and create Eclipse source attachments for library dependencies
 // EclipseKeys.withSource := true

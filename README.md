@@ -1,9 +1,34 @@
-PROJECT
-=======
+Scala Boilerplate
+=================
 
 [![Build Status](https://travis-ci.org/marconilanna/scala-boilerplate.svg)](https://travis-ci.org/marconilanna/scala-boilerplate)
 
-PROJECT DESCRIPTION
+Assortment of default settings, best practices, and general goodies for Scala projects.
+
+Code Coverage
+-------------
+
+https://github.com/scoverage/sbt-scoverage
+
+Then run the your tests with coverage enabled by entering:
+
+```sh
+$ sbt clean coverage test
+```
+
+or if you have integration tests as well
+
+```sh
+$ sbt clean coverage it:test
+```
+
+After the tests have finished you should then run
+
+```sh
+$ sbt coverageReport
+```
+
+to generate the reports. You will find the coverage reports inside `target/scoverage-report`.
 
 License
 -------

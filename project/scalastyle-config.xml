@@ -51,7 +51,7 @@
     </parameters>
   </check>
   <check class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true" level="error"/>
-  <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ClassNamesChecker" enabled="true" level="error">
     <parameters>
       <parameter name="regex">^[A-Z][A-Za-z]*$</parameter>
