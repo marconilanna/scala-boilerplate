@@ -8,7 +8,7 @@ Assortment of default settings, best practices, and general goodies for Scala pr
 Scalastyle
 ----------
 
-The `scalastyle` and `test:scalastyle` sbt tasks are used to check sources and test code with Scalastyle. The error list is saved to Checkstyle-compatible files `target/scalastyle-result.xml` and `target/scalastyle-test-result.xml` respectively.
+The `scalastyle` and `test:scalastyle` sbt tasks are used to check source and test code with Scalastyle. The error list is saved to Checkstyle-compatible files `target/scalastyle-result.xml` and `target/scalastyle-test-result.xml` respectively.
 
 Scalastyle runs automatically against source and test code with the sbt `test` task.
 
@@ -18,6 +18,13 @@ scoverage
 ---------
 
 To execute tests with code coverage enabled run the following sbt tasks: `clean` `coverage` `test` `coverageReport`. Coverage reports are saved to `target/scala-2.11/scoverage-report/`.
+
+Scalariform
+-----------
+
+To format source and test code run the `scalariformFormat` and `test:scalariformFormat` sbt tasks.
+
+Scalariform is provided as a convenience and starting point; it is not sufficient to be fully compliant with the Scala Style Guide.
 
 License
 -------
