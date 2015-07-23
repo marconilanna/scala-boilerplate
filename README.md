@@ -5,6 +5,15 @@ Scala Boilerplate
 
 Assortment of default settings, best practices, and general goodies for Scala projects.
 
+Scalastyle
+----------
+
+The `scalastyle` and `test:scalastyle` sbt tasks are used to check sources and test code with Scalastyle. The error list is saved to Checkstyle-compatible files `target/scalastyle-result.xml` and `target/scalastyle-test-result.xml` respectively.
+
+Scalastyle runs automatically against source and test code with the sbt `test` task.
+
+It is not recommended to make the `compile` task dependent on Scalastyle. Since Scalastyle runs first and fails if the code does not compile, one would not get the Scala compiler error messages.
+
 Code Coverage
 -------------
 
