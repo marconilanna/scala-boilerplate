@@ -14,30 +14,10 @@ Scalastyle runs automatically against source and test code with the sbt `test` t
 
 It is not recommended to make the `compile` task dependent on Scalastyle. Since Scalastyle runs first and fails if the code does not compile, one would not get the Scala compiler error messages.
 
-Code Coverage
--------------
+scoverage
+---------
 
-https://github.com/scoverage/sbt-scoverage
-
-Then run the your tests with coverage enabled by entering:
-
-```sh
-$ sbt clean coverage test
-```
-
-or if you have integration tests as well
-
-```sh
-$ sbt clean coverage it:test
-```
-
-After the tests have finished you should then run
-
-```sh
-$ sbt coverageReport
-```
-
-to generate the reports. You will find the coverage reports inside `target/scoverage-report`.
+To execute tests with code coverage enabled run the following sbt tasks: `clean` `coverage` `test` `coverageReport`. Coverage reports are saved to `target/scala-2.11/scoverage-report/`.
 
 License
 -------

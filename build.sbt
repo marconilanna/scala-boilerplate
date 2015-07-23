@@ -199,15 +199,17 @@ wartremoverErrors ++= Seq(
  * scoverage
  */
 
-ScoverageSbtPlugin.ScoverageKeys.coverageMinimum := 90
+import ScoverageSbtPlugin.ScoverageKeys._
 
-ScoverageSbtPlugin.ScoverageKeys.coverageFailOnMinimum := true
+coverageMinimum := 90
 
-ScoverageSbtPlugin.ScoverageKeys.coverageOutputCobertua := false
+coverageFailOnMinimum := true
 
-ScoverageSbtPlugin.ScoverageKeys.coverageOutputHTML := true
+coverageOutputCobertua := false
 
-ScoverageSbtPlugin.ScoverageKeys.coverageOutputXML := false
+coverageOutputHTML := true
+
+coverageOutputXML := false
 
 /*
  * Scalariform
