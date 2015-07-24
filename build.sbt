@@ -58,6 +58,7 @@ scalacOptions ++= Seq(
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
 , "-Xfuture" // Turn on future language features
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
+, "-Xstrict-inference" // Don't infer known-unsound types
 , "-Yinline-warnings" // Emit inlining warnings
 , "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
 //, "-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
