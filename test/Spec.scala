@@ -15,17 +15,7 @@
  */
 package test
 
-import org.mockito.Mockito.when
+import org.scalatest.{DiagrammedAssertions, FreeSpec}
+import org.scalatest.mock.MockitoSugar
 
-class Test extends Spec {
-  "Test:" - {
-    "Simple test" in {
-      val obj = mock[AnyRef]
-      val expected = "obj"
-
-      when(obj.toString) thenReturn expected
-
-      assert(obj.toString === expected)
-    }
-  }
-}
+abstract class Spec extends FreeSpec with DiagrammedAssertions with MockitoSugar
