@@ -207,9 +207,7 @@ wartremoverErrors ++= Seq(
  * Linter
  */
 
-resolvers += "Linter Repository" at "https://hairyfotr.github.io/linteRepo/releases"
-
-addCompilerPlugin("com.foursquare.lint" %% "linter" % "0.1.11")
+addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.12")
 
 scalacOptions += "-P:linter:enable-only:" +
   "AssigningOptionToNull+" +
