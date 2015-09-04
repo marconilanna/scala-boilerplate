@@ -183,16 +183,23 @@ wartremoverErrors ++= Seq(
 , Wart.Any2StringAdd
 , Wart.AsInstanceOf
 , Wart.EitherProjectionPartial
+//, Wart.Enumeration
+, Wart.ExplicitImplicitTypes
+//, Wart.FinalCaseClass
 , Wart.IsInstanceOf
+, Wart.JavaConversions
 , Wart.ListOps
+//, Wart.MutableDataStructures
 //, Wart.NonUnitStatements
 , Wart.Nothing
 , Wart.Null
+, Wart.Option2Iterable
 , Wart.OptionPartial
 , Wart.Product
 , Wart.Return
 , Wart.Serializable
 , Wart.Throw
+//, Wart.TryPartial
 , Wart.Var
 )
 
