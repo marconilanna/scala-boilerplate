@@ -207,6 +207,7 @@ wartremoverErrors ++= Seq(
  * Linter
  */
 
+// https://github.com/HairyFotr/linter
 addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.12")
 
 scalacOptions += "-P:linter:enable-only:" +

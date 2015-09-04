@@ -19,12 +19,29 @@ scoverage
 
 To execute tests with code coverage enabled run the following sbt tasks: `clean` `coverage` `test` `coverageReport`. Coverage reports are saved to `target/scala-2.11/scoverage-report/`.
 
+The `coverage` command is sticky. To turn it off, use `coverageOff`.
+
 Scalariform
 -----------
 
 To format source and test code run the `scalariformFormat` and `test:scalariformFormat` sbt tasks.
 
 Scalariform is provided as a convenience and starting point; it is not sufficient to be fully compliant with the Scala Style Guide.
+
+sbt-updates
+-----------
+
+There is a `dependencyUpdates` sbt task to check Maven repositories for dependency updates.
+
+sbt-stats
+---------
+
+The `stats` sbt task shows basic line counting statistics.
+
+sbteclipse
+----------
+
+Uncomment the related line in `project/plugins.sbt` to enable the `eclipse` sbt task to create Eclipse project definitions.
 
 License
 -------
