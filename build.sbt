@@ -318,13 +318,11 @@ scalacOptions += "-P:linter:enable-only:" +
  * scoverage
  */
 
-import ScoverageSbtPlugin.ScoverageKeys._
-
 coverageMinimum := 90
 
 coverageFailOnMinimum := true
 
-coverageOutputCobertua := false
+coverageOutputCobertura := false
 
 coverageOutputHTML := true
 
