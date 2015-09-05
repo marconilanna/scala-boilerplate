@@ -44,9 +44,14 @@ javaSource in Test := baseDirectory.value / "test"
 
 resourceDirectory in Test := (scalaSource in Test).value / "resources"
 
-scalacOptions ++= Seq(
+val commonScalacOptions = Seq(
+  "-encoding", "UTF-8" // Specify character encoding used by source files
+, "-Xexperimental" // Enable experimental extensions
+, "-Xfuture" // Turn on future language features
+)
+
+scalacOptions ++= commonScalacOptions ++ Seq(
   "-deprecation" // Emit warning and location for usages of deprecated APIs
-, "-encoding", "UTF-8" // Specify character encoding used by source files
 , "-feature" // Emit warning and location for usages of features that should be imported explicitly
 , "-g:vars" // Set level of generated debugging info: none, source, line, vars, notailcalls
 //, "-language:_" // Enable or disable language features (see list below)
@@ -54,9 +59,7 @@ scalacOptions ++= Seq(
 , "-target:jvm-1.8" // Target platform for object files
 , "-unchecked" // Enable additional warnings where generated code depends on assumptions
 //, "-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss (Doesn't play well with ScalaTest)
-, "-Xexperimental" // Enable experimental extensions
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
-, "-Xfuture" // Turn on future language features
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
 , "-Xstrict-inference" // Don't infer known-unsound types
 , "-Yinline-warnings" // Emit inlining warnings
@@ -70,6 +73,41 @@ scalacOptions ++= Seq(
 , "-Ywarn-unused-import" // Warn when imports are unused
 , "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
+
+scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
+  "-language:_" // Enable or disable language features (see list below)
+, "-nowarn" // Generate no warnings
+)
+
+scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
+
+// Statements evaluated when entering the Scala REPL
+initialCommands := """
+import
+  scala.collection.JavaConverters._
+, scala.collection.mutable
+, scala.concurrent.{Await, Future}
+, scala.concurrent.ExecutionContext.Implicits.global
+, scala.concurrent.duration._
+, scala.language.experimental.macros
+, scala.reflect.macros.blackbox
+, scala.util.{Either, Failure, Left, Random, Right, Success, Try}
+, scala.util.control.NonFatal
+, System.{currentTimeMillis => now}
+, System.{nanoTime => Now}
+
+def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
+  import c.universe._, scala.io.AnsiColor.{BOLD, GREEN, RESET}
+
+  val exp = show(expr.tree)
+  val typ = expr.actualType.toString takeWhile '('.!=
+
+  println(s"$exp: $BOLD$GREEN$typ$RESET")
+  reify { (): Unit }
+}
+
+def desugar[T](expr: T): Unit = macro desugarImpl[T]
+"""
 
 /*
 scalac -language:help
