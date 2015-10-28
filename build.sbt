@@ -442,10 +442,10 @@ initialize ~= { _ =>
 }
 
 shellPrompt := { state =>
-  import scala.Console.{CYAN, RESET}
+  import scala.Console.{BLUE, BOLD, RESET}
   val p = Project.extract(state)
   val name = p.getOpt(sbt.Keys.name) getOrElse p.currentProject.id
-  s"[$CYAN$name$RESET] $$ "
+  s"$BLUE$BOLD$name$RESET $BOLD\u25b6$RESET "
 }
 
 // Download and create Eclipse source attachments for library dependencies
