@@ -258,6 +258,12 @@ wartremoverErrors ++= Seq(
 )
 
 /*
+ * Scapegoat: http://github.com/sksamuel/scalac-scapegoat-plugin
+ */
+
+scapegoatDisabledInspections := Seq()
+
+/*
  * Linter: http://github.com/HairyFotr/linter
  */
 

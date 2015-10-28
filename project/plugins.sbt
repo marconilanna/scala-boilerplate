@@ -25,6 +25,10 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.7.0")
 // http://github.com/puffnfresh/wartremover
 addSbtPlugin("org.brianmckenna" % "sbt-wartremover" % "0.14")
 
+// http://github.com/sksamuel/scalac-scapegoat-plugin
+// http://github.com/sksamuel/sbt-scapegoat
+addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.0")
+
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.3")
 
