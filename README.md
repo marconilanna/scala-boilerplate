@@ -40,6 +40,11 @@ sbt-updates
 
 There is a `dependencyUpdates` sbt task to check Maven repositories for dependency updates.
 
+sbt-dependency-graph
+--------------------
+
+This plugin adds three main tasks: `dependency-tree` displays the project dependencies as a tree, `dependency-graph` shows it as a graph, and `what-depends-on <organization> <module> <revision>` shows everything that depends on an artifact.
+
 sbt-stats
 ---------
 
