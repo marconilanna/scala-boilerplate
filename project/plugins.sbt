@@ -19,26 +19,26 @@ resolvers ++= Seq(
 )
 
 // http://www.scalastyle.org/
-// https://github.com/scalastyle/scalastyle-sbt-plugin
+// http://github.com/scalastyle/scalastyle-sbt-plugin
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.7.0")
 
-// https://github.com/puffnfresh/wartremover
+// http://github.com/puffnfresh/wartremover
 addSbtPlugin("org.brianmckenna" % "sbt-wartremover" % "0.14")
 
-// https://github.com/scoverage/sbt-scoverage
+// http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.1")
 
-// https://github.com/daniel-trinh/scalariform
-// https://github.com/daniel-trinh/sbt-scalariform
+// http://github.com/daniel-trinh/scalariform
+// http://github.com/daniel-trinh/sbt-scalariform
 addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.4.0")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
-// https://github.com/rtimush/sbt-updates
+// http://github.com/rtimush/sbt-updates
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.1.9")
 
-// https://github.com/orrsella/sbt-stats
+// http://github.com/orrsella/sbt-stats
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
-// https://github.com/typesafehub/sbteclipse
+// http://github.com/typesafehub/sbteclipse
 //addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "4.0.0")

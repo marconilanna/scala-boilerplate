@@ -13,9 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+ /*
+  * Project metadata
+  */
+
 name := "PROJECT"
 
 version := "0.1"
+
+description := "PROJECT DESCRIPTION"
+
+startYear := Some(2015)
+
+licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
+// "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
 
 // organization := "org.example"
 
@@ -24,15 +36,6 @@ version := "0.1"
 // organizationHomepage := Some(url("http://example.org"))
 
 // homepage := Some(url("http://project.org"))
-
-startYear := Some(2015)
-
-description := "PROJECT DESCRIPTION"
-
-licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
-// "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
-
-scalaVersion := "2.11.7"
 
 scalaSource in Compile := baseDirectory.value / "src"
 
@@ -44,6 +47,12 @@ javaSource in Test := baseDirectory.value / "test"
 
 resourceDirectory in Test := (scalaSource in Test).value / "resources"
 
+/*
+ * scalac configuration
+ */
+
+scalaVersion := "2.11.7"
+
 val commonScalacOptions = Seq(
   "-encoding", "UTF-8" // Specify character encoding used by source files
 , "-Xexperimental" // Enable experimental extensions
@@ -54,21 +63,21 @@ scalacOptions ++= commonScalacOptions ++ Seq(
   "-deprecation" // Emit warning and location for usages of deprecated APIs
 , "-feature" // Emit warning and location for usages of features that should be imported explicitly
 , "-g:vars" // Set level of generated debugging info: none, source, line, vars, notailcalls
-//, "-language:_" // Enable or disable language features (see list below)
+//"-language:_" // Enable or disable language features (see list below)
 , "-optimise" // Generates faster bytecode by applying optimisations to the program
 , "-target:jvm-1.8" // Target platform for object files
 , "-unchecked" // Enable additional warnings where generated code depends on assumptions
-//, "-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss (Doesn't play well with ScalaTest)
+//"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss (Doesn't play well with ScalaTest)
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
-, "-Xstrict-inference" // Don't infer known-unsound types
+, "-Ybackend:GenBCode" // Choice of bytecode emitter
 , "-Yinline-warnings" // Emit inlining warnings
 , "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
-//, "-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
-//, "-Yno-predef" // Compile without importing Predef
+//"-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
+//"-Yno-predef" // Compile without importing Predef
 , "-Yopt:_" // Enable optimizations
 , "-Ywarn-dead-code" // Warn when dead code is identified
-//, "-Ywarn-numeric-widen" // Warn when numerics are widened (Not really useful)
+//"-Ywarn-numeric-widen" // Warn when numerics are widened (Not really useful)
 , "-Ywarn-unused" // Warn when local and private vals, vars, defs, and types are unused
 , "-Ywarn-unused-import" // Warn when imports are unused
 , "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
@@ -81,33 +90,6 @@ scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
 
 scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
 
-// Statements evaluated when entering the Scala REPL
-initialCommands := """
-import
-  scala.collection.JavaConverters._
-, scala.collection.mutable
-, scala.concurrent.{Await, Future}
-, scala.concurrent.ExecutionContext.Implicits.global
-, scala.concurrent.duration._
-, scala.language.experimental.macros
-, scala.reflect.macros.blackbox
-, scala.util.{Either, Failure, Left, Random, Right, Success, Try}
-, scala.util.control.NonFatal
-, System.{currentTimeMillis => now}
-, System.{nanoTime => Now}
-
-def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
-  import c.universe._, scala.io.AnsiColor.{BOLD, GREEN, RESET}
-
-  val exp = show(expr.tree)
-  val typ = expr.actualType.toString takeWhile '('.!=
-
-  println(s"$exp: $BOLD$GREEN$typ$RESET")
-  reify { (): Unit }
-}
-
-def desugar[T](expr: T): Unit = macro desugarImpl[T]
-"""
 
 /*
 scalac -language:help
@@ -160,7 +142,10 @@ l:project           Enable cross-method optimizations within the current project
 l:classpath         Enable cross-method optimizations across the entire classpath: l:project,inline-global
 */
 
-// Commonly used libraries
+/*
+ * Commonly used libraries
+ */
+
 libraryDependencies ++= Seq(
   "commons-codec"                     % "commons-codec"                    % "1.10"
 , "commons-io"                        % "commons-io"                       % "2.4"
@@ -188,14 +173,41 @@ libraryDependencies ++= Seq(
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "2.47.1"       % Test
 )
 
-// Improved incremental compilation
-incOptions := incOptions.value.withNameHashing(true)
+/*
+ * Statements executed when starting the Scala REPL (sbt's `console` task)
+ */
 
-// Improved dependency management
-updateOptions := updateOptions.value.withCachedResolution(true)
+initialCommands := """
+import
+  scala.annotation.{switch, tailrec}
+, scala.beans.{BeanProperty, BooleanBeanProperty}
+, scala.collection.JavaConverters._
+, scala.collection.mutable
+, scala.concurrent.{Await, Future}
+, scala.concurrent.ExecutionContext.Implicits.global
+, scala.concurrent.duration._
+, scala.language.experimental.macros
+, scala.reflect.macros.blackbox
+, scala.util.{Failure, Random, Success, Try}
+, scala.util.control.NonFatal
+, System.{currentTimeMillis => now}
+, System.nanoTime
+
+def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
+  import c.universe._, scala.io.AnsiColor.{BOLD, GREEN, RESET}
+
+  val exp = show(expr.tree)
+  val typ = expr.actualType.toString takeWhile '('.!=
+
+  println(s"$exp: $BOLD$GREEN$typ$RESET")
+  reify { (): Unit }
+}
+
+def desugar[T](expr: T): Unit = macro desugarImpl[T]
+"""
 
 /*
- * Scalastyle
+ * Scalastyle: http://www.scalastyle.org/
  */
 
 scalastyleConfig := baseDirectory.value / "project" / "scalastyle-config.xml"
@@ -213,7 +225,7 @@ testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask
 (test in Test) <<= (test in Test) dependsOn testScalastyle
 
 /*
- * WartRemover
+ * WartRemover: http://github.com/puffnfresh/wartremover
  */
 
 wartremoverErrors ++= Seq(
@@ -221,14 +233,14 @@ wartremoverErrors ++= Seq(
 , Wart.Any2StringAdd
 , Wart.AsInstanceOf
 , Wart.EitherProjectionPartial
-//, Wart.Enumeration
+//Wart.Enumeration
 , Wart.ExplicitImplicitTypes
-//, Wart.FinalCaseClass
+, Wart.FinalCaseClass
 , Wart.IsInstanceOf
 , Wart.JavaConversions
 , Wart.ListOps
-//, Wart.MutableDataStructures
-//, Wart.NonUnitStatements
+//Wart.MutableDataStructures
+, Wart.NonUnitStatements
 , Wart.Nothing
 , Wart.Null
 , Wart.Option2Iterable
@@ -237,15 +249,15 @@ wartremoverErrors ++= Seq(
 , Wart.Return
 , Wart.Serializable
 , Wart.Throw
-//, Wart.TryPartial
+//Wart.ToString
+, Wart.TryPartial
 , Wart.Var
 )
 
 /*
- * Linter
+ * Linter: http://github.com/HairyFotr/linter
  */
 
-// https://github.com/HairyFotr/linter
 addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.12")
 
 scalacOptions += "-P:linter:enable-only:" +
@@ -352,7 +364,7 @@ scalacOptions += "-P:linter:enable-only:" +
   "ZeroDivideBy"
 
 /*
- * scoverage
+ * scoverage: http://github.com/scoverage/sbt-scoverage
  */
 
 coverageMinimum := 90
@@ -366,7 +378,7 @@ coverageOutputHTML := true
 coverageOutputXML := false
 
 /*
- * Scalariform
+ * Scalariform: http://github.com/daniel-trinh/scalariform
  */
 
 import scalariform.formatter.preferences._
@@ -397,8 +409,9 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
   .setPreference(SpacesWithinPatternBinders, true)
   .setPreference(SpacesAroundMultiImports, false)
 
-// Download and create Eclipse source attachments for library dependencies
-// EclipseKeys.withSource := true
+/*
+ * sbt options
+ */
 
 // Uncomment to enable offline mode
 // offline := true
@@ -406,6 +419,12 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
 showSuccess := true
 
 showTiming := true
+
+// Improved incremental compilation
+incOptions := incOptions.value.withNameHashing(true)
+
+// Improved dependency management
+updateOptions := updateOptions.value.withCachedResolution(true)
 
 // Enable colors in Scala console (2.11.4)
 initialize ~= { _ =>
@@ -419,3 +438,6 @@ shellPrompt := { state =>
   val name = p.getOpt(sbt.Keys.name) getOrElse p.currentProject.id
   s"[$CYAN$name$RESET] $$ "
 }
+
+// Download and create Eclipse source attachments for library dependencies
+// EclipseKeys.withSource := true

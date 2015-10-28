@@ -1,4 +1,5 @@
 <scalastyle commentFilter="enabled">
+  <!-- http://www.scalastyle.org/rules-0.7.0.html -->
   <name>Standard Scalastyle Configuration</name>
   <check class="org.scalastyle.file.FileLengthChecker" enabled="true" level="error">
     <parameters>
