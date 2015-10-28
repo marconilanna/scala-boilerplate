@@ -15,16 +15,19 @@ The REPL also defines a `desugar` macro, that expands an expression to its desug
 Scalastyle
 ----------
 
-The `scalastyle` and `test:scalastyle` sbt tasks are used to check source and test code with Scalastyle. The error list is saved to Checkstyle-compatible files `target/scalastyle-result.xml` and `target/scalastyle-test-result.xml` respectively.
+The `scalastyle` and `test:scalastyle` sbt tasks are used to check source and test code with Scalastyle.
+The error list is saved to Checkstyle-compatible files `target/scalastyle-result.xml` and `target/scalastyle-test-result.xml` respectively.
 
 Scalastyle runs automatically against source and test code with the sbt `test` task.
 
-It is not recommended to make the `compile` task dependent on Scalastyle. Since Scalastyle runs first and fails if the code does not compile, one would not get the Scala compiler error messages.
+It is not recommended to make the `compile` task dependent on Scalastyle.
+Since Scalastyle runs first and fails if the code does not compile, one would not get the Scala compiler error messages.
 
 scoverage
 ---------
 
-To execute tests with code coverage enabled run the following sbt tasks: `clean` `coverage` `test` `coverageReport`. Coverage reports are saved to `target/scala-2.11/scoverage-report/`.
+To execute tests with code coverage enabled run the following sbt tasks: `clean` `coverage` `test` `coverageReport`.
+Coverage reports are saved to `target/scala-2.11/scoverage-report/`.
 
 The `coverage` command is sticky. To turn it off, use `coverageOff`.
 
