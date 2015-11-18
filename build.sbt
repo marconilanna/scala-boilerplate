@@ -55,8 +55,10 @@ scalaVersion := "2.11.7"
 
 val commonScalacOptions = Seq(
   "-encoding", "UTF-8" // Specify character encoding used by source files
+, "-target:jvm-1.8" // Target platform for object files
 , "-Xexperimental" // Enable experimental extensions
 , "-Xfuture" // Turn on future language features
+, "-Ybackend:GenBCode" // Choice of bytecode emitter
 )
 
 scalacOptions ++= commonScalacOptions ++ Seq(
@@ -65,12 +67,15 @@ scalacOptions ++= commonScalacOptions ++ Seq(
 , "-g:vars" // Set level of generated debugging info: none, source, line, vars, notailcalls
 //"-language:_" // Enable or disable language features (see list below)
 , "-optimise" // Generates faster bytecode by applying optimisations to the program
-, "-target:jvm-1.8" // Target platform for object files
 , "-unchecked" // Enable additional warnings where generated code depends on assumptions
 //"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss (Doesn't play well with ScalaTest)
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
-, "-Ybackend:GenBCode" // Choice of bytecode emitter
+, "-Yclosure-elim" // Perform closure elimination
+, "-Yconst-opt" // Perform optimization with constant values
+, "-Ydead-code" // Perform dead code elimination
+, "-Yinline" // Perform inlining when possible
+, "-Yinline-handlers" // Perform exception handler inlining when possible
 , "-Yinline-warnings" // Emit inlining warnings
 , "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
 //"-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
@@ -150,14 +155,15 @@ libraryDependencies ++= Seq(
   "commons-codec"                     % "commons-codec"                    % "1.10"
 , "commons-io"                        % "commons-io"                       % "2.4"
 , "commons-validator"                 % "commons-validator"                % "1.4.1"
-, "joda-time"                         % "joda-time"                        % "2.9"
+, "joda-time"                         % "joda-time"                        % "2.9.1"
 , "mysql"                             % "mysql-connector-java"             % "5.1.37"
 , "ch.qos.logback"                    % "logback-classic"                  % "1.1.3"
 , "com.github.pathikrit"             %% "better-files"                     % "2.13.0"
-, "com.github.nscala-time"           %% "nscala-time"                      % "2.4.0"
-, "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.4"
+, "com.github.nscala-time"           %% "nscala-time"                      % "2.6.0"
+, "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.5"
 , "com.google.guava"                  % "guava"                            % "18.0"
 , "com.ibm.icu"                       % "icu4j"                            % "56.1"
+, "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.2"
 , "com.typesafe"                      % "config"                           % "1.3.0"
 , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.1.0"
 , "com.typesafe.slick"               %% "slick"                            % "3.1.0"
@@ -224,8 +230,8 @@ lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 mainScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Compile).toTask("").value
 testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask("").value
 
-(test in Test) <<= (test in Test) dependsOn mainScalastyle
 (test in Test) <<= (test in Test) dependsOn testScalastyle
+(test in Test) <<= (test in Test) dependsOn mainScalastyle
 
 /*
  * WartRemover: http://github.com/puffnfresh/wartremover
@@ -428,6 +434,8 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
 showSuccess := true
 
 showTiming := true
+
+cancelable in Global := true
 
 // Improved incremental compilation
 incOptions := incOptions.value.withNameHashing(true)

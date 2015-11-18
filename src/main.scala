@@ -19,6 +19,6 @@ import com.typesafe.scalalogging.StrictLogging
 
 object Main extends StrictLogging {
   def main(args: Array[String]): Unit = {
-    args foreach { logger info _ }
+    args foreach (logger info _)
   }
 }
