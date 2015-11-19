@@ -51,7 +51,7 @@ resourceDirectory in Test := (scalaSource in Test).value / "resources"
  * scalac configuration
  */
 
-scalaVersion := "2.11.7"
+scalaVersion in ThisBuild := "2.11.7"
 
 val commonScalacOptions = Seq(
   "-encoding", "UTF-8" // Specify character encoding used by source files
@@ -401,8 +401,8 @@ import scalariform.formatter.preferences._
 defaultScalariformSettings
 
 ScalariformKeys.preferences := ScalariformKeys.preferences.value
-  .setPreference(AlignParameters, false)
   .setPreference(AlignArguments, false)
+  .setPreference(AlignParameters, false)
   .setPreference(AlignSingleLineCaseStatements, false)
   .setPreference(AlignSingleLineCaseStatements.MaxArrowIndent, 12)
   .setPreference(CompactControlReadability, false)
@@ -421,8 +421,8 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
   .setPreference(SpaceBeforeColon, false)
   .setPreference(SpaceInsideBrackets, false)
   .setPreference(SpaceInsideParentheses, false)
-  .setPreference(SpacesWithinPatternBinders, true)
   .setPreference(SpacesAroundMultiImports, false)
+  .setPreference(SpacesWithinPatternBinders, true)
 
 /*
  * sbt options
@@ -435,6 +435,10 @@ showSuccess := true
 
 showTiming := true
 
+// Clear the screen before each triggered run (e.g, ~test)
+triggeredMessage := Watched.clearWhenTriggered
+
+// Do not exit sbt when Ctrl-C is used to stop a running app
 cancelable in Global := true
 
 // Improved incremental compilation
