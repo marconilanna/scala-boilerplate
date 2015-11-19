@@ -435,8 +435,11 @@ showSuccess := true
 
 showTiming := true
 
-// Clear the screen before each triggered run (e.g, ~test)
-triggeredMessage := Watched.clearWhenTriggered
+// Draw a separator between triggered runs (e.g, ~test)
+triggeredMessage := { _ =>
+  val nl = System.lineSeparator
+  nl * 3 + "#" * 100 + nl * 3
+}
 
 // Do not exit sbt when Ctrl-C is used to stop a running app
 cancelable in Global := true
