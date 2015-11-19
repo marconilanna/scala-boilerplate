@@ -436,9 +436,11 @@ showSuccess := true
 showTiming := true
 
 // Draw a separator between triggered runs (e.g, ~test)
-triggeredMessage := { _ =>
-  val nl = System.lineSeparator
-  nl * 3 + "#" * 100 + nl * 3
+triggeredMessage := { ws =>
+  if (ws.count > 1) {
+    val nl = System.lineSeparator
+    nl * 3 + "#" * 100 + nl * 3
+  } else ""
 }
 
 // Do not exit sbt when Ctrl-C is used to stop a running app
