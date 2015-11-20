@@ -439,7 +439,7 @@ showTiming := true
 triggeredMessage := { ws =>
   if (ws.count > 1) {
     val nl = System.lineSeparator
-    nl * 3 + "#" * 100 + nl * 3
+    nl * 2 + "#" * 100 + nl * 2
   } else ""
 }
 
