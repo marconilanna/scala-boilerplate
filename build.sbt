@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 
- /*
-  * Project metadata
-  */
+/*
+ * Project metadata
+ */
 
 name := "PROJECT"
 
 version := "0.1"
 
 description := "PROJECT DESCRIPTION"
-
-startYear := Some(2015)
-
-licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
-// "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
 
 // organization := "org.example"
 
@@ -36,6 +31,17 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
 // organizationHomepage := Some(url("http://example.org"))
 
 // homepage := Some(url("http://project.org"))
+
+startYear := Some(2015)
+
+licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
+// "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
+
+/*
+ * scalac configuration
+ */
+
+scalaVersion in ThisBuild := "2.11.7"
 
 scalaSource in Compile := baseDirectory.value / "src"
 
@@ -47,11 +53,7 @@ javaSource in Test := baseDirectory.value / "test"
 
 resourceDirectory in Test := (scalaSource in Test).value / "resources"
 
-/*
- * scalac configuration
- */
-
-scalaVersion in ThisBuild := "2.11.7"
+compileOrder := CompileOrder.JavaThenScala
 
 val commonScalacOptions = Seq(
   "-encoding", "UTF-8" // Specify character encoding used by source files
@@ -148,7 +150,7 @@ l:classpath         Enable cross-method optimizations across the entire classpat
 */
 
 /*
- * Commonly used libraries
+ * Managed dependencies
  */
 
 libraryDependencies ++= Seq(
@@ -438,8 +440,8 @@ showTiming := true
 // Draw a separator between triggered runs (e.g, ~test)
 triggeredMessage := { ws =>
   if (ws.count > 1) {
-    val nl = System.lineSeparator
-    nl * 2 + "#" * 100 + nl * 2
+    val nl = System.lineSeparator * 2
+    nl + "#" * 100 + nl
   } else ""
 }
 
