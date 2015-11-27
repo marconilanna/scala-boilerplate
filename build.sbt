@@ -467,7 +467,5 @@ shellPrompt := { state =>
   s"$BLUE$BOLD$name$RESET $BOLD\u25b6$RESET "
 }
 
-net.virtualvoid.sbt.graph.Plugin.graphSettings
-
 // Download and create Eclipse source attachments for library dependencies
 // EclipseKeys.withSource := true

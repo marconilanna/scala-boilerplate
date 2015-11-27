@@ -41,7 +41,7 @@ addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.4.0")
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.1.10")
 
 // http://github.com/jrudolph/sbt-dependency-graph
-addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.7.5")
+addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.0")
 
 // http://github.com/orrsella/sbt-stats
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
