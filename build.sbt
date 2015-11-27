@@ -190,19 +190,19 @@ libraryDependencies ++= Seq(
 
 initialCommands := """
 import
-  scala.annotation.{switch, tailrec}
-, scala.beans.{BeanProperty, BooleanBeanProperty}
-, scala.collection.JavaConverters._
-, scala.collection.mutable
-, scala.concurrent.{Await, Future}
-, scala.concurrent.ExecutionContext.Implicits.global
-, scala.concurrent.duration._
-, scala.language.experimental.macros
-, scala.reflect.macros.blackbox
-, scala.util.{Failure, Random, Success, Try}
-, scala.util.control.NonFatal
-, System.{currentTimeMillis => now}
-, System.nanoTime
+  scala.annotation.{switch, tailrec},
+  scala.beans.{BeanProperty, BooleanBeanProperty},
+  scala.collection.JavaConverters._,
+  scala.collection.mutable,
+  scala.concurrent.{Await, Future},
+  scala.concurrent.ExecutionContext.Implicits.global,
+  scala.concurrent.duration._,
+  scala.language.experimental.macros,
+  scala.reflect.macros.blackbox,
+  scala.util.{Failure, Random, Success, Try},
+  scala.util.control.NonFatal,
+  System.{currentTimeMillis => now},
+  System.nanoTime
 
 def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
   import c.universe._, scala.io.AnsiColor.{BOLD, GREEN, RESET}
