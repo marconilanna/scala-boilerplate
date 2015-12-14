@@ -433,18 +433,6 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
 // Uncomment to enable offline mode
 // offline := true
 
-showSuccess := true
-
-showTiming := true
-
-// Draw a separator between triggered runs (e.g, ~test)
-triggeredMessage := { ws =>
-  if (ws.count > 1) {
-    val nl = System.lineSeparator * 2
-    nl + "#" * 100 + nl
-  } else ""
-}
-
 // Do not exit sbt when Ctrl-C is used to stop a running app
 cancelable in Global := true
 
@@ -454,10 +442,22 @@ incOptions := incOptions.value.withNameHashing(true)
 // Improved dependency management
 updateOptions := updateOptions.value.withCachedResolution(true)
 
+showSuccess := true
+
+showTiming := true
+
 // Enable colors in Scala console (2.11.4)
 initialize ~= { _ =>
   val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
   if (ansi) System.setProperty("scala.color", "true")
+}
+
+// Draw a separator between triggered runs (e.g, ~test)
+triggeredMessage := { ws =>
+  if (ws.count > 1) {
+    val ls = System.lineSeparator * 2
+    ls + "#" * 100 + ls
+  } else ""
 }
 
 shellPrompt := { state =>
