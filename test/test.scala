@@ -15,17 +15,13 @@
  */
 package test
 
-import org.mockito.Mockito.when
-
 class Test extends Spec {
   "Test:" - {
     "Simple test" in {
-      val obj = mock[AnyRef]
-      val expected = "obj"
+      val actual = 1 + 1
+      val expected = 2
 
-      when(obj.toString) thenReturn expected
-
-      assert(obj.toString === expected)
+      assert(actual === expected)
     }
   }
 }

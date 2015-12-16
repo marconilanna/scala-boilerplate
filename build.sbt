@@ -178,7 +178,6 @@ libraryDependencies ++= Seq(
 , "org.joda"                          % "joda-money"                       % "0.10.0"
 , "org.jsoup"                         % "jsoup"                            % "1.8.3"
 , "org.scalactic"                    %% "scalactic"                        % "2.2.5"
-, "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
 , "org.scalamock"                    %% "scalamock-scalatest-support"      % "3.2.2"        % Test
 , "org.scalatest"                    %% "scalatest"                        % "2.2.5"        % Test
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "2.48.2"       % Test
