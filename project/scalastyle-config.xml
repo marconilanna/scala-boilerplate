@@ -1,4 +1,4 @@
-<!-- http://www.scalastyle.org/rules-0.7.0.html -->
+<!-- http://www.scalastyle.org/rules-0.8.0.html -->
 <scalastyle commentFilter="enabled">
   <name>Standard Scalastyle Configuration</name>
   <check class="org.scalastyle.file.FileLengthChecker" enabled="true" level="error">
@@ -37,19 +37,16 @@
   <check class="org.scalastyle.file.IndentationChecker" enabled="true" level="error">
     <parameters>
       <parameter name="tabSize">2</parameter>
+      <parameter name="methodParamIndentSize">2</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.file.NewlineAtEofChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">(?m)^\s\*$(\r|)\n^\s*$(\r|)\n</parameter>
+      <parameter name="regex">(?m)^\s*$(\r|)\n^\s*$(\r|)\n</parameter>
+      <parameter name="line">false</parameter>
     </parameters>
     <customMessage>No double blank lines</customMessage>
-  </check>
-  <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
-    <parameters>
-      <parameter name="regex">\bprintln\b</parameter>
-    </parameters>
   </check>
   <check class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="false" level="error"/>
@@ -108,6 +105,19 @@
     <parameter name="illegalImports">sun._,java.awt._,scala.collection.JavaConversions._,scala.collection.mutable._,scala.language.postfix</parameter>
   </check>
   <check class="org.scalastyle.scalariform.ImportGroupingChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.ImportOrderChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="groups">others,com,net,org,play,scala,java,javax</parameter>
+      <parameter name="group.others">.+</parameter>
+      <parameter name="group.com">com\..+</parameter>
+      <parameter name="group.net">net\..+</parameter>
+      <parameter name="group.org">org\..+</parameter>
+      <parameter name="group.play">play\..+</parameter>
+      <parameter name="group.scala">scala\..+</parameter>
+      <parameter name="group.java">java\..+</parameter>
+      <parameter name="group.javax">javax\..+</parameter>
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.LowercasePatternMatchChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.MagicNumberChecker" enabled="true" level="error">
     <parameters>
@@ -164,6 +174,7 @@
       <parameter name="maxParameters">8</parameter>
     </parameters>
   </check>
+  <check class="org.scalastyle.scalariform.PatternMatchAlignChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ProcedureDeclarationChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.PublicMethodsHaveTypeChecker" enabled="true" level="error">
     <parameters>
@@ -172,12 +183,21 @@
   </check>
   <check class="org.scalastyle.scalariform.RedundantIfChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.ReturnChecker" enabled="true" level="error"/>
-  <check class="org.scalastyle.scalariform.ScalaDocChecker" enabled="false" level="error"/>
+  <check class="org.scalastyle.scalariform.ScalaDocChecker" enabled="false" level="error">
+    <parameters>
+      <parameter name="ignoreRegex">(.*Spec$)</parameter>
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.SimplifyBooleanExpressionChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.SpaceAfterCommentStartChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.SpacesAfterPlusChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.SpacesBeforePlusChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.StructuralTypeChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.TodoCommentChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="words">TODO|FIXME</parameter>
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.TokenChecker" enabled="true" level="error">
     <parameters>
       <parameter name="regex">^[ai]sInstanceOf$</parameter>
@@ -186,8 +206,9 @@
   </check>
   <check class="org.scalastyle.scalariform.TokenChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^println$</parameter>
+      <parameter name="regex">^print(?:ln)?$</parameter>
     </parameters>
+    <customMessage>Avoid print statements</customMessage>
   </check>
   <check class="org.scalastyle.scalariform.UnderscoreImportChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.UppercaseLChecker" enabled="true" level="error"/>

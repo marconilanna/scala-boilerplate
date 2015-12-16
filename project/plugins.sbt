@@ -20,7 +20,7 @@ resolvers ++= Seq(
 
 // http://www.scalastyle.org/
 // http://github.com/scalastyle/scalastyle-sbt-plugin
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.7.0")
+addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
 
 // http://github.com/puffnfresh/wartremover
 addSbtPlugin("org.brianmckenna" % "sbt-wartremover" % "0.14")
