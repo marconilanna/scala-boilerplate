@@ -200,6 +200,9 @@ import
   scala.reflect.macros.blackbox,
   scala.util.{Failure, Random, Success, Try},
   scala.util.control.NonFatal,
+  java.io._,
+  java.math._,
+  java.net._,
   System.{currentTimeMillis => now},
   System.nanoTime
 
