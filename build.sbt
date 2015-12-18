@@ -400,11 +400,12 @@ coverageOutputXML := false
  * Scalariform: http://github.com/daniel-trinh/scalariform
  */
 
+import com.typesafe.sbt.SbtScalariform
 import scalariform.formatter.preferences._
 
-defaultScalariformSettings
+SbtScalariform.defaultScalariformSettings
 
-ScalariformKeys.preferences := ScalariformKeys.preferences.value
+scalariformPreferences := scalariformPreferences.value
   .setPreference(AlignArguments, false)
   .setPreference(AlignParameters, false)
   .setPreference(AlignSingleLineCaseStatements, false)
@@ -448,6 +449,9 @@ showSuccess := true
 
 showTiming := true
 
+// Download and create Eclipse source attachments for library dependencies
+// EclipseKeys.withSource := true
+
 // Enable colors in Scala console (2.11.4)
 initialize ~= { _ =>
   val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
@@ -468,6 +472,3 @@ shellPrompt := { state =>
   val name = p.getOpt(sbt.Keys.name) getOrElse p.currentProject.id
   s"$BLUE$BOLD$name$RESET $BOLD\u25b6$RESET "
 }
-
-// Download and create Eclipse source attachments for library dependencies
-// EclipseKeys.withSource := true
