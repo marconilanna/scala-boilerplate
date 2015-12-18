@@ -13,8 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package test
+package project
 
-import org.scalatest.{DiagrammedAssertions, FreeSpec}
+import org.scalamock.scalatest.MockFactory
+import org.scalatest.{DiagrammedAssertions, FreeSpec, OneInstancePerTest}
 
-abstract class Spec extends FreeSpec with DiagrammedAssertions
+abstract class Spec
+  extends FreeSpec
+  with DiagrammedAssertions
+  with MockFactory
+
+abstract class FixtureSpec
+  extends Spec
+  with OneInstancePerTest

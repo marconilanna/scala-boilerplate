@@ -87,7 +87,7 @@ scalacOptions ++= commonScalacOptions ++ Seq(
 //"-Ywarn-numeric-widen" // Warn when numerics are widened (Not really useful)
 , "-Ywarn-unused" // Warn when local and private vals, vars, defs, and types are unused
 , "-Ywarn-unused-import" // Warn when imports are unused
-, "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
+//"-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
 
 scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
@@ -250,7 +250,7 @@ wartremoverErrors ++= Seq(
 , Wart.JavaConversions
 , Wart.ListOps
 //Wart.MutableDataStructures
-, Wart.NonUnitStatements
+//Wart.NonUnitStatements
 , Wart.Nothing
 , Wart.Null
 , Wart.Option2Iterable

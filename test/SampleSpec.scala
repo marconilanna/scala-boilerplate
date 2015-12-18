@@ -13,15 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package test
+package project
 
-class Test extends Spec {
+class SampleSpec extends FixtureSpec {
+  // shared objects
+  val target = 42
+  val expected = "forty two"
+
+  // shared mocks
+  val m = mockFunction[Int, String]
+
+  // common expectations
+  m expects target returning expected
+
+  // helper functions
+
+  // test setup
+
   "Test:" - {
-    "Simple test" in {
-      val actual = 1 + 1
-      val expected = 2
+    "Sample test" in {
+      val result = m(target)
 
-      assert(actual === expected)
+      assert(result === expected)
     }
   }
 }
