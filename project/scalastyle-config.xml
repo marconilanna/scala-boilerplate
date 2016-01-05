@@ -43,10 +43,24 @@
   <check class="org.scalastyle.file.NewlineAtEofChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">(?m)^\s*$(\r|)\n^\s*$(\r|)\n</parameter>
+      <parameter name="regex">(?m)^\s*$\r?\n^\s*$\r?\n</parameter>
       <parameter name="line">false</parameter>
     </parameters>
     <customMessage>No double blank lines</customMessage>
+  </check>
+  <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="regex">(?m)\{\s*$\r?\n^\s*$\r?\n^</parameter>
+      <parameter name="line">false</parameter>
+    </parameters>
+    <customMessage>No blank lines after '{'</customMessage>
+  </check>
+  <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="regex">(?m)$\r?\n^\s*$\r?\n^\s*\}</parameter>
+      <parameter name="line">false</parameter>
+    </parameters>
+    <customMessage>No blank lines before '}'</customMessage>
   </check>
   <check class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="false" level="error"/>
