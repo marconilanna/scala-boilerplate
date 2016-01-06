@@ -57,7 +57,7 @@
   </check>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">(?m)$\r?\n^\s*$\r?\n^\s*\}</parameter>
+      <parameter name="regex">(?m)$\r?\n^\s*$\r?\n^\s*\}\s*$\r?\n^</parameter>
       <parameter name="line">false</parameter>
     </parameters>
     <customMessage>No blank lines before '}'</customMessage>
