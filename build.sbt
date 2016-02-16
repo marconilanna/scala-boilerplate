@@ -159,17 +159,17 @@ libraryDependencies ++= Seq(
 , "commons-validator"                 % "commons-validator"                % "1.5.0"
 , "joda-time"                         % "joda-time"                        % "2.9.2"
 , "mysql"                             % "mysql-connector-java"             % "5.1.38"
-, "ch.qos.logback"                    % "logback-classic"                  % "1.1.3"
+, "ch.qos.logback"                    % "logback-classic"                  % "1.1.5"
 , "com.github.nscala-time"           %% "nscala-time"                      % "2.8.0"
-, "com.github.pathikrit"             %% "better-files"                     % "2.14.0"
+, "com.github.pathikrit"             %% "better-files"                     % "2.15.0"
 , "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.5"
 , "com.google.guava"                  % "guava"                            % "19.0"
 , "com.ibm.icu"                       % "icu4j"                            % "56.1"
-, "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.4"
+, "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.6"
 , "com.typesafe"                      % "config"                           % "1.3.0"
 , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.1.0"
 , "com.typesafe.slick"               %% "slick"                            % "3.1.1"
-, "com.univocity"                     % "univocity-parsers"                % "1.5.6"
+, "com.univocity"                     % "univocity-parsers"                % "2.0.0"
 , "org.apache.commons"                % "commons-compress"                 % "1.10"
 , "org.apache.commons"                % "commons-csv"                      % "1.2"
 , "org.apache.commons"                % "commons-lang3"                    % "3.4"
@@ -180,7 +180,7 @@ libraryDependencies ++= Seq(
 , "org.scalactic"                    %% "scalactic"                        % "2.2.6"
 , "org.scalamock"                    %% "scalamock-scalatest-support"      % "3.2.2"        % Test
 , "org.scalatest"                    %% "scalatest"                        % "2.2.6"        % Test
-, "org.seleniumhq.selenium"           % "selenium-java"                    % "2.50.0"       % Test
+, "org.seleniumhq.selenium"           % "selenium-java"                    % "2.52.0"       % Test
 )
 
 /*
