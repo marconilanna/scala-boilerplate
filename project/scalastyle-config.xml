@@ -62,6 +62,13 @@
     </parameters>
     <customMessage>No blank lines before '}'</customMessage>
   </check>
+  <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="regex">case\s+[^:]+:\s+(?:Throwable|Exception|VirtualMachineError|ThreadDeath|InterruptedException|LinkageError|ControlThrowable)\s+=></parameter>
+      <parameter name="line">true</parameter>
+    </parameters>
+    <customMessage>Do not catch Throwable or Exception, use scala.util.control.NonFatal instead</customMessage>
+  </check>
   <check class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ClassNamesChecker" enabled="true" level="error">
