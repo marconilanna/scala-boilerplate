@@ -160,7 +160,7 @@ libraryDependencies ++= Seq(
 , "joda-time"                         % "joda-time"                        % "2.9.2"
 , "mysql"                             % "mysql-connector-java"             % "5.1.38"
 , "ch.qos.logback"                    % "logback-classic"                  % "1.1.5"
-, "com.github.nscala-time"           %% "nscala-time"                      % "2.8.0"
+, "com.github.nscala-time"           %% "nscala-time"                      % "2.10.0"
 , "com.github.pathikrit"             %% "better-files"                     % "2.15.0"
 , "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.5"
 , "com.google.guava"                  % "guava"                            % "19.0"
@@ -175,7 +175,7 @@ libraryDependencies ++= Seq(
 , "org.apache.commons"                % "commons-lang3"                    % "3.4"
 , "org.apache.commons"                % "commons-math3"                    % "3.6"
 , "org.apache.httpcomponents"         % "httpclient"                       % "4.5.1"
-, "org.joda"                          % "joda-money"                       % "0.10.0"
+, "org.joda"                          % "joda-money"                       % "0.11"
 , "org.jsoup"                         % "jsoup"                            % "1.8.3"
 , "org.scalactic"                    %% "scalactic"                        % "2.2.6"
 , "org.scalamock"                    %% "scalamock-scalatest-support"      % "3.2.2"        % Test
