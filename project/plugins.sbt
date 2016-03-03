@@ -32,9 +32,9 @@ addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.5")
 
-// http://github.com/daniel-trinh/scalariform
-// http://github.com/daniel-trinh/sbt-scalariform
-addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")
+// https://github.com/scala-ide/scalariform
+// https://github.com/sbt/sbt-scalariform
+//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
