@@ -15,13 +15,13 @@
  */
 package project
 
-import org.scalamock.scalatest.MockFactory
 import org.scalatest.{DiagrammedAssertions, FreeSpec, OneInstancePerTest}
+import org.scalatest.mock.MockitoSugar
 
 abstract class Spec
   extends FreeSpec
   with DiagrammedAssertions
-  with MockFactory
+  with MockitoSugar
 
 abstract class FixtureSpec
   extends Spec

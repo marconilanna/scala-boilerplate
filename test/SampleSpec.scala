@@ -15,16 +15,17 @@
  */
 package project
 
+import org.mockito.Mockito.when
+
 class SampleSpec extends FixtureSpec {
   // shared objects
-  val target = 42
   val expected = "forty two"
 
   // shared mocks
-  val m = mockFunction[Int, String]
+  val obj = mock[AnyRef]
 
   // common expectations
-  m expects target returning expected
+  when(obj.toString) thenReturn expected
 
   // helper functions
 
@@ -32,7 +33,7 @@ class SampleSpec extends FixtureSpec {
 
   "Test:" - {
     "Sample test" in {
-      val result = m(target)
+      val result = obj.toString
 
       assert(result === expected)
     }

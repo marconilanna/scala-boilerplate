@@ -180,7 +180,7 @@ libraryDependencies ++= Seq(
 , "org.jsoup"                         % "jsoup"                            % "1.8.3"
 , "org.postgresql"                    % "postgresql"                       % "9.4.1208"
 , "org.scalactic"                    %% "scalactic"                        % "2.2.6"
-, "org.scalamock"                    %% "scalamock-scalatest-support"      % "3.2.2"        % Test
+, "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
 , "org.scalatest"                    %% "scalatest"                        % "2.2.6"        % Test
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "2.53.0"       % Test
 )
