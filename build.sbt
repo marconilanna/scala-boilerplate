@@ -281,7 +281,7 @@ scapegoatDisabledInspections := Seq.empty
  * Linter: http://github.com/HairyFotr/linter
  */
 
-addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.12")
+addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.13")
 
 scalacOptions += "-P:linter:enable-only:" +
   "AssigningOptionToNull+" +
@@ -299,6 +299,7 @@ scalacOptions += "-P:linter:enable-only:" +
   "DuplicateKeyInMap+" +
   "EmptyStringInterpolator+" +
   "FilterFirstThenSort+" +
+  "FloatingPointNumericRange+" +
   "FuncFirstThenMap+" +
   "IdenticalCaseBodies+" +
   "IdenticalCaseConditions+" +
@@ -369,8 +370,10 @@ scalacOptions += "-P:linter:enable-only:" +
   "UseGetOrElseOnOption+" +
   "UseHypot+" +
   "UseIfExpression+" +
+  "UseInitNotReverseTailReverse+" +
   "UseIsNanNotNanComparison+" +
   "UseIsNanNotSelfComparison+" +
+  "UseLastNotReverseHead+" +
   "UseLog10+" +
   "UseLog1p+" +
   "UseMapNotFlatMap+" +
