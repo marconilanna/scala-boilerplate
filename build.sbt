@@ -51,6 +51,8 @@ scalaSource in Test := baseDirectory.value / "test"
 
 javaSource in Test := baseDirectory.value / "test"
 
+resourceDirectory in Compile := (scalaSource in Compile).value / "resources"
+
 resourceDirectory in Test := (scalaSource in Test).value / "resources"
 
 compileOrder := CompileOrder.JavaThenScala
@@ -73,6 +75,7 @@ scalacOptions ++= commonScalacOptions ++ Seq(
 //"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss (Doesn't play well with ScalaTest)
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
+, "-Xstrict-inference" // Don't infer known-unsound types
 , "-Yclosure-elim" // Perform closure elimination
 , "-Yconst-opt" // Perform optimization with constant values
 , "-Ydead-code" // Perform dead code elimination
@@ -195,7 +198,7 @@ import
   scala.annotation.{switch, tailrec},
   scala.beans.{BeanProperty, BooleanBeanProperty},
   scala.collection.JavaConverters._,
-  scala.collection.mutable,
+  scala.collection.{breakOut, mutable},
   scala.concurrent.{Await, ExecutionContext, Future},
   scala.concurrent.ExecutionContext.Implicits.global,
   scala.concurrent.duration._,
@@ -462,7 +465,7 @@ showTiming := true
 // Download and create Eclipse source attachments for library dependencies
 // EclipseKeys.withSource := true
 
-// Enable colors in Scala console (2.11.4)
+// Enable colors in Scala console (2.11.4+)
 initialize ~= { _ =>
   val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
   if (ansi) System.setProperty("scala.color", "true")
