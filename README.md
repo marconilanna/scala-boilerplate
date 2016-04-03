@@ -12,6 +12,32 @@ The `console` and `consoleQuick` sbt tasks start the Scala REPL with a few commo
 
 The REPL also defines a `desugar` macro, that expands an expression to its desugared form and inferred type. Try, for instance `desugar(1 to 3)`.
 
+Database migration
+------------------
+
+To run database migrations, use the `flywayMigrate` sbt tasks.
+
+Migration files are stored in the `src/resources/db/migration/` folder.
+Filenames follow the convention `nnnn.pp__desc.sql` (for instance, `0001__create_user.sql`) where:
+
+* `nnnn` is the version: a unique, leading zero-padded, strictly increasing numeric sequence
+* `.pp` is an optional patch number: same rules as above, used only by [hotfixes](http://flywaydb.org/documentation/faq.html#hot-fixes)
+* `desc` is a brief description written in `lower_case_underscore`
+
+### Down (reverse) migrations
+
+While Flyway doesn't support down migrations, by convention we put the SQL DDL commands to reverse
+the migration as a comment at the bottom of the file:
+
+``` sql
+create table if not exists user;
+
+-- down
+/*
+drop table if exists user;
+*/
+```
+
 Scalastyle
 ----------
 

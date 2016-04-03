@@ -16,7 +16,10 @@
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases")
+, "Flyway" at "https://flywaydb.org/repo"
 )
+
+addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.0")
 
 // http://www.scalastyle.org/
 // http://github.com/scalastyle/scalastyle-sbt-plugin
