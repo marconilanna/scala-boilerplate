@@ -43,6 +43,12 @@ sbt-updates
 
 There is a `dependencyUpdates` sbt task to check Maven repositories for dependency updates.
 
+sbt-license-report
+------------------
+
+To generate a report with the dependency licenses used by the project, use the `dumpLicenseReport` sbt task.
+The report is saved to the `target/license-reports` directory.
+
 sbt-dependency-graph
 --------------------
 
