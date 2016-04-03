@@ -179,6 +179,7 @@ libraryDependencies ++= Seq(
 , "org.joda"                          % "joda-money"                       % "0.11"
 , "org.jsoup"                         % "jsoup"                            % "1.8.3"
 , "org.postgresql"                    % "postgresql"                       % "9.4.1208"
+, "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
 , "org.scalactic"                    %% "scalactic"                        % "2.2.6"
 , "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
 , "org.scalatest"                    %% "scalatest"                        % "2.2.6"        % Test
@@ -220,6 +221,8 @@ def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
 
 def desugar[T](expr: T): Unit = macro desugarImpl[T]
 """
+
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 
 /*
  * Scalastyle: http://www.scalastyle.org/
