@@ -17,22 +17,24 @@ package project
 
 import org.mockito.Mockito.when
 
-class SampleSpec extends FixtureSpec {
-  // shared objects
-  val expected = "forty two"
+class SampleSpec extends Spec {
+  trait Context {
+    // shared objects
+    val expected = "forty two"
 
-  // shared mocks
-  val obj = mock[AnyRef]
+    // shared mocks
+    val obj = mock[AnyRef]
 
-  // common expectations
-  when(obj.toString) thenReturn expected
+    // common expectations
+    when(obj.toString) thenReturn expected
 
-  // helper functions
+    // helper functions
 
-  // test setup
+    // test setup
+  }
 
   "Test:" - {
-    "Sample test" in {
+    "Sample test" in new Context {
       val result = obj.toString
 
       assert(result === expected)
