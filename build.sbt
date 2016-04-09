@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2015 Marconi Lanna
+ * Copyright 2011-2016 Marconi Lanna
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ description := "PROJECT DESCRIPTION"
 
 // homepage := Some(url("http://project.org"))
 
-startYear := Some(2015)
+startYear := Some(2011)
 
 licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
 // "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
