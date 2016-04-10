@@ -64,6 +64,13 @@
   </check>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
+      <parameter name="regex">,\s*$</parameter>
+      <parameter name="line">false</parameter>
+    </parameters>
+    <customMessage>No comma at end of line, use comma-first style</customMessage>
+  </check>
+  <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
+    <parameters>
       <parameter name="regex">case\s+[^:]+:\s+(?:Throwable|Exception|VirtualMachineError|ThreadDeath|InterruptedException|LinkageError|ControlThrowable)\s+=></parameter>
       <parameter name="line">true</parameter>
     </parameters>
@@ -231,6 +238,12 @@
       <parameter name="regex">^print(?:ln)?$</parameter>
     </parameters>
     <customMessage>Avoid print statements</customMessage>
+  </check>
+  <check class="org.scalastyle.scalariform.TokenChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="regex">^Some$</parameter>
+    </parameters>
+    <customMessage>'Some' found: use Option.apply or avoid pattern matching on Option</customMessage>
   </check>
   <check class="org.scalastyle.scalariform.UnderscoreImportChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.UppercaseLChecker" enabled="true" level="error"/>
