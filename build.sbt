@@ -158,35 +158,35 @@ l:classpath         Enable cross-method optimizations across the entire classpat
 
 libraryDependencies ++= Seq(
   "commons-codec"                     % "commons-codec"                    % "1.10"
-, "commons-io"                        % "commons-io"                       % "2.4"
-, "commons-validator"                 % "commons-validator"                % "1.5.0"
-, "joda-time"                         % "joda-time"                        % "2.9.3"
-, "mysql"                             % "mysql-connector-java"             % "6.0.2"
+, "commons-io"                        % "commons-io"                       % "2.5"
+, "commons-validator"                 % "commons-validator"                % "1.5.1"
+, "joda-time"                         % "joda-time"                        % "2.9.4"
+, "mysql"                             % "mysql-connector-java"             % "6.0.3"
 , "ch.qos.logback"                    % "logback-classic"                  % "1.1.7"
 , "com.github.nscala-time"           %% "nscala-time"                      % "2.12.0"
-, "com.github.pathikrit"             %% "better-files"                     % "2.15.0"
+, "com.github.pathikrit"             %% "better-files"                     % "2.16.0"
 , "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.6"
 , "com.google.guava"                  % "guava"                            % "19.0"
 , "com.ibm.icu"                       % "icu4j"                            % "57.1"
-, "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.6"
+, "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.7"
 , "com.typesafe"                      % "config"                           % "1.3.0"
-, "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.1.0"
+, "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.4.0"
 , "com.typesafe.slick"               %% "slick"                            % "3.1.1"
-, "com.univocity"                     % "univocity-parsers"                % "2.0.2"
+, "com.univocity"                     % "univocity-parsers"                % "2.1.2"
 , "de.svenkubiak"                     % "jBCrypt"                          % "0.4.1"
-, "org.apache.commons"                % "commons-compress"                 % "1.11"
-, "org.apache.commons"                % "commons-csv"                      % "1.2"
+, "org.apache.commons"                % "commons-compress"                 % "1.12"
+, "org.apache.commons"                % "commons-csv"                      % "1.4"
 , "org.apache.commons"                % "commons-lang3"                    % "3.4"
 , "org.apache.commons"                % "commons-math3"                    % "3.6.1"
 , "org.apache.httpcomponents"         % "httpclient"                       % "4.5.2"
 , "org.joda"                          % "joda-money"                       % "0.11"
-, "org.jsoup"                         % "jsoup"                            % "1.8.3"
+, "org.jsoup"                         % "jsoup"                            % "1.9.2"
 , "org.postgresql"                    % "postgresql"                       % "9.4.1208"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
 , "org.scalactic"                    %% "scalactic"                        % "2.2.6"
 , "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
 , "org.scalatest"                    %% "scalatest"                        % "2.2.6"        % Test
-, "org.seleniumhq.selenium"           % "selenium-java"                    % "2.53.0"       % Test
+, "org.seleniumhq.selenium"           % "selenium-java"                    % "2.53.1"       % Test
 )
 
 /*
