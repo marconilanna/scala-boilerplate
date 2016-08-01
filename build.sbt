@@ -308,7 +308,7 @@ scapegoatDisabledInspections := Seq.empty
  * Linter: http://github.com/HairyFotr/linter
  */
 
-addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.13")
+addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.14")
 
 scalacOptions += "-P:linter:enable-only:" +
   "AssigningOptionToNull+" +
@@ -384,7 +384,6 @@ scalacOptions += "-P:linter:enable-only:" +
   "UseContainsNotExistsEquals+" +
   "UseCountNotFilterLength+" +
   "UseExistsNotCountCompare+" +
-  "UseExistsNotFilterEmpty+" +
   "UseExistsNotFilterIsEmpty+" +
   "UseExistsNotFindIsDefined+" +
   "UseExp+" +
@@ -394,13 +393,18 @@ scalacOptions += "-P:linter:enable-only:" +
   "UseFlattenNotFilterOption+" +
   "UseFuncNotFold+" +
   "UseFuncNotReduce+" +
+  "UseFuncNotReverse+" +
   "UseGetOrElseOnOption+" +
+  "UseHeadNotApply+" +
+  "UseHeadOptionNotIf+" +
   "UseHypot+" +
   "UseIfExpression+" +
   "UseInitNotReverseTailReverse+" +
   "UseIsNanNotNanComparison+" +
   "UseIsNanNotSelfComparison+" +
+  "UseLastNotApply+" +
   "UseLastNotReverseHead+" +
+  "UseLastOptionNotIf+" +
   "UseLog10+" +
   "UseLog1p+" +
   "UseMapNotFlatMap+" +
@@ -410,7 +414,9 @@ scalacOptions += "-P:linter:enable-only:" +
   "UseQuantifierFuncNotFold+" +
   "UseSignum+" +
   "UseSqrt+" +
+  "UseTakeRightNotReverseTakeReverse+" +
   "UseUntilNotToMinusOne+" +
+  "UseZipWithIndexNotZipIndices+" +
   "VariableAssignedUnusedValue+" +
   "WrapNullWithOption+" +
   "YodaConditions+" +
