@@ -508,7 +508,5 @@ triggeredMessage := { ws =>
 
 shellPrompt := { state =>
   import scala.Console.{BLUE, BOLD, RESET}
-  val p = Project.extract(state)
-  val name = p.getOpt(sbt.Keys.name) getOrElse p.currentProject.id
-  s"$BLUE$BOLD$name$RESET $BOLD\u25b6$RESET "
+  s"$BLUE$BOLD${name.value}$RESET $BOLD\u25b6$RESET "
 }
