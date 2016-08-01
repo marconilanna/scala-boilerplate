@@ -172,7 +172,7 @@ libraryDependencies ++= Seq(
 , "com.typesafe"                      % "config"                           % "1.3.0"
 , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.4.0"
 , "com.typesafe.slick"               %% "slick"                            % "3.1.1"
-, "com.univocity"                     % "univocity-parsers"                % "2.1.2"
+, "com.univocity"                     % "univocity-parsers"                % "2.2.0"
 , "de.svenkubiak"                     % "jBCrypt"                          % "0.4.1"
 , "org.apache.commons"                % "commons-compress"                 % "1.12"
 , "org.apache.commons"                % "commons-csv"                      % "1.4"
@@ -181,7 +181,7 @@ libraryDependencies ++= Seq(
 , "org.apache.httpcomponents"         % "httpclient"                       % "4.5.2"
 , "org.joda"                          % "joda-money"                       % "0.11"
 , "org.jsoup"                         % "jsoup"                            % "1.9.2"
-, "org.postgresql"                    % "postgresql"                       % "9.4.1208"
+, "org.postgresql"                    % "postgresql"                       % "9.4.1209"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
 , "org.scalactic"                    %% "scalactic"                        % "2.2.6"
 , "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
