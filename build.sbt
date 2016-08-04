@@ -183,9 +183,9 @@ libraryDependencies ++= Seq(
 , "org.jsoup"                         % "jsoup"                            % "1.9.2"
 , "org.postgresql"                    % "postgresql"                       % "9.4.1209"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
-, "org.scalactic"                    %% "scalactic"                        % "2.2.6"
+, "org.scalactic"                    %% "scalactic"                        % "3.0.0"
 , "org.mockito"                       % "mockito-core"                     % "1.10.19"      % Test
-, "org.scalatest"                    %% "scalatest"                        % "2.2.6"        % Test
+, "org.scalatest"                    %% "scalatest"                        % "3.0.0"        % Test
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "2.53.1"       % Test
 )
 
