@@ -19,6 +19,7 @@ resolvers ++= Seq(
 , "Flyway" at "https://flywaydb.org/repo"
 )
 
+// https://flywaydb.org/documentation/sbt/
 addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.0.3")
 
 // http://www.scalastyle.org/
@@ -26,14 +27,14 @@ addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.0.3")
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
 
 // http://github.com/puffnfresh/wartremover
-addSbtPlugin("org.wartremover" % "sbt-wartremover" % "1.1.0")
+addSbtPlugin("org.wartremover" % "sbt-wartremover" % "1.1.1")
 
 // http://github.com/sksamuel/scalac-scapegoat-plugin
 // http://github.com/sksamuel/sbt-scapegoat
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
 
 // http://github.com/scoverage/sbt-scoverage
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.5")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.4.0")
 
 // https://github.com/scala-ide/scalariform
 // https://github.com/sbt/sbt-scalariform
@@ -41,7 +42,7 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.5")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.1.10")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.2.0")
 
 // http://github.com/sbt/sbt-license-report
 addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
