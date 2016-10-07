@@ -308,6 +308,16 @@ scapegoatVersion := "1.2.1"
 
 scapegoatDisabledInspections := Seq.empty
 
+// Create a default Scapegoat task to run with tests
+lazy val mainScapegoat = taskKey[Unit]("mainScapegoat")
+lazy val testScapegoat = taskKey[Unit]("testScapegoat")
+
+mainScapegoat := scapegoat.in(Compile).value
+testScapegoat := scapegoat.in(Test).value
+
+(test in Test) <<= (test in Test) dependsOn testScapegoat
+(test in Test) <<= (test in Test) dependsOn mainScapegoat
+
 /*
  * Linter: http://github.com/HairyFotr/linter
  */
