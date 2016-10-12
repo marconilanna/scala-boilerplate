@@ -168,6 +168,9 @@ libraryDependencies ++= Seq(
 , "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.6"
 , "com.google.guava"                  % "guava"                            % "19.0"
 , "com.ibm.icu"                       % "icu4j"                            % "57.1"
+, "com.softwaremill.macwire"         %% "macros"                           % "2.2.5"     % Provided
+, "com.softwaremill.macwire"         %% "proxy"                            % "2.2.5"
+, "com.softwaremill.macwire"         %% "util"                             % "2.2.5"
 , "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.7"
 , "com.typesafe"                      % "config"                           % "1.3.1"
 , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.5.0"
