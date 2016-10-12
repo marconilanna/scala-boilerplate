@@ -182,12 +182,14 @@ libraryDependencies ++= Seq(
 , "org.joda"                          % "joda-money"                       % "0.11"
 , "org.jsoup"                         % "jsoup"                            % "1.9.2"
 , "org.postgresql"                    % "postgresql"                       % "9.4.1211"
+, "org.quartz-scheduler"              % "quartz"                           % "2.2.3"
+, "org.quartz-scheduler"              % "quartz-jobs"                      % "2.2.3"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
 , "org.scalactic"                    %% "scalactic"                        % "3.0.0"
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.1.0"
+  "org.mockito"                       % "mockito-core"                     % "2.2.0"
 , "org.scalatest"                    %% "scalatest"                        % "3.0.0"
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "2.53.1"
 ) map (_ % Test)
