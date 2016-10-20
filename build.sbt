@@ -162,7 +162,7 @@ libraryDependencies ++= Seq(
 , "commons-io"                        % "commons-io"                       % "2.5"
 , "commons-validator"                 % "commons-validator"                % "1.5.1"
 , "joda-time"                         % "joda-time"                        % "2.9.4"
-, "mysql"                             % "mysql-connector-java"             % "6.0.4"
+, "mysql"                             % "mysql-connector-java"             % "6.0.5"
 , "ch.qos.logback"                    % "logback-classic"                  % "1.1.7"
 , "com.github.nscala-time"           %% "nscala-time"                      % "2.14.0"
 , "com.github.pathikrit"             %% "better-files"                     % "2.16.0"
@@ -172,7 +172,7 @@ libraryDependencies ++= Seq(
 , "com.softwaremill.macwire"         %% "macros"                           % "2.2.5"     % Provided
 , "com.softwaremill.macwire"         %% "proxy"                            % "2.2.5"
 , "com.softwaremill.macwire"         %% "util"                             % "2.2.5"
-, "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.7"
+, "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.8"
 , "com.typesafe"                      % "config"                           % "1.3.1"
 , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.5.0"
 , "com.typesafe.slick"               %% "slick"                            % "3.1.1"
@@ -180,7 +180,7 @@ libraryDependencies ++= Seq(
 , "de.svenkubiak"                     % "jBCrypt"                          % "0.4.1"
 , "org.apache.commons"                % "commons-compress"                 % "1.12"
 , "org.apache.commons"                % "commons-csv"                      % "1.4"
-, "org.apache.commons"                % "commons-lang3"                    % "3.4"
+, "org.apache.commons"                % "commons-lang3"                    % "3.5"
 , "org.apache.commons"                % "commons-math3"                    % "3.6.1"
 , "org.apache.httpcomponents"         % "httpclient"                       % "4.5.2"
 , "org.joda"                          % "joda-money"                       % "0.11"
@@ -193,9 +193,9 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.2.0"
+  "org.mockito"                       % "mockito-core"                     % "2.2.5"
 , "org.scalatest"                    %% "scalatest"                        % "3.0.0"
-, "org.seleniumhq.selenium"           % "selenium-java"                    % "2.53.1"
+, "org.seleniumhq.selenium"           % "selenium-java"                    % "3.0.1"
 ) map (_ % Test)
 
 /*
