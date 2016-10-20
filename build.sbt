@@ -100,6 +100,7 @@ scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
 
 scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
 
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 
 /*
 scalac -language:help
@@ -198,8 +199,10 @@ libraryDependencies ++= Seq(
 ) map (_ % Test)
 
 /*
- * Statements executed when starting the Scala REPL (sbt's `console` task)
+ * sbt options
  */
+
+// Statements executed when starting the Scala REPL (sbt's `console` task)
 
 initialCommands := """
 import
@@ -234,7 +237,43 @@ def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
 def desugar[T](expr: T): Unit = macro desugarImpl[T]
 """
 
-addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+// Do not exit sbt when Ctrl-C is used to stop a running app
+cancelable in Global := true
+
+// Improved incremental compilation
+incOptions := incOptions.value.withNameHashing(true)
+
+// Improved dependency management
+updateOptions := updateOptions.value.withCachedResolution(true)
+
+showSuccess := true
+
+showTiming := true
+
+// Uncomment to enable offline mode
+// offline := true
+
+// Download and create Eclipse source attachments for library dependencies
+// EclipseKeys.withSource := true
+
+// Enable colors in Scala console (2.11.4+)
+initialize ~= { _ =>
+  val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
+  if (ansi) System.setProperty("scala.color", "true")
+}
+
+// Draw a separator between triggered runs (e.g, ~test)
+triggeredMessage := { ws =>
+  if (ws.count > 1) {
+    val ls = System.lineSeparator * 2
+    ls + "#" * 100 + ls
+  } else ""
+}
+
+shellPrompt := { state =>
+  import scala.Console.{BLUE, BOLD, RESET}
+  s"$BLUE$BOLD${name.value}$RESET $BOLD\u25b6$RESET "
+}
 
 /*
  * Database migration
@@ -497,45 +536,3 @@ coverageOutputXML := false
 //  .setPreference(SpaceInsideParentheses, false)
 //  .setPreference(SpacesAroundMultiImports, false)
 //  .setPreference(SpacesWithinPatternBinders, true)
-
-/*
- * sbt options
- */
-
-// Uncomment to enable offline mode
-// offline := true
-
-// Do not exit sbt when Ctrl-C is used to stop a running app
-cancelable in Global := true
-
-// Improved incremental compilation
-incOptions := incOptions.value.withNameHashing(true)
-
-// Improved dependency management
-updateOptions := updateOptions.value.withCachedResolution(true)
-
-showSuccess := true
-
-showTiming := true
-
-// Download and create Eclipse source attachments for library dependencies
-// EclipseKeys.withSource := true
-
-// Enable colors in Scala console (2.11.4+)
-initialize ~= { _ =>
-  val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
-  if (ansi) System.setProperty("scala.color", "true")
-}
-
-// Draw a separator between triggered runs (e.g, ~test)
-triggeredMessage := { ws =>
-  if (ws.count > 1) {
-    val ls = System.lineSeparator * 2
-    ls + "#" * 100 + ls
-  } else ""
-}
-
-shellPrompt := { state =>
-  import scala.Console.{BLUE, BOLD, RESET}
-  s"$BLUE$BOLD${name.value}$RESET $BOLD\u25b6$RESET "
-}
