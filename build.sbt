@@ -85,12 +85,12 @@ scalacOptions ++= commonScalacOptions ++ Seq(
 , "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
 //"-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
 //"-Yno-predef" // Compile without importing Predef
-, "-Yopt:_" // Enable optimizations
+, "-Yopt:_" // Enable optimizations (see list below)
 , "-Ywarn-dead-code" // Warn when dead code is identified
-//"-Ywarn-numeric-widen" // Warn when numerics are widened (Not really useful)
+, "-Ywarn-numeric-widen" // Warn when numerics are widened
 , "-Ywarn-unused" // Warn when local and private vals, vars, defs, and types are unused
 , "-Ywarn-unused-import" // Warn when imports are unused
-//"-Ywarn-value-discard" // Warn when non-Unit expression results are unused
+, "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
 
 scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
@@ -168,7 +168,7 @@ libraryDependencies ++= Seq(
 , "com.github.pathikrit"             %% "better-files"                     % "2.16.0"
 , "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.6"
 , "com.google.guava"                  % "guava"                            % "19.0"
-, "com.ibm.icu"                       % "icu4j"                            % "57.1"
+, "com.ibm.icu"                       % "icu4j"                            % "58.1"
 , "com.softwaremill.macwire"         %% "macros"                           % "2.2.5"     % Provided
 , "com.softwaremill.macwire"         %% "proxy"                            % "2.2.5"
 , "com.softwaremill.macwire"         %% "util"                             % "2.2.5"
@@ -184,7 +184,7 @@ libraryDependencies ++= Seq(
 , "org.apache.commons"                % "commons-math3"                    % "3.6.1"
 , "org.apache.httpcomponents"         % "httpclient"                       % "4.5.2"
 , "org.joda"                          % "joda-money"                       % "0.11"
-, "org.jsoup"                         % "jsoup"                            % "1.9.2"
+, "org.jsoup"                         % "jsoup"                            % "1.10.1"
 , "org.postgresql"                    % "postgresql"                       % "9.4.1211"
 , "org.quartz-scheduler"              % "quartz"                           % "2.2.3"
 , "org.quartz-scheduler"              % "quartz-jobs"                      % "2.2.3"
@@ -193,7 +193,7 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.2.5"
+  "org.mockito"                       % "mockito-core"                     % "2.2.8"
 , "org.scalatest"                    %% "scalatest"                        % "3.0.0"
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "3.0.1"
 ) map (_ % Test)
