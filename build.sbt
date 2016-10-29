@@ -366,7 +366,7 @@ testScapegoat := scapegoat.in(Test).value
  * Linter: http://github.com/HairyFotr/linter
  */
 
-addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.15")
+addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.16")
 
 scalacOptions += "-P:linter:enable-only:" +
   "AssigningOptionToNull+" +
