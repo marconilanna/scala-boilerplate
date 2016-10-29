@@ -304,8 +304,8 @@ lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 mainScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Compile).toTask("").value
 testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask("").value
 
-(test in Test) <<= (test in Test) dependsOn testScalastyle
-(test in Test) <<= (test in Test) dependsOn mainScalastyle
+(test in Test) := ((test in Test) dependsOn testScalastyle).value
+(test in Test) := ((test in Test) dependsOn mainScalastyle).value
 
 /*
  * WartRemover: http://github.com/puffnfresh/wartremover
@@ -359,8 +359,8 @@ lazy val testScapegoat = taskKey[Unit]("testScapegoat")
 mainScapegoat := scapegoat.in(Compile).value
 testScapegoat := scapegoat.in(Test).value
 
-(test in Test) <<= (test in Test) dependsOn testScapegoat
-(test in Test) <<= (test in Test) dependsOn mainScapegoat
+(test in Test) := ((test in Test) dependsOn testScapegoat).value
+(test in Test) := ((test in Test) dependsOn mainScapegoat).value
 
 /*
  * Linter: http://github.com/HairyFotr/linter
