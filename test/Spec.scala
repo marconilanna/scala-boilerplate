@@ -16,7 +16,7 @@
 package project
 
 import org.scalatest.{DiagrammedAssertions, FreeSpec}
-import org.scalatest.mock.MockitoSugar
+import org.scalatest.mockito.MockitoSugar
 
 abstract class Spec
   extends FreeSpec

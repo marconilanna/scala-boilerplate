@@ -167,7 +167,7 @@ libraryDependencies ++= Seq(
 , "com.github.nscala-time"           %% "nscala-time"                      % "2.14.0"
 , "com.github.pathikrit"             %% "better-files"                     % "2.16.0"
 , "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.6"
-, "com.google.guava"                  % "guava"                            % "19.0"
+, "com.google.guava"                  % "guava"                            % "20.0"
 , "com.ibm.icu"                       % "icu4j"                            % "58.1"
 , "com.softwaremill.macwire"         %% "macros"                           % "2.2.5"     % Provided
 , "com.softwaremill.macwire"         %% "proxy"                            % "2.2.5"
@@ -193,7 +193,7 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.2.8"
+  "org.mockito"                       % "mockito-core"                     % "2.2.9"
 , "org.scalatest"                    %% "scalatest"                        % "3.0.0"
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "3.0.1"
 ) map (_ % Test)
