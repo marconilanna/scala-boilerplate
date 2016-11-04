@@ -161,12 +161,12 @@ libraryDependencies ++= Seq(
   "commons-codec"                     % "commons-codec"                    % "1.10"
 , "commons-io"                        % "commons-io"                       % "2.5"
 , "commons-validator"                 % "commons-validator"                % "1.5.1"
-, "joda-time"                         % "joda-time"                        % "2.9.4"
+, "joda-time"                         % "joda-time"                        % "2.9.5"
 , "mysql"                             % "mysql-connector-java"             % "6.0.5"
 , "ch.qos.logback"                    % "logback-classic"                  % "1.1.7"
 , "com.github.nscala-time"           %% "nscala-time"                      % "2.14.0"
 , "com.github.pathikrit"             %% "better-files"                     % "2.16.0"
-, "com.github.t3hnar"                %% "scala-bcrypt"                     % "2.6"
+, "com.github.t3hnar"                %% "scala-bcrypt"                     % "3.0"
 , "com.google.guava"                  % "guava"                            % "20.0"
 , "com.ibm.icu"                       % "icu4j"                            % "58.1"
 , "com.softwaremill.macwire"         %% "macros"                           % "2.2.5"     % Provided
@@ -176,7 +176,7 @@ libraryDependencies ++= Seq(
 , "com.typesafe"                      % "config"                           % "1.3.1"
 , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.5.0"
 , "com.typesafe.slick"               %% "slick"                            % "3.1.1"
-, "com.univocity"                     % "univocity-parsers"                % "2.2.2"
+, "com.univocity"                     % "univocity-parsers"                % "2.2.3"
 , "de.svenkubiak"                     % "jBCrypt"                          % "0.4.1"
 , "org.apache.commons"                % "commons-compress"                 % "1.12"
 , "org.apache.commons"                % "commons-csv"                      % "1.4"
@@ -185,7 +185,7 @@ libraryDependencies ++= Seq(
 , "org.apache.httpcomponents"         % "httpclient"                       % "4.5.2"
 , "org.joda"                          % "joda-money"                       % "0.11"
 , "org.jsoup"                         % "jsoup"                            % "1.10.1"
-, "org.postgresql"                    % "postgresql"                       % "9.4.1211"
+, "org.postgresql"                    % "postgresql"                       % "9.4.1212"
 , "org.quartz-scheduler"              % "quartz"                           % "2.2.3"
 , "org.quartz-scheduler"              % "quartz-jobs"                      % "2.2.3"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
@@ -193,7 +193,7 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.2.9"
+  "org.mockito"                       % "mockito-core"                     % "2.2.11"
 , "org.scalatest"                    %% "scalatest"                        % "3.0.0"
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "3.0.1"
 ) map (_ % Test)
