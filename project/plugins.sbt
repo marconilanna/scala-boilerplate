@@ -34,7 +34,7 @@ addSbtPlugin("org.wartremover" % "sbt-wartremover" % "1.2.0")
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
 
 // http://github.com/scoverage/sbt-scoverage
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.4.0")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.0")
 
 // https://github.com/scala-ide/scalariform
 // https://github.com/sbt/sbt-scalariform
@@ -54,8 +54,8 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
 
 // https://github.com/alexarchambault/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14-5")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14-7")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
-//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "4.0.0")
+//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.0.1")

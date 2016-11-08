@@ -193,7 +193,7 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.2.11"
+  "org.mockito"                       % "mockito-core"                     % "2.2.13"
 , "org.scalatest"                    %% "scalatest"                        % "3.0.0"
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "3.0.1"
 ) map (_ % Test)
