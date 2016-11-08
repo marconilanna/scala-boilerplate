@@ -313,7 +313,6 @@ testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask
 
 wartremoverErrors ++= Seq(
   Wart.Any
-, Wart.Any2StringAdd
 , Wart.AsInstanceOf
 //Wart.DefaultArguments
 , Wart.EitherProjectionPartial
@@ -326,7 +325,6 @@ wartremoverErrors ++= Seq(
 , Wart.IsInstanceOf
 , Wart.JavaConversions
 , Wart.LeakingSealed
-, Wart.ListOps
 //Wart.MutableDataStructures
 //Wart.NonUnitStatements
 , Wart.Nothing
@@ -337,8 +335,10 @@ wartremoverErrors ++= Seq(
 , Wart.Product
 , Wart.Return
 , Wart.Serializable
+, Wart.StringPlusAny
 , Wart.Throw
 //Wart.ToString
+, Wart.TraversableOps
 , Wart.TryPartial
 , Wart.Var
 //Wart.While
