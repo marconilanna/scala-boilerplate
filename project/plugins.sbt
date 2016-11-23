@@ -19,7 +19,7 @@ resolvers ++= Seq(
 , "Flyway" at "https://flywaydb.org/repo"
 )
 
-// https://flywaydb.org/documentation/sbt/
+// http://flywaydb.org/documentation/sbt/
 addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.0.3")
 
 // http://www.scalastyle.org/
@@ -29,15 +29,15 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
 // http://github.com/puffnfresh/wartremover
 addSbtPlugin("org.wartremover" % "sbt-wartremover" % "1.2.0")
 
-// http://github.com/sksamuel/scalac-scapegoat-plugin
+// http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
 
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.0")
 
-// https://github.com/scala-ide/scalariform
-// https://github.com/sbt/sbt-scalariform
+// http://github.com/scala-ide/scalariform
+// http://github.com/sbt/sbt-scalariform
 //addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
@@ -53,8 +53,8 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 // http://github.com/orrsella/sbt-stats
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
 
-// https://github.com/alexarchambault/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14-7")
+// http://github.com/alexarchambault/coursier
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14-9")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse

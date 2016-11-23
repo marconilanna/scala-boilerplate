@@ -161,7 +161,7 @@ libraryDependencies ++= Seq(
   "commons-codec"                     % "commons-codec"                    % "1.10"
 , "commons-io"                        % "commons-io"                       % "2.5"
 , "commons-validator"                 % "commons-validator"                % "1.5.1"
-, "joda-time"                         % "joda-time"                        % "2.9.5"
+, "joda-time"                         % "joda-time"                        % "2.9.6"
 , "mysql"                             % "mysql-connector-java"             % "6.0.5"
 , "ch.qos.logback"                    % "logback-classic"                  % "1.1.7"
 , "com.github.nscala-time"           %% "nscala-time"                      % "2.14.0"
@@ -183,18 +183,18 @@ libraryDependencies ++= Seq(
 , "org.apache.commons"                % "commons-lang3"                    % "3.5"
 , "org.apache.commons"                % "commons-math3"                    % "3.6.1"
 , "org.apache.httpcomponents"         % "httpclient"                       % "4.5.2"
-, "org.joda"                          % "joda-money"                       % "0.11"
+, "org.joda"                          % "joda-money"                       % "0.12"
 , "org.jsoup"                         % "jsoup"                            % "1.10.1"
 , "org.postgresql"                    % "postgresql"                       % "9.4.1212"
 , "org.quartz-scheduler"              % "quartz"                           % "2.2.3"
 , "org.quartz-scheduler"              % "quartz-jobs"                      % "2.2.3"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
-, "org.scalactic"                    %% "scalactic"                        % "3.0.0"
+, "org.scalactic"                    %% "scalactic"                        % "3.0.1"
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.2.13"
-, "org.scalatest"                    %% "scalatest"                        % "3.0.0"
+  "org.mockito"                       % "mockito-core"                     % "2.2.22"
+, "org.scalatest"                    %% "scalatest"                        % "3.0.1"
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "3.0.1"
 ) map (_ % Test)
 
