@@ -348,7 +348,7 @@ wartremoverErrors ++= Seq(
  * Scapegoat: http://github.com/sksamuel/scalac-scapegoat-plugin
  */
 
-scapegoatVersion := "1.2.1"
+scapegoatVersion := "1.3.0"
 
 scapegoatDisabledInspections := Seq.empty
 
