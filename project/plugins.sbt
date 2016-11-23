@@ -27,7 +27,7 @@ addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.0.3")
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
 
 // http://github.com/puffnfresh/wartremover
-addSbtPlugin("org.wartremover" % "sbt-wartremover" % "1.2.0")
+addSbtPlugin("org.wartremover" % "sbt-wartremover" % "1.2.1")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
