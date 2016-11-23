@@ -10,7 +10,7 @@
     <parameters>
       <parameter name="maxLineLength">100</parameter>
       <parameter name="tabSize">2</parameter>
-      <parameter name="ignoreImports">false</parameter>
+      <parameter name="ignoreImports">true</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.file.FileTabChecker" enabled="true" level="error"/>
