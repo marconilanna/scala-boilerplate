@@ -217,6 +217,7 @@ import
   scala.util.control.NonFatal,
   java.io._,
   java.net._,
+  java.nio.file._,
   java.time.{Duration => jDuration, _},
   System.{currentTimeMillis => now},
   System.nanoTime
