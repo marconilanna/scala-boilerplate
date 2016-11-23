@@ -15,11 +15,14 @@
  */
 package project
 
-import org.scalatest.{DiagrammedAssertions, FreeSpec, OptionValues}
+import org.scalatest.{DiagrammedAssertions, FreeSpec, OptionValues, TryValues}
+import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.mockito.MockitoSugar
 
 abstract class Spec
   extends FreeSpec
   with DiagrammedAssertions
   with OptionValues
+  with TryValues
+  with ScalaFutures
   with MockitoSugar
