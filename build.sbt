@@ -343,7 +343,7 @@ wartremoverErrors ++= Seq(
 )
 
 /*
- * Scapegoat: http://github.com/sksamuel/scalac-scapegoat-plugin
+ * Scapegoat: http://github.com/sksamuel/scapegoat
  */
 
 scapegoatVersion := "1.3.0"
@@ -364,7 +364,7 @@ testScapegoat := scapegoat.in(Test).value
  * Linter: http://github.com/HairyFotr/linter
  */
 
-addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.16")
+addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.17")
 
 scalacOptions += "-P:linter:enable-only:" +
   "AssigningOptionToNull+" +
@@ -419,6 +419,7 @@ scalacOptions += "-P:linter:enable-only:" +
   "RegexWarning+" +
   "StringMultiplicationByNonPositive+" +
   "SuspiciousMatches+" +
+  "SuspiciousPow+" +
   "TransformNotMap+" +
   "TypeToType+" +
   "UndesirableTypeInference+" +
