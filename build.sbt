@@ -64,7 +64,7 @@ val commonScalacOptions = Seq(
 , "-Xfuture" // Turn on future language features
 )
 
-scalacOptions ++= commonScalacOptions ++ Seq(
+val compileScalacOptions = Seq(
   "-deprecation" // Emit warning and location for usages of deprecated APIs
 , "-feature" // Emit warning and location for usages of features that should be imported explicitly
 , "-g:vars" // Set level of generated debugging info: none, source, line, vars, notailcalls
@@ -86,6 +86,12 @@ scalacOptions ++= commonScalacOptions ++ Seq(
 , "-Ywarn-unused-import" // Warn when imports are unused
 , "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
+
+scalacOptions ++= commonScalacOptions ++ compileScalacOptions ++ Seq(
+  "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
+)
+
+scalacOptions in (Test, compile) := commonScalacOptions ++ compileScalacOptions
 
 scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
   "-language:_" // Enable or disable language features (see list below)
@@ -350,6 +356,8 @@ wartremoverErrors ++= Seq(
 scapegoatVersion := "1.3.0"
 
 scapegoatDisabledInspections := Seq.empty
+
+scapegoatIgnoredFiles := Seq.empty
 
 // Create a default Scapegoat task to run with tests
 lazy val mainScapegoat = taskKey[Unit]("mainScapegoat")
