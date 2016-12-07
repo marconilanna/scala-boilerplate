@@ -172,7 +172,8 @@ libraryDependencies ++= Seq(
 , "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.8"
 , "com.typesafe"                      % "config"                           % "1.3.1"
 , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.5.0"
-//"com.typesafe.slick"               %% "slick"                            % "3.1.1"  // No 2.12
+, "com.typesafe.slick"               %% "slick"                            % "3.2.0-M2"
+, "com.typesafe.slick"               %% "slick-hikaricp"                   % "3.2.0-M2"
 , "com.univocity"                     % "univocity-parsers"                % "2.2.3"
 , "de.svenkubiak"                     % "jBCrypt"                          % "0.4.1"
 , "org.apache.commons"                % "commons-compress"                 % "1.12"
@@ -190,7 +191,7 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.2.22"
+  "org.mockito"                       % "mockito-core"                     % "2.2.29"
 , "org.scalatest"                    %% "scalatest"                        % "3.0.1"
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "3.0.1"
 ) map (_ % Test)
