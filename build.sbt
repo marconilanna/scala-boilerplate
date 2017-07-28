@@ -103,7 +103,7 @@ scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
 
 scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
 
-addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
 
 /*
 scalac -language:help
@@ -177,43 +177,49 @@ privates   Warn if a private member is unused
 libraryDependencies ++= Seq(
   "commons-codec"                     % "commons-codec"                    % "1.10"
 , "commons-io"                        % "commons-io"                       % "2.5"
-, "commons-validator"                 % "commons-validator"                % "1.5.1"
-, "joda-time"                         % "joda-time"                        % "2.9.6"
-, "mysql"                             % "mysql-connector-java"             % "6.0.5"
-, "ch.qos.logback"                    % "logback-classic"                  % "1.1.7"
-, "com.github.nscala-time"           %% "nscala-time"                      % "2.14.0"
-//"com.github.pathikrit"             %% "better-files"                     % "2.16.0" // No 2.12
-, "com.github.t3hnar"                %% "scala-bcrypt"                     % "3.0"
-, "com.google.guava"                  % "guava"                            % "20.0"
-, "com.ibm.icu"                       % "icu4j"                            % "58.1"
-, "com.softwaremill.macwire"         %% "macros"                           % "2.2.5"     % Provided
-, "com.softwaremill.macwire"         %% "proxy"                            % "2.2.5"
-, "com.softwaremill.macwire"         %% "util"                             % "2.2.5"
+, "commons-validator"                 % "commons-validator"                % "1.6"
+, "joda-time"                         % "joda-time"                        % "2.9.9"
+, "mysql"                             % "mysql-connector-java"             % "6.0.6"
+, "ch.qos.logback"                    % "logback-classic"                  % "1.2.3"
+, "com.github.nscala-time"           %% "nscala-time"                      % "2.16.0"
+, "com.github.pathikrit"             %% "better-files"                     % "3.0.0"
+, "com.github.t3hnar"                %% "scala-bcrypt"                     % "3.1"
+, "com.google.guava"                  % "guava"                            % "22.0"
+, "com.ibm.icu"                       % "icu4j"                            % "59.1"
+, "com.softwaremill.macwire"         %% "macros"                           % "2.3.0"     % Provided
+, "com.softwaremill.macwire"         %% "proxy"                            % "2.3.0"
+, "com.softwaremill.macwire"         %% "util"                             % "2.3.0"
 , "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.8"
 , "com.typesafe"                      % "config"                           % "1.3.1"
-, "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.5.0"
-, "com.typesafe.slick"               %% "slick"                            % "3.2.0-M2"
-, "com.typesafe.slick"               %% "slick-hikaricp"                   % "3.2.0-M2"
-, "com.univocity"                     % "univocity-parsers"                % "2.2.3"
+, "com.typesafe.akka"                %% "akka-actor"                       % "2.5.3"
+, "com.typesafe.akka"                %% "akka-http"                        % "10.0.9"
+, "com.typesafe.akka"                %% "akka-stream"                      % "2.5.3"
+, "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.7.2"
+, "com.typesafe.slick"               %% "slick"                            % "3.2.1"
+, "com.typesafe.slick"               %% "slick-hikaricp"                   % "3.2.1"
+, "com.univocity"                     % "univocity-parsers"                % "2.5.0"
 , "de.svenkubiak"                     % "jBCrypt"                          % "0.4.1"
-, "org.apache.commons"                % "commons-compress"                 % "1.12"
+, "org.apache.commons"                % "commons-compress"                 % "1.14"
 , "org.apache.commons"                % "commons-csv"                      % "1.4"
-, "org.apache.commons"                % "commons-lang3"                    % "3.5"
+, "org.apache.commons"                % "commons-lang3"                    % "3.6"
 , "org.apache.commons"                % "commons-math3"                    % "3.6.1"
-, "org.apache.httpcomponents"         % "httpclient"                       % "4.5.2"
+, "org.apache.httpcomponents"         % "httpclient"                       % "4.5.3"
 , "org.joda"                          % "joda-money"                       % "0.12"
-, "org.jsoup"                         % "jsoup"                            % "1.10.1"
-, "org.postgresql"                    % "postgresql"                       % "9.4.1212"
-, "org.quartz-scheduler"              % "quartz"                           % "2.2.3"
-, "org.quartz-scheduler"              % "quartz-jobs"                      % "2.2.3"
+, "org.jsoup"                         % "jsoup"                            % "1.10.3"
+, "org.postgresql"                    % "postgresql"                       % "42.1.3"
+, "org.quartz-scheduler"              % "quartz"                           % "2.3.0"
+, "org.quartz-scheduler"              % "quartz-jobs"                      % "2.3.0"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
-, "org.scalactic"                    %% "scalactic"                        % "3.0.1"
+, "org.scalactic"                    %% "scalactic"                        % "3.0.3"
 )
 
 libraryDependencies ++= Seq(
-  "org.mockito"                       % "mockito-core"                     % "2.2.29"
-, "org.scalatest"                    %% "scalatest"                        % "3.0.1"
-, "org.seleniumhq.selenium"           % "selenium-java"                    % "3.0.1"
+  "com.typesafe.akka"                %% "akka-testkit"                     % "2.5.3"
+, "com.typesafe.akka"                %% "akka-http-testkit"                % "10.0.9"
+, "com.typesafe.akka"                %% "akka-stream-testkit"              % "2.5.3"
+, "org.mockito"                       % "mockito-core"                     % "2.8.47"
+, "org.scalatest"                    %% "scalatest"                        % "3.0.3"
+, "org.seleniumhq.selenium"           % "selenium-java"                    % "3.4.0"
 ) map (_ % Test)
 
 /*
