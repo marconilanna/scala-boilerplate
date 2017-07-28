@@ -41,7 +41,7 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
  * scalac configuration
  */
 
-scalaVersion in ThisBuild := "2.12.1"
+scalaVersion in ThisBuild := "2.12.3"
 
 scalaSource in Compile := baseDirectory.value / "src"
 
@@ -69,7 +69,8 @@ val compileScalacOptions = Seq(
 , "-feature" // Emit warning and location for usages of features that should be imported explicitly
 , "-g:vars" // Set level of generated debugging info: none, source, line, vars, notailcalls
 //"-language:_" // Enable or disable language features (see list below)
-, "-opt:_" // Enable optimizations (see list below)
+, "-opt:l:inline" // Enable optimizations (see list below)
+, "-opt-inline-from:**" // Classfile names from which to allow inlining
 //"-opt-warnings:none" // Enable optimizer warnings
 , "-unchecked" // Enable additional warnings where generated code depends on assumptions
 //"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss
@@ -80,10 +81,12 @@ val compileScalacOptions = Seq(
 , "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
 //"-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
 //"-Yno-predef" // Compile without importing Predef
+//"-Yprofile-enabled" // Enable profiling
+//"-Yvirtpatmat" // Enable pattern matcher virtualization
 , "-Ywarn-dead-code" // Warn when dead code is identified
+, "-Ywarn-extra-implicit" // Warn when more than one implicit parameter section is defined
 , "-Ywarn-numeric-widen" // Warn when numerics are widened
-, "-Ywarn-unused" // Warn when local and private vals, vars, defs, and types are unused
-, "-Ywarn-unused-import" // Warn when imports are unused
+, "-Ywarn-unused:_" // Enable or disable specific (see list below)
 , "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
 
@@ -121,8 +124,7 @@ box-unbox            Eliminate box-unbox pairs within the same method
 closure-invocations  Rewrite closure invocations to the implementation method
 compact-locals       Eliminate empty slots in the sequence of local variables
 copy-propagation     Eliminate redundant local variables and unused values
-inline-global        Inline methods from any source, including classfiles on the compile classpath
-inline-project       Inline only methods defined in the files being compiled
+inline               Inline method invocations according to -Yopt-inline-heuristics and -opt-inline-from
 nullness-tracking    Track nullness / non-nullness of local variables and apply optimizations
 redundant-casts      Eliminate redundant casts using a type propagation analysis
 simplify-jumps       Simplify branching instructions, eliminate unnecessary ones
@@ -130,8 +132,7 @@ unreachable-code     Eliminate unreachable code, exception handlers guarding no 
 l:none               Disable optimizations
 l:default            Enable default optimizations: unreachable-code
 l:method             Enable intra-method optimizations: unreachable-code,simplify-jumps,compact-locals,copy-propagation,redundant-casts,box-unbox,nullness-tracking,closure-invocations
-l:project            Enable cross-method optimizations within the current project: l:method,inline-project
-l:classpath          Enable cross-method optimizations across the entire classpath: l:project,inline-global
+l:inline             Enable cross-method optimizations: l:method,inline
 
 *//*
 
@@ -154,6 +155,19 @@ private-shadow             A private field (or class parameter) shadows a superc
 stars-align                Pattern sequence wildcard must align with sequence component
 type-parameter-shadow      A local type parameter shadows a type already in scope
 unsound-match              Pattern match may not be typesafe
+unused                     Enable -Ywarn-unused:imports,privates,locals,implicits
+
+*//*
+
+scalac -Ywarn-unused:help
+
+implicits  Warn if an implicit parameter is unused
+imports    Warn if an import selector is not referenced
+linted     -Xlint:unused
+locals     Warn if a local definition is unused
+params     Warn if a value parameter is unused
+patvars    Warn if a variable bound in a pattern is unused
+privates   Warn if a private member is unused
 */
 
 /*
