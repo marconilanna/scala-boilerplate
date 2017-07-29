@@ -20,14 +20,14 @@ resolvers ++= Seq(
 )
 
 // http://flywaydb.org/documentation/sbt/
-addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.0.3")
+addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.2.0")
 
 // http://www.scalastyle.org/
 // http://github.com/scalastyle/scalastyle-sbt-plugin
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
+addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.9.0")
 
-// http://github.com/puffnfresh/wartremover
-addSbtPlugin("org.wartremover" % "sbt-wartremover" % "1.2.1")
+// http://github.com/wartremover/wartremover
+addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.1.1")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
@@ -38,11 +38,11 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.0")
 
 // http://github.com/scala-ide/scalariform
 // http://github.com/sbt/sbt-scalariform
-//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")
+//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.7.1")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.2.0")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.1")
 
 // http://github.com/jrudolph/sbt-dependency-graph
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.2")
@@ -53,9 +53,12 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 // http://github.com/orrsella/sbt-stats
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
 
-// http://github.com/alexarchambault/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14-9")
+// http://github.com/coursier/coursier
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC8")
+
+// http://github.com/Duhemm/sbt-errors-summary
+addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.0")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
-//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.0.1")
+//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.1.0")

@@ -326,18 +326,19 @@ scalastyleFailOnError := true
 lazy val mainScalastyle = taskKey[Unit]("mainScalastyle")
 lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 
-mainScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Compile).toTask("").value
-testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask("").value
+mainScalastyle := scalastyle.in(Compile).toTask("").value
+testScalastyle := scalastyle.in(Test).toTask("").value
 
 (test in Test) := ((test in Test) dependsOn testScalastyle).value
 (test in Test) := ((test in Test) dependsOn mainScalastyle).value
 
 /*
- * WartRemover: http://github.com/puffnfresh/wartremover
+ * WartRemover: http://github.com/wartremover/wartremover
  */
 
 wartremoverErrors ++= Seq(
   Wart.Any
+, Wart.ArrayEquals
 , Wart.AsInstanceOf
 //Wart.DefaultArguments
 , Wart.EitherProjectionPartial
@@ -347,6 +348,7 @@ wartremoverErrors ++= Seq(
 , Wart.FinalCaseClass
 //Wart.FinalVal
 //Wart.ImplicitConversion
+//Wart.ImplicitParameter
 , Wart.IsInstanceOf
 , Wart.JavaConversions
 , Wart.LeakingSealed
@@ -358,6 +360,8 @@ wartremoverErrors ++= Seq(
 , Wart.OptionPartial
 //Wart.Overloading
 , Wart.Product
+, Wart.PublicInference
+//Wart.Recursion
 , Wart.Return
 , Wart.Serializable
 , Wart.StringPlusAny
@@ -373,7 +377,7 @@ wartremoverErrors ++= Seq(
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
 
-scapegoatVersion := "1.3.0"
+scapegoatVersion := "1.3.1"
 
 scapegoatDisabledInspections := Seq.empty
 
@@ -533,7 +537,7 @@ coverageOutputHTML := true
 coverageOutputXML := false
 
 /*
- * Scalariform: http://github.com/daniel-trinh/scalariform
+ * Scalariform: http://github.com/scala-ide/scalariform
  */
 
 //import com.typesafe.sbt.SbtScalariform
@@ -548,18 +552,23 @@ coverageOutputXML := false
 //  .setPreference(AlignSingleLineCaseStatements.MaxArrowIndent, 12)
 //  .setPreference(CompactControlReadability, false)
 //  .setPreference(CompactStringConcatenation, false)
-//  .setPreference(DoubleIndentClassDeclaration, true)
+//  .setPreference(DanglingCloseParenthesis, Preserve)
+//  .setPreference(DoubleIndentConstructorArguments, true)
+//  .setPreference(DoubleIndentMethodDeclaration, false)
+//  .setPreference(FirstArgumentOnNewline, Preserve)
+//  .setPreference(FirstParameterOnNewline, Force)
 //  .setPreference(FormatXml, false)
 //  .setPreference(IndentLocalDefs, false)
 //  .setPreference(IndentPackageBlocks, true)
 //  .setPreference(IndentSpaces, 2)
 //  .setPreference(IndentWithTabs, false)
 //  .setPreference(MultilineScaladocCommentsStartOnFirstLine, false)
+//  .setPreference(NewlineAtEndOfFile, true)
 //  .setPreference(PlaceScaladocAsterisksBeneathSecondAsterisk, false)
-//  .setPreference(PreserveDanglingCloseParenthesis, true)
 //  .setPreference(PreserveSpaceBeforeArguments, false)
 //  .setPreference(RewriteArrowSymbols, false)
 //  .setPreference(SpaceBeforeColon, false)
+//  .setPreference(SpaceBeforeContextColon, true)
 //  .setPreference(SpaceInsideBrackets, false)
 //  .setPreference(SpaceInsideParentheses, false)
 //  .setPreference(SpacesAroundMultiImports, false)
