@@ -1,4 +1,4 @@
-<!-- http://www.scalastyle.org/rules-0.8.0.html -->
+<!-- http://www.scalastyle.org/rules-0.9.0.html -->
 <scalastyle commentFilter="enabled">
   <name>Standard Scalastyle Configuration</name>
   <check class="org.scalastyle.file.FileLengthChecker" enabled="true" level="error">
@@ -38,6 +38,7 @@
     <parameters>
       <parameter name="tabSize">2</parameter>
       <parameter name="methodParamIndentSize">2</parameter>
+      <parameter name="classParamIndentSize">4</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.file.NewlineAtEofChecker" enabled="true" level="error"/>
@@ -76,7 +77,11 @@
     </parameters>
     <customMessage>Do not catch Throwable or Exception, use scala.util.control.NonFatal instead</customMessage>
   </check>
-  <check class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.file.WhitespaceEndOfLineChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="ignoreWhitespaceLines">false</parameter>
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ClassNamesChecker" enabled="true" level="error">
     <parameters>
@@ -92,6 +97,7 @@
   <check class="org.scalastyle.scalariform.CyclomaticComplexityChecker" enabled="true" level="error">
     <parameters>
       <parameter name="maximum">10</parameter>
+      <parameter name="countCases">true</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.DeprecatedJavaChecker" enabled="true" level="error"/>
@@ -106,6 +112,7 @@
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.EmptyClassChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.EmptyInterpolatedStringChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.EnsureSingleSpaceAfterTokenChecker" enabled="true" level="error">
     <parameters>
       <parameter name="tokens">COLON, COMMA, IF, SEMICOLON, WHILE</parameter>
@@ -120,6 +127,7 @@
   <check class="org.scalastyle.scalariform.FieldNamesChecker" enabled="true" level="error">
     <parameters>
       <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
+      <parameter name="objectFieldRegex">^[A-Za-z0-9]+$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ForBraceChecker" enabled="true" level="error"/>
@@ -153,14 +161,21 @@
       <parameter name="ignore">-1,0,1,2</parameter>
     </parameters>
   </check>
+  <check class="org.scalastyle.scalariform.MethodArgumentNamesChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
+      <parameter name="ignoreRegex">^$</parameter>
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.MethodLengthChecker" enabled="true" level="error">
     <parameters>
       <parameter name="maxLength">50</parameter>
+      <parameter name="ignoreComments">true</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.MethodNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z0-9]*(_=)?$</parameter>
+      <parameter name="regex">^[a-z][A-Za-z0-9]*(?:_=)?$</parameter>
       <parameter name="ignoreRegex">^$</parameter>
       <parameter name="ignoreOverride">true</parameter>
     </parameters>
@@ -171,13 +186,24 @@
       <parameter name="ignoreRegex">^\"\"$</parameter>
     </parameters>
   </check>
+  <check class="org.scalastyle.scalariform.NamedArgumentChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="checkString">false</parameter>
+      <parameter name="ignoreMethod">^set.+$</parameter>
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.NoCloneChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.NoFinalizeChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.NoWhitespaceAfterLeftBracketChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.NoWhitespaceBeforeLeftBracketChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.NoWhitespaceBeforeRightBracketChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.NonASCIICharacterChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.NotImplementedErrorUsage" enabled="true" level="error"/>
-  <check class="org.scalastyle.scalariform.NullChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.NullChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="allowNullChecks">true</parameter>
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.NumberOfMethodsInTypeChecker" enabled="true" level="error">
     <parameters>
       <parameter name="maxMethods">30</parameter>
@@ -191,6 +217,12 @@
   <check class="org.scalastyle.scalariform.ObjectNamesChecker" enabled="true" level="error">
     <parameters>
       <parameter name="regex">^[A-Z][A-Za-z]*$</parameter>
+    </parameters>
+  </check>
+  <check class="org.scalastyle.scalariform.OverrideJavaChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.PackageNamesChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="regex">^[a-z][A-Za-z]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.PackageObjectNamesChecker" enabled="true" level="error">
@@ -214,7 +246,16 @@
   <check class="org.scalastyle.scalariform.ReturnChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.ScalaDocChecker" enabled="false" level="error">
     <parameters>
-      <parameter name="ignoreRegex">(.*Spec$)</parameter>
+      <parameter name="ignoreRegex">.*Spec$</parameter>
+      <!--
+        TypeDefOrDcl: type definitions
+        TmplDef: classes, traits
+        FunDefOrDcl: functions
+        PatDefOrDcl: variables
+      -->
+      <parameter name="ignoreTokenTypes">PatDefOrDcl</parameter>
+      <parameter name="ignoreOverride">true</parameter>
+      <!-- <parameter name="indentStyle"></parameter> -->
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.SimplifyBooleanExpressionChecker" enabled="true" level="error"/>
@@ -245,7 +286,11 @@
     </parameters>
     <customMessage>'Some' found: use Option.apply or avoid pattern matching on Option</customMessage>
   </check>
-  <check class="org.scalastyle.scalariform.UnderscoreImportChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.UnderscoreImportChecker" enabled="true" level="error">
+    <parameters>
+      <!-- <parameter name="ignoreRegex">collection\.JavaConverters\._|concurrent\.duration\._</parameter> -->
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.UppercaseLChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.VarFieldChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.VarLocalChecker" enabled="true" level="error"/>
