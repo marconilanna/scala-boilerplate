@@ -29,6 +29,12 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.9.0")
 // http://github.com/wartremover/wartremover
 addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.1.1")
 
+// http://github.com/wartremover/wartremover-contrib/
+addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.0.0")
+
+// http://github.com/danielnixon/extrawarts
+addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "0.3.0")
+
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
