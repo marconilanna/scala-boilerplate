@@ -302,6 +302,14 @@ logLevel in Global := Level.Info
 // Share history among all projects instead of using a different history for each project
 historyPath := Option(target.in(LocalRootProject).value / ".history")
 
+addCommandAlias("cd", "project")
+addCommandAlias("cr", ";clean ;reload")
+addCommandAlias("cru", ";clean ;reload ;test:update")
+addCommandAlias("du", "dependencyUpdates")
+addCommandAlias("rdu", ";reload ;dependencyUpdates")
+addCommandAlias("ru", ";reload ;test:update")
+addCommandAlias("tc", "test:compile")
+
 showSuccess := true
 
 showTiming := true
