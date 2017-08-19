@@ -32,6 +32,8 @@ description := "PROJECT DESCRIPTION"
 
 // homepage := Option(url("http://example.org/project"))
 
+// apiURL := Option(url("http://example.org/project/api"))
+
 startYear := Option(2011)
 
 licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
@@ -234,6 +236,20 @@ libraryDependencies ++= Seq(
 , "org.scalatest"                    %% "scalatest"                        % "3.0.4"
 , "org.seleniumhq.selenium"           % "selenium-java"                    % "3.5.1"
 ) map (_ % Test)
+
+/*
+ * Scaladoc configuration
+ */
+
+autoAPIMappings := true
+
+apiMappings += (
+  scalaInstance.value.libraryJar -> url(s"http://www.scala-lang.org/api/${scalaVersion.value}/")
+)
+
+scalacOptions in (Compile, doc) := Seq("-author", "-encoding", "UTF-8", "-groups", "-implicits")
+
+scalacOptions in (Test, doc) := scalacOptions.in(Compile, doc).value
 
 /*
  * sbt options
