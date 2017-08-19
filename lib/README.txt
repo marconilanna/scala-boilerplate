@@ -1,1 +1,0 @@
-Unmanaged dependencies (standalone JARs)

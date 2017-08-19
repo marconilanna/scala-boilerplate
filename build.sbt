@@ -28,14 +28,16 @@ description := "PROJECT DESCRIPTION"
 
 // organizationName := "Example, Inc."
 
-// organizationHomepage := Some(url("http://example.org"))
+// organizationHomepage := Option(url("http://example.org"))
 
-// homepage := Some(url("http://project.org"))
+// homepage := Option(url("http://example.org/project"))
 
-startYear := Some(2011)
+startYear := Option(2011)
 
 licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
 // "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
+
+developers := Developer("marconilanna", "Marconi Lanna", "@marconilanna", url("https://github.com/marconilanna")) :: Nil
 
 /*
  * scalac configuration
@@ -43,28 +45,32 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
 
 scalaVersion in ThisBuild := "2.12.3"
 
-scalaSource in Compile := baseDirectory.value / "src"
+// crossScalaVersions := Seq(scalaVersion.value)
 
-javaSource in Compile := baseDirectory.value / "src"
+scalaSource in Compile := baseDirectory.value / "src"
 
 scalaSource in Test := baseDirectory.value / "test"
 
-javaSource in Test := baseDirectory.value / "test"
+javaSource in Compile := scalaSource.in(Compile).value
 
-resourceDirectory in Compile := (scalaSource in Compile).value / "resources"
+javaSource in Test := scalaSource.in(Test).value
 
-resourceDirectory in Test := (scalaSource in Test).value / "resources"
+resourceDirectory in Compile := scalaSource.in(Compile).value / "resources"
+
+resourceDirectory in Test := scalaSource.in(Test).value / "resources"
+
+sourcesInBase := false
 
 compileOrder := CompileOrder.JavaThenScala
 
-val commonScalacOptions = Seq(
+val coreScalacOptions = Seq(
   "-encoding", "UTF-8" // Specify character encoding used by source files
 , "-target:jvm-1.8" // Target platform for object files
 , "-Xexperimental" // Enable experimental extensions
 , "-Xfuture" // Turn on future language features
 )
 
-val compileScalacOptions = Seq(
+val commonScalacOptions = Seq(
   "-deprecation" // Emit warning and location for usages of deprecated APIs
 , "-feature" // Emit warning and location for usages of features that should be imported explicitly
 , "-g:vars" // Set level of generated debugging info: none, source, line, vars, notailcalls
@@ -73,7 +79,7 @@ val compileScalacOptions = Seq(
 , "-opt-inline-from:**" // Classfile names from which to allow inlining
 //"-opt-warnings:none" // Enable optimizer warnings
 , "-unchecked" // Enable additional warnings where generated code depends on assumptions
-//"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss
+, "-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
 //"-Xmigration:<version>" // Warn about constructs whose behavior may have changed since version
@@ -87,21 +93,28 @@ val compileScalacOptions = Seq(
 , "-Ywarn-extra-implicit" // Warn when more than one implicit parameter section is defined
 , "-Ywarn-numeric-widen" // Warn when numerics are widened
 , "-Ywarn-unused:_" // Enable or disable specific (see list below)
-, "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
 
-scalacOptions ++= commonScalacOptions ++ compileScalacOptions ++ Seq(
+val compileScalacOptions = Seq(
   "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
 
-scalacOptions in (Test, compile) := commonScalacOptions ++ compileScalacOptions
+val testScalacOptions = Seq(
+  "-Xcheckinit" // Wrap field accessors to throw an exception on uninitialized access
+)
 
-scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
+val consoleScalacOptions = Seq(
   "-language:_" // Enable or disable language features (see list below)
 , "-nowarn" // Generate no warnings
 )
 
-scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
+scalacOptions ++= coreScalacOptions ++ commonScalacOptions ++ compileScalacOptions
+
+scalacOptions in (Test, compile) := coreScalacOptions ++ commonScalacOptions ++ testScalacOptions
+
+scalacOptions in (Compile, console) := coreScalacOptions ++ consoleScalacOptions
+
+scalacOptions in (Test, console) := scalacOptions.in(Compile, console).value
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
 
@@ -227,27 +240,36 @@ libraryDependencies ++= Seq(
  */
 
 // Statements executed when starting the Scala REPL (sbt's `console` task)
-
-initialCommands := """
+val consoleDefinitions = """
 import
-  scala.annotation.{switch, tailrec},
-  scala.beans.{BeanProperty, BooleanBeanProperty},
-  scala.collection.JavaConverters._,
-  scala.collection.{breakOut, mutable},
-  scala.concurrent.{Await, ExecutionContext, Future},
-  scala.concurrent.ExecutionContext.Implicits.global,
-  scala.concurrent.duration._,
-  scala.language.experimental.macros,
-  scala.math._,
-  scala.reflect.macros.blackbox,
-  scala.util.{Failure, Random, Success, Try},
-  scala.util.control.NonFatal,
-  java.io._,
-  java.net._,
-  java.nio.file._,
-  java.time.{Duration => jDuration, _},
-  System.{currentTimeMillis => now},
-  System.nanoTime
+  scala.annotation.{switch, tailrec}
+, scala.beans.{BeanProperty, BooleanBeanProperty}
+, scala.collection.JavaConverters._
+, scala.collection.{breakOut, mutable}
+, scala.concurrent.{Await, ExecutionContext, Future}
+, scala.concurrent.ExecutionContext.Implicits.global
+, scala.concurrent.duration._
+, scala.math._
+, scala.util.{Failure, Random, Success, Try}
+, scala.util.control.NonFatal
+, java.io._
+, java.net._
+, java.nio.file._
+, java.time.{Duration => jDuration, _}
+, System.{currentTimeMillis => now, nanoTime}
+
+def time[T](f: => T): T = {
+  val start = now
+  try f finally {
+    println("Elapsed: " + (now - start)/1000.0 + " s")
+  }
+}
+"""
+
+val desugarMacro = """
+import
+  scala.language.experimental.macros
+, scala.reflect.macros.blackbox
 
 def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
   import c.universe._, scala.io.AnsiColor.{BOLD, GREEN, RESET}
@@ -262,14 +284,23 @@ def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
 def desugar[T](expr: T): Unit = macro desugarImpl[T]
 """
 
-// Do not exit sbt when Ctrl-C is used to stop a running app
-cancelable in Global := true
+initialCommands := consoleDefinitions + desugarMacro
+
+initialCommands in consoleProject := consoleDefinitions
 
 // Improved incremental compilation
 incOptions := incOptions.value.withNameHashing(true)
 
 // Improved dependency management
 updateOptions := updateOptions.value.withCachedResolution(true)
+
+// Do not exit sbt when Ctrl-C is used to stop a running app
+cancelable in Global := true
+
+logLevel in Global := Level.Info
+
+// Share history among all projects instead of using a different history for each project
+historyPath := Option(target.in(LocalRootProject).value / ".history")
 
 showSuccess := true
 
@@ -291,9 +322,12 @@ initialize ~= { _ =>
 triggeredMessage := { ws =>
   if (ws.count > 1) {
     val ls = System.lineSeparator * 2
-    ls + "#" * 100 + ls
+    ls + "#" * 80 + ls
   } else ""
 }
+
+// Alternative: clear the console between triggered runs
+// triggeredMessage := Watched.clearWhenTriggered
 
 shellPrompt := { state =>
   import scala.Console.{BLUE, BOLD, RESET}
@@ -306,7 +340,7 @@ shellPrompt := { state =>
 
 import com.typesafe.config.ConfigFactory
 
-val conf = ConfigFactory.parseFile(new File("src/resources/application.conf")).resolve
+val conf = ConfigFactory.parseFile(file("src/resources/application.conf")).resolve
 
 flywayUrl := conf.getString("db.url")
 
@@ -323,14 +357,14 @@ scalastyleConfig := baseDirectory.value / "project" / "scalastyle-config.xml"
 scalastyleFailOnError := true
 
 // Create a default Scalastyle task to run with tests
-lazy val mainScalastyle = taskKey[Unit]("mainScalastyle")
-lazy val testScalastyle = taskKey[Unit]("testScalastyle")
+val mainScalastyle = taskKey[Unit]("mainScalastyle")
+val testScalastyle = taskKey[Unit]("testScalastyle")
 
 mainScalastyle := scalastyle.in(Compile).toTask("").value
 testScalastyle := scalastyle.in(Test).toTask("").value
 
-(test in Test) := ((test in Test) dependsOn testScalastyle).value
-(test in Test) := ((test in Test) dependsOn mainScalastyle).value
+test in Test := test.in(Test).dependsOn(testScalastyle).value
+test in Test := test.in(Test).dependsOn(mainScalastyle).value
 
 /*
  * WartRemover: http://github.com/wartremover/wartremover
@@ -360,11 +394,11 @@ wartremoverErrors ++= Seq(
 , Wart.OptionPartial
 //Wart.Overloading
 , Wart.Product
-, Wart.PublicInference
+//Wart.PublicInference
 //Wart.Recursion
 , Wart.Return
 , Wart.Serializable
-, Wart.StringPlusAny
+//Wart.StringPlusAny
 , Wart.Throw
 //Wart.ToString
 , Wart.TraversableOps
@@ -396,14 +430,14 @@ scapegoatDisabledInspections := Seq.empty
 scapegoatIgnoredFiles := Seq.empty
 
 // Create a default Scapegoat task to run with tests
-lazy val mainScapegoat = taskKey[Unit]("mainScapegoat")
-lazy val testScapegoat = taskKey[Unit]("testScapegoat")
+val mainScapegoat = taskKey[Unit]("mainScapegoat")
+val testScapegoat = taskKey[Unit]("testScapegoat")
 
 mainScapegoat := scapegoat.in(Compile).value
 testScapegoat := scapegoat.in(Test).value
 
-(test in Test) := ((test in Test) dependsOn testScapegoat).value
-(test in Test) := ((test in Test) dependsOn mainScapegoat).value
+test in Test := test.in(Test).dependsOn(testScapegoat).value
+test in Test := test.in(Test).dependsOn(mainScapegoat).value
 
 /*
  * Linter: http://github.com/HairyFotr/linter
