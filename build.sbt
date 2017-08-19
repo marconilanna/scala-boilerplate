@@ -27,7 +27,15 @@ lazy val root = project.in(file(".")).settings(
 , description := "PROJECT DESCRIPTION"
 , libraryDependencies ++= lib.allDependencies // for dependencyUpdates task
 ).aggregate(
-  module
+  common
+, module
+)
+
+lazy val common = project.settings(
+  commonSettings
+, description := "Common classes shared across modules"
+, libraryDependencies ++= Seq(
+  )
 )
 
 lazy val module = project.settings(
@@ -36,6 +44,7 @@ lazy val module = project.settings(
 , libraryDependencies ++= Seq(
   )
 ).dependsOn(
+  common % withTests
 )
 
 lazy val commonSettings =
