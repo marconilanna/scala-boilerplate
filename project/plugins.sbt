@@ -60,11 +60,11 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
 
 // http://github.com/coursier/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC8")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC10")
 
 // http://github.com/Duhemm/sbt-errors-summary
 addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.0")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
-//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.1.0")
+//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.1")

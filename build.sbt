@@ -184,20 +184,20 @@ libraryDependencies ++= Seq(
 , "com.github.nscala-time"           %% "nscala-time"                      % "2.16.0"
 , "com.github.pathikrit"             %% "better-files"                     % "3.0.0"
 , "com.github.t3hnar"                %% "scala-bcrypt"                     % "3.1"
-, "com.google.guava"                  % "guava"                            % "22.0"
+, "com.google.guava"                  % "guava"                            % "23.0"
 , "com.ibm.icu"                       % "icu4j"                            % "59.1"
 , "com.softwaremill.macwire"         %% "macros"                           % "2.3.0"     % Provided
 , "com.softwaremill.macwire"         %% "proxy"                            % "2.3.0"
 , "com.softwaremill.macwire"         %% "util"                             % "2.3.0"
 , "com.softwaremill.quicklens"       %% "quicklens"                        % "1.4.8"
 , "com.typesafe"                      % "config"                           % "1.3.1"
-, "com.typesafe.akka"                %% "akka-actor"                       % "2.5.3"
+, "com.typesafe.akka"                %% "akka-actor"                       % "2.5.4"
 , "com.typesafe.akka"                %% "akka-http"                        % "10.0.9"
-, "com.typesafe.akka"                %% "akka-stream"                      % "2.5.3"
+, "com.typesafe.akka"                %% "akka-stream"                      % "2.5.4"
 , "com.typesafe.scala-logging"       %% "scala-logging"                    % "3.7.2"
 , "com.typesafe.slick"               %% "slick"                            % "3.2.1"
 , "com.typesafe.slick"               %% "slick-hikaricp"                   % "3.2.1"
-, "com.univocity"                     % "univocity-parsers"                % "2.5.0"
+, "com.univocity"                     % "univocity-parsers"                % "2.5.3"
 , "de.svenkubiak"                     % "jBCrypt"                          % "0.4.1"
 , "org.apache.commons"                % "commons-compress"                 % "1.14"
 , "org.apache.commons"                % "commons-csv"                      % "1.4"
@@ -206,20 +206,20 @@ libraryDependencies ++= Seq(
 , "org.apache.httpcomponents"         % "httpclient"                       % "4.5.3"
 , "org.joda"                          % "joda-money"                       % "0.12"
 , "org.jsoup"                         % "jsoup"                            % "1.10.3"
-, "org.postgresql"                    % "postgresql"                       % "42.1.3"
+, "org.postgresql"                    % "postgresql"                       % "42.1.4"
 , "org.quartz-scheduler"              % "quartz"                           % "2.3.0"
 , "org.quartz-scheduler"              % "quartz-jobs"                      % "2.3.0"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
-, "org.scalactic"                    %% "scalactic"                        % "3.0.3"
 )
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka"                %% "akka-testkit"                     % "2.5.3"
+  "com.typesafe.akka"                %% "akka-testkit"                     % "2.5.4"
 , "com.typesafe.akka"                %% "akka-http-testkit"                % "10.0.9"
-, "com.typesafe.akka"                %% "akka-stream-testkit"              % "2.5.3"
+, "com.typesafe.akka"                %% "akka-stream-testkit"              % "2.5.4"
+, "com.typesafe.slick"               %% "slick-testkit"                    % "3.2.1"
 , "org.mockito"                       % "mockito-core"                     % "2.8.47"
-, "org.scalatest"                    %% "scalatest"                        % "3.0.3"
-, "org.seleniumhq.selenium"           % "selenium-java"                    % "3.4.0"
+, "org.scalatest"                    %% "scalatest"                        % "3.0.4"
+, "org.seleniumhq.selenium"           % "selenium-java"                    % "3.5.1"
 ) map (_ % Test)
 
 /*
