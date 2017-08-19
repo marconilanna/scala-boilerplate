@@ -15,9 +15,9 @@
  */
 package project
 
-import com.typesafe.scalalogging.StrictLogging
+import project.util.Logging
 
-object Main extends StrictLogging {
+object Main extends Logging {
   def main(args: Array[String]): Unit = {
     args foreach {
       logger.info(_)
