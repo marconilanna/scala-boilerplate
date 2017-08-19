@@ -15,8 +15,8 @@
  */
 
 resolvers ++= Seq(
-  Resolver.sonatypeRepo("releases")
-, "Flyway" at "https://flywaydb.org/repo"
+  Resolvers.flyway
+, Resolvers.sonatypeReleases
 )
 
 // http://flywaydb.org/documentation/sbt/
