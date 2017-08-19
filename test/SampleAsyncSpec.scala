@@ -17,7 +17,9 @@ package project
 
 import org.mockito.Mockito.when
 
-class SampleSpec extends Spec {
+import scala.concurrent.Future
+
+class SampleAsyncSpec extends AsyncSpec {
   class Context {
     // shared objects
     val expected = "forty two"
@@ -33,12 +35,36 @@ class SampleSpec extends Spec {
     // test setup
   }
 
-  "Test:" - {
-    "Sample test" in new Context {
-      val result = obj.toString
+  "Async Test:" - {
+    "Sample async test" in {
+      val ctx = new Context; import ctx._ // scalastyle:ignore
 
-      assert(!result.isEmpty)
-      assert(result === expected)
+      val future = Future(obj.toString)
+
+      future map { result =>
+        assert(!result.isEmpty)
+        assert(result === expected)
+      }
+    }
+
+    "Multiple futures test" in {
+      val ctx = new Context; import ctx._ // scalastyle:ignore
+
+      val a = "the answer is "
+
+      val fut1 = Future(a)
+      val fut2 = Future(obj.toString)
+      val fut3 = Future(a + obj)
+
+      for {
+        f1 <- fut1
+        f2 <- fut2
+        f3 <- fut3
+      } yield {
+        assert(f1 === a)
+        assert(f2 === expected)
+        assert(f3 === a + expected)
+      }
     }
   }
 }
