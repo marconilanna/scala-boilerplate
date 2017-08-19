@@ -44,7 +44,7 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.0")
 
 // http://github.com/scala-ide/scalariform
 // http://github.com/sbt/sbt-scalariform
-//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.7.1")
+//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.0")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
