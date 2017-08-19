@@ -98,7 +98,8 @@ val commonScalacOptions = Seq(
 )
 
 val compileScalacOptions = Seq(
-  "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
+  "-Xplugin-require:macroparadise"
+, "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
 
 val testScalacOptions = Seq(
@@ -119,6 +120,8 @@ scalacOptions in (Compile, console) := coreScalacOptions ++ consoleScalacOptions
 scalacOptions in (Test, console) := scalacOptions.in(Compile, console).value
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
+
+addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M10" cross CrossVersion.full)
 
 /*
 scalac -language:help
@@ -225,6 +228,7 @@ libraryDependencies ++= Seq(
 , "org.quartz-scheduler"              % "quartz"                           % "2.3.0"
 , "org.quartz-scheduler"              % "quartz-jobs"                      % "2.3.0"
 , "org.scala-lang"                    % "scala-reflect"                    % scalaVersion.value
+, "org.scalameta"                    %% "scalameta"                        % "1.8.0"     % Provided
 )
 
 libraryDependencies ++= Seq(
