@@ -354,7 +354,7 @@ addCommandAlias("tc", "test:compile")
 lazy val databaseMigration = {
   import com.typesafe.config.ConfigFactory
 
-  val conf = ConfigFactory.parseFile(file("src/resources/application.conf")).resolve
+  val conf = ConfigFactory.parseFile(file("common/src/resources/application.conf")).resolve
 
   Seq(
     flywayUrl := conf.getString("db.url")
