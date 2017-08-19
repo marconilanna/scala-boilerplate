@@ -607,3 +607,11 @@ coverageOutputCobertura := false
 coverageOutputHTML := true
 
 coverageOutputXML := false
+
+/*
+ * Scalafmt: http://github.com/lucidsoftware/neo-sbt-scalafmt
+ */
+
+//scalafmtConfig := baseDirectory.value / "project" / "scalafmt.conf"
+//
+//scalafmtVersion in ThisBuild := "1.2.0"

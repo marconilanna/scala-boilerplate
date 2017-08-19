@@ -46,6 +46,9 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.0")
 // http://github.com/sbt/sbt-scalariform
 //addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.0")
 
+// http://github.com/lucidsoftware/neo-sbt-scalafmt
+//addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.10")
+
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.1")
