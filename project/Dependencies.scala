@@ -58,13 +58,14 @@ trait Dependencies {
   val akkaActor         = "com.typesafe.akka"          %% "akka-actor"           % v.akka
   val akkaHttp          = "com.typesafe.akka"          %% "akka-http"            % v.akkaHttp
   val akkaStream        = "com.typesafe.akka"          %% "akka-stream"          % v.akka
-  val betterFiles       = "com.github.pathikrit"       %% "better-files"         % "3.0.0"
+  val betterFiles       = "com.github.pathikrit"       %% "better-files"         % "3.1.0"
   val macwire           = "com.softwaremill.macwire"   %% "macros"               % v.macwire % Provided
   val macwireProxy      = "com.softwaremill.macwire"   %% "proxy"                % v.macwire
   val macwireUtil       = "com.softwaremill.macwire"   %% "util"                 % v.macwire
   val nscalaTime        = "com.github.nscala-time"     %% "nscala-time"          % "2.16.0"
   val quicklens         = "com.softwaremill.quicklens" %% "quicklens"            % "1.4.8"
   val scalaBcrypt       = "com.github.t3hnar"          %% "scala-bcrypt"         % "3.1"
+  val scalactic         = "org.scalactic"              %% "scalactic"            % "3.0.4"
   val scalaLogging      = "com.typesafe.scala-logging" %% "scala-logging"        % "3.7.2"
   val scalameta         = "org.scalameta"              %% "scalameta"            % "1.8.0" % Provided
   val scalaReflect      = "org.scala-lang"              % "scala-reflect"        % v.scala
@@ -77,7 +78,7 @@ trait Dependencies {
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"         % v.akka
   val mockito           = "org.mockito"                 % "mockito-core"         % "2.8.47"
   val scalatest         = "org.scalatest"              %% "scalatest"            % "3.0.4"
-  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"        % "3.5.1"
+  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"        % "3.5.2"
   val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"        % v.slick
 
   // Compiler plug-ins
