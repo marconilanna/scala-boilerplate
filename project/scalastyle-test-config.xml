@@ -1,4 +1,4 @@
-<!-- http://www.scalastyle.org/rules-0.9.0.html -->
+<!-- http://www.scalastyle.org/rules-1.0.0.html -->
 <scalastyle commentFilter="enabled">
   <name>Standard Scalastyle Configuration</name>
   <check class="org.scalastyle.file.FileLengthChecker" enabled="true" level="error">
@@ -65,7 +65,7 @@
   </check>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">,\s*$</parameter>
+      <parameter name="regex">,\s*(?://.*)?$</parameter>
       <parameter name="line">false</parameter>
     </parameters>
     <customMessage>No comma at end of line, use comma-first style</customMessage>
@@ -186,7 +186,7 @@
       <parameter name="ignoreRegex">^\"\"$</parameter>
     </parameters>
   </check>
-  <check class="org.scalastyle.scalariform.NamedArgumentChecker" enabled="true" level="error">
+  <check class="org.scalastyle.scalariform.NamedArgumentChecker" enabled="false" level="error">
     <parameters>
       <parameter name="checkString">false</parameter>
       <parameter name="ignoreMethod">^set.+$</parameter>
@@ -255,7 +255,7 @@
       -->
       <parameter name="ignoreTokenTypes">PatDefOrDcl</parameter>
       <parameter name="ignoreOverride">true</parameter>
-      <!-- <parameter name="indentStyle"></parameter> -->
+      <parameter name="indentStyle">javadoc</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.SimplifyBooleanExpressionChecker" enabled="true" level="error"/>
@@ -284,7 +284,7 @@
     <parameters>
       <parameter name="regex">^Some$</parameter>
     </parameters>
-    <customMessage>'Some' found: use Option.apply or avoid pattern matching on Option</customMessage>
+    <customMessage>'Some' found: avoid pattern matching on Option or use Option.apply instead</customMessage>
   </check>
   <check class="org.scalastyle.scalariform.UnderscoreImportChecker" enabled="true" level="error">
     <parameters>
