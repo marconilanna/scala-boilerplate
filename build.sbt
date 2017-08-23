@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import Dependencies.v
 val lib = Dependencies
 
 /*
@@ -73,7 +71,9 @@ val projectMetadata = Seq(
 , startYear := Option(2011)
 , licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
 // "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
-, developers := Developer("marconilanna", "Marconi Lanna", "@marconilanna", url("https://github.com/marconilanna")) :: Nil
+, developers := List(
+    Developer("marconilanna", "Marconi Lanna", "@marconilanna", url("https://github.com/marconilanna"))
+  )
 )
 
 /*
@@ -139,7 +139,7 @@ val consoleScalacOptions = Seq(
 )
 
 val scalacConfiguration = Seq(
-  scalaVersion := v.scala
+  scalaVersion := lib.v.scala
 //crossScalaVersions := Seq(scalaVersion.value)
 , scalacOptions ++= coreScalacOptions ++ commonScalacOptions ++ compileScalacOptions
 , scalacOptions in (Test, compile) := coreScalacOptions ++ commonScalacOptions ++ testScalacOptions

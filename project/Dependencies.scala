@@ -67,19 +67,19 @@ trait Dependencies {
   val scalaBcrypt       = "com.github.t3hnar"          %% "scala-bcrypt"         % "3.1"
   val scalactic         = "org.scalactic"              %% "scalactic"            % "3.0.4"
   val scalaLogging      = "com.typesafe.scala-logging" %% "scala-logging"        % "3.7.2"
-  val scalameta         = "org.scalameta"              %% "scalameta"            % "1.8.0" % Provided
+  val scalameta         = "org.scalameta"              %% "scalameta"            % "1.8.0"   % Provided
   val scalaReflect      = "org.scala-lang"              % "scala-reflect"        % v.scala
   val slick             = "com.typesafe.slick"         %% "slick"                % v.slick
   val slickHikaricp     = "com.typesafe.slick"         %% "slick-hikaricp"       % v.slick
 
   // Test
-  val akkaHttpTestkit   = "com.typesafe.akka"          %% "akka-http-testkit"    % v.akkaHttp
-  val akkaStreamTestkit = "com.typesafe.akka"          %% "akka-stream-testkit"  % v.akka
-  val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"         % v.akka
-  val mockito           = "org.mockito"                 % "mockito-core"         % "2.8.47"
-  val scalatest         = "org.scalatest"              %% "scalatest"            % "3.0.4"
-  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"        % "3.5.2"
-  val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"        % v.slick
+  val akkaHttpTestkit   = "com.typesafe.akka"          %% "akka-http-testkit"    % v.akkaHttp % Test
+  val akkaStreamTestkit = "com.typesafe.akka"          %% "akka-stream-testkit"  % v.akka     % Test
+  val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"         % v.akka     % Test
+  val mockito           = "org.mockito"                 % "mockito-core"         % "2.8.47"   % Test
+  val scalatest         = "org.scalatest"              %% "scalatest"            % "3.0.4"    % Test
+  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"        % "3.5.2"    % Test
+  val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"        % v.slick    % Test
 
   // Compiler plug-ins
   val linter         = "org.psywerx.hairyfotr" %% "linter"   % "0.1.17"
@@ -94,7 +94,7 @@ trait Dependencies {
   val testDependencies = Seq(
     mockito
   , scalatest
-  ) map (_ % Test)
+  )
 
   val allDependencies = Seq( // for dependencyUpdates task
     commonsCodec, commonsCompress, commonsCsv, commonsIo, commonsLang, commonsMath, commonsValidator
