@@ -18,6 +18,7 @@ package project
 import org.mockito.Mockito.when
 
 import scala.concurrent.Future
+import scala.util.Random
 
 class SampleAsyncSpec extends AsyncSpec {
   class Context {
@@ -39,32 +40,30 @@ class SampleAsyncSpec extends AsyncSpec {
     "Sample async test" in {
       val ctx = new Context; import ctx._ // scalastyle:ignore
 
-      val future = Future(obj.toString)
+      val future = Future.successful(obj.toString)
 
       future map { result =>
         assert(!result.isEmpty)
-        assert(result === expected)
+        assert(result == expected)
       }
     }
 
     "Multiple futures test" in {
-      val ctx = new Context; import ctx._ // scalastyle:ignore
-
-      val a = "the answer is "
-
-      val fut1 = Future(a)
-      val fut2 = Future(obj.toString)
-      val fut3 = Future(a + obj)
+      val fa = Future.successful(Random.nextInt(6))
+      val fb = Future.successful(Random.nextBoolean)
 
       for {
-        f1 <- fut1
-        f2 <- fut2
-        f3 <- fut3
+        a <- fa
+        b <- fb
       } yield {
-        assert(f1 === a)
-        assert(f2 === expected)
-        assert(f3 === a + expected)
+        assert(a < 6)
+        assert(b || !b) // that is the question
+
+        note(s"a was $a, b was $b")
+        // async tests must end with assertion; use `succeed` if they don't
+        succeed
       }
+      // but be careful to not put it here, outside the future mapping
     }
   }
 }

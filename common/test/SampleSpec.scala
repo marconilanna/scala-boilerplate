@@ -38,7 +38,7 @@ class SampleSpec extends Spec {
       val result = obj.toString
 
       assert(!result.isEmpty)
-      assert(result === expected)
+      assert(result == expected)
     }
   }
 }

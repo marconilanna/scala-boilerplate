@@ -43,8 +43,6 @@ import scala.reflect.ClassTag
  *
  * Also consider mixing:
  *
- *  - [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.BeforeAndAfter `BeforeAndAfter`]]:
- *  code fixtures executed before and after running each test
  *  - [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.Inside `Inside`]]:
  *  make assertions about nested object graphs using pattern matching
  *  - [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.Inspectors `Inspectors`]]:
@@ -63,7 +61,6 @@ import scala.reflect.ClassTag
  * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.OptionValues `OptionValues`]]
  * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.TryValues `TryValues`]]
  * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.mockito.MockitoSugar `MockitoSugar`]]
- * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.BeforeAndAfter `BeforeAndAfter`]]
  * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.Inside `Inside`]]
  * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.Inspectors `Inspectors`]]
  * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.PartialFunctionValues `PartialFunctionValues`]]
@@ -77,14 +74,14 @@ trait SpecLike
   with OptionValues
   with TryValues
   with MockitoSugar {
-  override def mock[T <: AnyRef](implicit classTag: ClassTag[T]): T = mock(smartNulls)
+  override def mock[T <: AnyRef: ClassTag]: T = mock(smartNulls)
 }
 
 /**
- * Base trait for general tests.
+ * Base class for general tests.
  *
- * Based on [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.FreeSpec `FreeSpec`]],
- * tests are nested inside text clauses denoted with the dash operator (-).
+ * Based on [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.FreeSpec `FreeSpec`]]:
+ * nested tests are written inside text clauses denoted with the dash operator (-).
  *
  * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.FreeSpec `FreeSpec`]]
  * @see [[AsyncSpec `AsyncSpec`]] for non-blocking asynchronous tests
@@ -95,10 +92,10 @@ abstract class Spec
   with SpecLike
 
 /**
- * Base trait for non-blocking asynchronous tests.
+ * Base class for non-blocking asynchronous tests.
  *
- * Based on [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.AsyncFreeSpec `AsyncFreeSpec`]],
- * tests are nested inside text clauses denoted with the dash operator (-).
+ * Based on [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.AsyncFreeSpec `AsyncFreeSpec`]]:
+ * nested tests are written inside text clauses denoted with the dash operator (-).
  *
  * @see [[http://doc.scalatest.org/3.0.0/index.html#org.scalatest.AsyncFreeSpec `AsyncFreeSpec`]]
  * @see [[Spec `Spec`]] for general tests

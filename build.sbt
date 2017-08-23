@@ -309,8 +309,22 @@ val sbtOptions = Seq(
 // Do not exit sbt when Ctrl-C is used to stop a running app
 , cancelable in Global := true
 , logLevel in Global := Level.Info
+, logBuffered in Test := false
 , showSuccess := true
 , showTiming := true
+// ScalaTest configuration
+, testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest
+  // D: show duration for each test
+  // I: print "reminders" of failed and canceled tests at the end of the summary
+  //    eliminates the need to scroll and search to find what tests failed or were canceled
+  // K: exclude canceled tests from reminder
+  , "-oDI"
+  // enforce chosen testing styles
+  , "-y", "org.scalatest.FreeSpec"
+  , "-y", "org.scalatest.AsyncFreeSpec"
+  // Periodic notification of slowpokes (tests that have been running longer than 30s)
+  , "-W", "30", "30"
+  )
 // Enable colors in Scala console (2.11.4+)
 , initialize ~= { _ =>
   val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
