@@ -459,9 +459,10 @@ val mainScapegoat = taskKey[Unit]("mainScapegoat")
 val testScapegoat = taskKey[Unit]("testScapegoat")
 
 val scapegoatConfiguration = Seq(
-  scapegoatVersion := "1.3.1"
+  scapegoatVersion := "1.3.2"
 , scapegoatDisabledInspections := Seq.empty
 , scapegoatIgnoredFiles := Seq.empty
+, scapegoatReports := Seq("none")
 , mainScapegoat := scapegoat.in(Compile).value
 , testScapegoat := scapegoat.in(Test).value
 , test in Test := test.in(Test).dependsOn(testScapegoat).value
