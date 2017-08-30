@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 val lib = Dependencies
+val utf8 = java.nio.charset.StandardCharsets.UTF_8.toString
 
 /*
  * Project definition
@@ -95,7 +96,7 @@ val projectLayout = Seq(
  */
 
 val coreScalacOptions = Seq(
-  "-encoding", "UTF-8" // Specify character encoding used by source files
+  "-encoding", utf8 // Specify character encoding used by source files
 , "-target:jvm-1.8" // Target platform for object files
 , "-Xexperimental" // Enable experimental extensions
 , "-Xfuture" // Turn on future language features
@@ -222,7 +223,7 @@ val scaladocConfiguration = Seq(
 , apiMappings += (
   scalaInstance.value.libraryJar -> url(s"http://www.scala-lang.org/api/${scalaVersion.value}/")
 )
-, scalacOptions in (Compile, doc) := Seq("-author", "-encoding", "UTF-8", "-groups", "-implicits")
+, scalacOptions in (Compile, doc) := coreScalacOptions ++ Seq("-author", "-groups", "-implicits")
 , scalacOptions in (Test, doc) := scalacOptions.in(Compile, doc).value
 )
 
