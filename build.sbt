@@ -307,6 +307,8 @@ val sbtOptions = Seq(
 , incOptions := incOptions.value.withNameHashing(true)
   // Improved dependency management
 , updateOptions := updateOptions.value.withCachedResolution(true)
+  // Share history among all projects instead of using a different history for each project
+, historyPath := Option(target.in(LocalRootProject).value / ".history")
   // Do not exit sbt when Ctrl-C is used to stop a running app
 , cancelable in Global := true
 , logLevel in Global := Level.Info
@@ -348,9 +350,6 @@ val sbtOptions = Seq(
 //EclipseKeys.withSource := true
 )
 
-// Share history among all projects instead of using a different history for each project
-historyPath in ThisBuild := Option(target.in(LocalRootProject).value / ".history")
-
 addCommandAlias("cd", "project")
 addCommandAlias("cr", ";clean ;reload")
 addCommandAlias("cru", ";clean ;reload ;test:update")
@@ -360,7 +359,7 @@ addCommandAlias("ru", ";reload ;test:update")
 addCommandAlias("tc", "test:compile")
 
 // Uncomment to enable offline mode
-//offline := true
+//offline in ThisBuild := true
 
 /*
  * Database migration
