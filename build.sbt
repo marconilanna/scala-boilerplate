@@ -21,9 +21,9 @@ val utf8 = java.nio.charset.StandardCharsets.UTF_8.toString
  */
 
 lazy val root = project.in(file(".")).settings(
-  commonSettings
-, name := "PROJECT"
+  name := "PROJECT"
 , description := "PROJECT DESCRIPTION"
+, commonSettings
 , libraryDependencies ++= lib.allDependencies // for dependencyUpdates task
 ).aggregate(
   common
@@ -31,15 +31,15 @@ lazy val root = project.in(file(".")).settings(
 )
 
 lazy val common = project.settings(
-  commonSettings
-, description := "Common classes shared across modules"
+  description := "Common classes shared across modules"
+, commonSettings
 , libraryDependencies ++= Seq(
   )
 )
 
 lazy val module = project.settings(
-  commonSettings
-, description := "MODULE DESCRIPTION"
+  description := "MODULE DESCRIPTION"
+, commonSettings
 , libraryDependencies ++= Seq(
   )
 ).dependsOn(
