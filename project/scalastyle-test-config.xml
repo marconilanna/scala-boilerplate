@@ -85,7 +85,7 @@
   <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ClassNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[A-Z][A-Za-z]*$</parameter>
+      <parameter name="regex">^[A-Z][A-Za-z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ClassTypeParameterChecker" enabled="true" level="error">
