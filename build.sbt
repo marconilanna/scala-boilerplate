@@ -71,7 +71,7 @@ val projectMetadata = Seq(
 //apiURL := Option(url("http://example.org/project/api"))
 , startYear := Option(2011)
 , licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
-// "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
+  // "GPLv2" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
 , developers := List(
     Developer("marconilanna", "Marconi Lanna", "@marconilanna", url("https://github.com/marconilanna"))
   )
@@ -221,8 +221,8 @@ privates   Warn if a private member is unused
 val scaladocConfiguration = Seq(
   autoAPIMappings := true
 , apiMappings += (
-  scalaInstance.value.libraryJar -> url(s"http://www.scala-lang.org/api/${scalaVersion.value}/")
-)
+    scalaInstance.value.libraryJar -> url(s"http://www.scala-lang.org/api/${scalaVersion.value}/")
+  )
 , scalacOptions in (Compile, doc) := coreScalacOptions ++ Seq("-author", "-groups", "-implicits")
 , scalacOptions in (Test, doc) := scalacOptions.in(Compile, doc).value
 )
@@ -300,51 +300,51 @@ def desugar[T](expr: T): Unit = macro desugarImpl[T]
 """
 
 val sbtOptions = Seq(
-// Statements executed when starting the Scala REPL (sbt's `console` task)
+  // Statements executed when starting the Scala REPL (sbt's `console` task)
   initialCommands := consoleDefinitions + desugarMacro
 , initialCommands in consoleProject := consoleDefinitions
-// Improved incremental compilation
+  // Improved incremental compilation
 , incOptions := incOptions.value.withNameHashing(true)
-// Improved dependency management
+  // Improved dependency management
 , updateOptions := updateOptions.value.withCachedResolution(true)
-// Do not exit sbt when Ctrl-C is used to stop a running app
+  // Do not exit sbt when Ctrl-C is used to stop a running app
 , cancelable in Global := true
 , logLevel in Global := Level.Info
 , logBuffered in Test := false
 , showSuccess := true
 , showTiming := true
-// ScalaTest configuration
+  // ScalaTest configuration
 , testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest
-  // D: show duration for each test
-  // I: print "reminders" of failed and canceled tests at the end of the summary
-  //    eliminates the need to scroll and search to find what tests failed or were canceled
-  // K: exclude canceled tests from reminder
+    // D: show duration for each test
+    // I: print "reminders" of failed and canceled tests at the end of the summary
+    //    eliminates the need to scroll and search to find what tests failed or were canceled
+    // K: exclude canceled tests from reminder
   , "-oDI"
-  // enforce chosen testing styles
+    // enforce chosen testing styles
   , "-y", "org.scalatest.FreeSpec"
   , "-y", "org.scalatest.AsyncFreeSpec"
-  // Periodic notification of slowpokes (tests that have been running longer than 30s)
+    // Periodic notification of slowpokes (tests that have been running longer than 30s)
   , "-W", "30", "30"
   )
-// Enable colors in Scala console (2.11.4+)
+  // Enable colors in Scala console (2.11.4+)
 , initialize ~= { _ =>
-  val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
-  if (ansi) System.setProperty("scala.color", "true")
-}
-// Draw a separator between triggered runs (e.g, ~test)
+    val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
+    if (ansi) System.setProperty("scala.color", "true")
+  }
+  // Draw a separator between triggered runs (e.g, ~test)
 , triggeredMessage := { ws =>
-  if (ws.count > 1) {
-    val ls = System.lineSeparator * 2
-    ls + "#" * 80 + ls
-  } else ""
-}
-// Alternative: clear the console between triggered runs
+    if (ws.count > 1) {
+      val ls = System.lineSeparator * 2
+      ls + "#" * 80 + ls
+    } else ""
+  }
+  // Alternative: clear the console between triggered runs
 //triggeredMessage := Watched.clearWhenTriggered
 , shellPrompt := { state =>
-  import scala.Console.{BLUE, BOLD, RESET}
-  s"$BLUE$BOLD${name.value}$RESET $BOLD\u25b6$RESET "
-}
-// Download and create Eclipse source attachments for library dependencies
+    import scala.Console.{BLUE, BOLD, RESET}
+    s"$BLUE$BOLD${name.value}$RESET $BOLD\u25b6$RESET "
+  }
+  // Download and create Eclipse source attachments for library dependencies
 //EclipseKeys.withSource := true
 )
 
