@@ -38,6 +38,7 @@ trait Dependencies {
   val commonsIo         = "commons-io"                  % "commons-io"           % "2.5"
   val commonsLang       = "org.apache.commons"          % "commons-lang3"        % "3.6"
   val commonsMath       = "org.apache.commons"          % "commons-math3"        % "3.6.1"
+  val commonsText       = "org.apache.commons"          % "commons-text"         % "1.1"
   val commonsValidator  = "commons-validator"           % "commons-validator"    % "1.6"
   val guava             = "com.google.guava"            % "guava"                % "23.0"
   val httpClient        = "org.apache.httpcomponents"   % "httpclient"           % "4.5.3"
@@ -76,9 +77,9 @@ trait Dependencies {
   val akkaHttpTestkit   = "com.typesafe.akka"          %% "akka-http-testkit"    % v.akkaHttp % Test
   val akkaStreamTestkit = "com.typesafe.akka"          %% "akka-stream-testkit"  % v.akka     % Test
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"         % v.akka     % Test
-  val mockito           = "org.mockito"                 % "mockito-core"         % "2.8.47"   % Test
+  val mockito           = "org.mockito"                 % "mockito-core"         % "2.9.0"    % Test
   val scalatest         = "org.scalatest"              %% "scalatest"            % "3.0.4"    % Test
-  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"        % "3.5.2"    % Test
+  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"        % "3.5.3"    % Test
   val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"        % v.slick    % Test
 
   // Compiler plug-ins
