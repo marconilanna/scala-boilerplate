@@ -96,6 +96,30 @@ val projectLayout = Seq(
 )
 
 /*
+ * javac configuration
+ */
+
+val javacConfiguration = Seq(
+  javacOptions ++= Seq(
+    "-encoding", utf8 // Specify character encoding used by source files
+  , "-g:none" // Generate no debugging info
+  , "-target", "1.8" // Generate class files for specific VM version
+  , "-Werror" // Terminate compilation if warnings occur
+  , "-Xdoclint:all" // Enable recommended checks for problems in javadoc comments
+  , "-Xlint:all" // Enable recommended warnings (see list below)
+  )
+)
+
+/*
+javac -Xlint options: prefix with "-" to disable specific warning
+
+auxiliaryclass cast           classfile      deprecation    dep-ann
+divzero        empty          fallthrough    finally        options
+overloads      overrides      path           processing     rawtypes
+serial         static         try            unchecked      varargs
+*/
+
+/*
  * scalac configuration
  */
 
