@@ -77,7 +77,7 @@ trait Dependencies {
   val akkaHttpTestkit   = "com.typesafe.akka"          %% "akka-http-testkit"    % v.akkaHttp % Test
   val akkaStreamTestkit = "com.typesafe.akka"          %% "akka-stream-testkit"  % v.akka     % Test
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"         % v.akka     % Test
-  val mockito           = "org.mockito"                 % "mockito-core"         % "2.9.0"    % Test
+  val mockito           = "org.mockito"                 % "mockito-core"         % "2.10.0"   % Test
   val scalatest         = "org.scalatest"              %% "scalatest"            % "3.0.4"    % Test
   val selenium          = "org.seleniumhq.selenium"     % "selenium-java"        % "3.5.3"    % Test
   val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"        % v.slick    % Test
