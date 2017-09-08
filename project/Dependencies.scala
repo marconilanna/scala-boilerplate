@@ -20,7 +20,7 @@ object Dependencies extends Dependencies
 trait Dependencies {
   object v {
     val akka = "2.5.4"
-    val akkaHttp = "10.0.9"
+    val akkaHttp = "10.0.10"
     val macwire = "2.3.0"
     val quartz = "2.3.0"
     val scala = "2.12.3"
@@ -34,7 +34,7 @@ trait Dependencies {
   // Java
   val commonsCodec      = "commons-codec"               % "commons-codec"        % "1.10"
   val commonsCompress   = "org.apache.commons"          % "commons-compress"     % "1.14"
-  val commonsCsv        = "org.apache.commons"          % "commons-csv"          % "1.4"
+  val commonsCsv        = "org.apache.commons"          % "commons-csv"          % "1.5"
   val commonsIo         = "commons-io"                  % "commons-io"           % "2.5"
   val commonsLang       = "org.apache.commons"          % "commons-lang3"        % "3.6"
   val commonsMath       = "org.apache.commons"          % "commons-math3"        % "3.6.1"
@@ -53,7 +53,7 @@ trait Dependencies {
   val quartz            = "org.quartz-scheduler"        % "quartz"               % v.quartz
   val quartzJobs        = "org.quartz-scheduler"        % "quartz-jobs"          % v.quartz
   val typesafeConfig    = "com.typesafe"                % "config"               % "1.3.1"
-  val univocity         = "com.univocity"               % "univocity-parsers"    % "2.5.3"
+  val univocity         = "com.univocity"               % "univocity-parsers"    % "2.5.4"
 
   // Scala
   val akkaActor         = "com.typesafe.akka"          %% "akka-actor"           % v.akka

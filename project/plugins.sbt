@@ -60,7 +60,7 @@ addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.2")
 addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 
 // http://github.com/orrsella/sbt-stats
-addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
+addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
 
 // http://github.com/coursier/coursier
 addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC10")
