@@ -430,6 +430,7 @@ val scalastyleConfiguration = Seq(
 val wartremoverConfiguration = Seq(
   wartremoverErrors ++= Seq(
     Wart.Any
+  , Wart.AnyVal
   , Wart.ArrayEquals
   , Wart.AsInstanceOf
   //Wart.DefaultArguments
@@ -443,6 +444,7 @@ val wartremoverConfiguration = Seq(
   //Wart.ImplicitParameter
   , Wart.IsInstanceOf
   , Wart.JavaConversions
+  , Wart.JavaSerializable
   , Wart.LeakingSealed
   //Wart.MutableDataStructures
   //Wart.NonUnitStatements
