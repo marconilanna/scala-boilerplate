@@ -348,9 +348,12 @@ val sbtOptions = Seq(
 , showTiming := true
   // ScalaTest configuration
 , testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest
+    // F: show full stack traces
+    // S: show short stack traces
     // D: show duration for each test
-    // I: print "reminders" of failed and canceled tests at the end of the summary
-    //    eliminates the need to scroll and search to find what tests failed or were canceled
+    // I: print "reminders" of failed and canceled tests at the end of the summary,
+    //    eliminating the need to scroll and search to find failed or canceled tests.
+    //    replace with G (or T) to show reminders with full (or short) stack traces
     // K: exclude canceled tests from reminder
   , "-oDI"
     // enforce chosen testing styles
@@ -382,6 +385,7 @@ val sbtOptions = Seq(
 )
 
 addCommandAlias("cd", "project")
+addCommandAlias("ls", "projects")
 addCommandAlias("cr", ";clean ;reload")
 addCommandAlias("cru", ";clean ;reload ;test:update")
 addCommandAlias("du", "dependencyUpdates")
