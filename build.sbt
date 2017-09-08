@@ -132,6 +132,7 @@ val coreScalacOptions = Seq(
 
 val commonScalacOptions = Seq(
   "-deprecation" // Emit warning and location for usages of deprecated APIs
+//"-explaintypes" // Explain type errors in more detail
 , "-feature" // Emit warning and location for usages of features that should be imported explicitly
 , "-g:vars" // Set level of generated debugging info: none, source, line, vars, notailcalls
 //"-language:_" // Enable or disable language features (see list below)
@@ -142,10 +143,12 @@ val commonScalacOptions = Seq(
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
 //"-Xmigration:<version>" // Warn about constructs whose behavior may have changed since version
+//"-Xprint:typer" // Print out program after phase: all, parser, jvm (last), etc.
 , "-Xstrict-inference" // Don't infer known-unsound types
 , "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
 //"-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
 //"-Yno-predef" // Compile without importing Predef
+//"-Ypartial-unification" // Enable partial unification in type constructor inference
 //"-Yprofile-enabled" // Enable profiling
 //"-Yvirtpatmat" // Enable pattern matcher virtualization
 , "-Ywarn-dead-code" // Warn when dead code is identified
