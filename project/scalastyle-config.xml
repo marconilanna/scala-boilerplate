@@ -216,18 +216,18 @@
   </check>
   <check class="org.scalastyle.scalariform.ObjectNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[A-Z][A-Za-z]*$</parameter>
+      <parameter name="regex">^[A-Za-z][A-Za-z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.OverrideJavaChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.PackageNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z]*$</parameter>
+      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.PackageObjectNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z]*$</parameter>
+      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ParameterNumberChecker" enabled="true" level="error">

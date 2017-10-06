@@ -1,12 +1,12 @@
 <!-- http://www.scalastyle.org/rules-1.0.0.html -->
 <scalastyle commentFilter="enabled">
   <name>Standard Scalastyle Configuration</name>
-  <check class="org.scalastyle.file.FileLengthChecker" enabled="true" level="error">
+  <check class="org.scalastyle.file.FileLengthChecker" enabled="false" level="error">
     <parameters>
       <parameter name="maxFileLength">1000</parameter>
     </parameters>
   </check>
-  <check class="org.scalastyle.file.FileLineLengthChecker" enabled="false" level="error">
+  <check class="org.scalastyle.file.FileLineLengthChecker" enabled="true" level="error">
     <parameters>
       <parameter name="maxLineLength">100</parameter>
       <parameter name="tabSize">2</parameter>
@@ -140,7 +140,7 @@
   <check class="org.scalastyle.scalariform.IllegalImportsChecker" enabled="true" level="error">
     <parameter name="illegalImports">sun._,java.awt._,scala.collection.JavaConversions._,scala.collection.mutable._,scala.language.postfix</parameter>
   </check>
-  <check class="org.scalastyle.scalariform.ImportGroupingChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.ImportGroupingChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ImportOrderChecker" enabled="true" level="error">
     <parameters>
       <parameter name="groups">PROJECT,com,net,org,others,play,scala,java,javax</parameter>
@@ -204,30 +204,30 @@
       <parameter name="allowNullChecks">true</parameter>
     </parameters>
   </check>
-  <check class="org.scalastyle.scalariform.NumberOfMethodsInTypeChecker" enabled="true" level="error">
+  <check class="org.scalastyle.scalariform.NumberOfMethodsInTypeChecker" enabled="false" level="error">
     <parameters>
       <parameter name="maxMethods">30</parameter>
     </parameters>
   </check>
-  <check class="org.scalastyle.scalariform.NumberOfTypesChecker" enabled="true" level="error">
+  <check class="org.scalastyle.scalariform.NumberOfTypesChecker" enabled="false" level="error">
     <parameters>
       <parameter name="maxTypes">20</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ObjectNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[A-Z][A-Za-z]*$</parameter>
+      <parameter name="regex">^[A-Za-z][A-Za-z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.OverrideJavaChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.PackageNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z]*$</parameter>
+      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.PackageObjectNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z]*$</parameter>
+      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ParameterNumberChecker" enabled="true" level="error">
