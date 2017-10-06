@@ -65,6 +65,9 @@ addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
 // http://github.com/Duhemm/sbt-errors-summary
 addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.0")
 
+// http://github.com/sbt/sbt-dirty-money
+addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.1.0")
+
 // http://github.com/coursier/coursier
 addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC12")
 
