@@ -21,21 +21,6 @@ import scala.concurrent.Future
 import scala.util.Random
 
 class SampleAsyncSpec extends AsyncSpec {
-  class Context {
-    // shared objects
-    val expected = "forty two"
-
-    // shared mocks
-    val obj = mock[AnyRef]
-
-    // common expectations
-    when(obj.toString) thenReturn expected
-
-    // helper functions
-
-    // test setup
-  }
-
   "Async Test:" - {
     "Sample async test" in {
       val ctx = new Context; import ctx._ // scalastyle:ignore
@@ -65,5 +50,20 @@ class SampleAsyncSpec extends AsyncSpec {
       }
       // but be careful to not put it here, outside the future mapping
     }
+  }
+
+  class Context {
+    // shared objects
+    val expected = "forty two"
+
+    // shared mocks
+    val obj = mock[AnyRef]
+
+    // common expectations
+    when(obj.toString) thenReturn expected
+
+    // helper functions
+
+    // test setup
   }
 }

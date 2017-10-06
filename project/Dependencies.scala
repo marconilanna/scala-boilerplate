@@ -21,9 +21,12 @@ trait Dependencies {
   object v {
     val akka = "2.5.4"
     val akkaHttp = "10.0.10"
+    val jvm = "1.8"
     val macwire = "2.3.0"
     val quartz = "2.3.0"
     val scala = "2.12.3"
+    val scalafmt = "1.2.0"
+    val scapegoat = "1.3.3"
     val slick = "3.2.1"
   }
 

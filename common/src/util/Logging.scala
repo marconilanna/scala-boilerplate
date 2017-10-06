@@ -15,18 +15,8 @@
  */
 package project.util
 
-import com.typesafe.scalalogging.{Logger, StrictLogging}
+import com.typesafe.scalalogging.StrictLogging
 
 trait Logging extends StrictLogging
 
-object Logging {
-  private val msg = "exception:"
-
-  implicit class LoggerOps(val logger: Logger) extends AnyVal {
-    def error(e: => Throwable): Unit = logger.error(msg, e)
-    def warn(e: => Throwable): Unit = logger.warn(msg, e)
-    def info(e: => Throwable): Unit = logger.info(msg, e)
-    def debug(e: => Throwable): Unit = logger.debug(msg, e)
-    def trace(e: => Throwable): Unit = logger.trace(msg, e)
-  }
-}
+object Logging extends Logging

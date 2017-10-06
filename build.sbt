@@ -96,36 +96,12 @@ val projectLayout = Seq(
 )
 
 /*
- * javac configuration
- */
-
-val javacConfiguration = Seq(
-  javacOptions ++= Seq(
-    "-encoding", utf8 // Specify character encoding used by source files
-  , "-g:none" // Generate no debugging info
-  , "-target", "1.8" // Generate class files for specific VM version
-  , "-Werror" // Terminate compilation if warnings occur
-  , "-Xdoclint:all" // Enable recommended checks for problems in javadoc comments
-  , "-Xlint:all" // Enable recommended warnings (see list below)
-  )
-)
-
-/*
-javac -Xlint options: prefix with "-" to disable specific warning
-
-auxiliaryclass cast           classfile      deprecation    dep-ann
-divzero        empty          fallthrough    finally        options
-overloads      overrides      path           processing     rawtypes
-serial         static         try            unchecked      varargs
-*/
-
-/*
  * scalac configuration
  */
 
 val coreScalacOptions = Seq(
   "-encoding", utf8 // Specify character encoding used by source files
-, "-target:jvm-1.8" // Target platform for object files
+, "-target:jvm-" + lib.v.jvm // Target platform for object files
 , "-Xexperimental" // Enable experimental extensions
 , "-Xfuture" // Turn on future language features
 )
@@ -259,6 +235,30 @@ val scaladocConfiguration = Seq(
 )
 
 /*
+ * javac configuration
+ */
+
+val javacConfiguration = Seq(
+  javacOptions ++= Seq(
+    "-encoding", utf8 // Specify character encoding used by source files
+  , "-g:none" // Generate no debugging info
+  , "-target", lib.v.jvm // Generate class files for specific VM version
+  , "-Werror" // Terminate compilation if warnings occur
+  , "-Xdoclint:all" // Enable recommended checks for problems in javadoc comments
+  , "-Xlint:all" // Enable recommended warnings (see list below)
+  )
+)
+
+/*
+javac -Xlint options: prefix with "-" to disable specific warning
+
+auxiliaryclass cast           classfile      deprecation    dep-ann
+divzero        empty          fallthrough    finally        options
+overloads      overrides      path           processing     rawtypes
+serial         static         try            unchecked      varargs
+*/
+
+/*
  * Macros
  */
 
@@ -367,15 +367,8 @@ val sbtOptions = Seq(
     val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
     if (ansi) System.setProperty("scala.color", "true")
   }
-  // Draw a separator between triggered runs (e.g, ~test)
-, triggeredMessage := { ws =>
-    if (ws.count > 1) {
-      val ls = System.lineSeparator * 2
-      ls + "#" * 80 + ls
-    } else ""
-  }
-  // Alternative: clear the console between triggered runs
-//triggeredMessage := Watched.clearWhenTriggered
+  // Clear the console between triggered runs (e.g, ~test)
+, triggeredMessage := Watched.clearWhenTriggered
 , shellPrompt := { state =>
     import scala.Console.{BLUE, BOLD, RESET}
     s"$BLUE$BOLD${name.value}$RESET $BOLD\u25b6$RESET "
@@ -416,18 +409,14 @@ lazy val databaseMigration = {
  * Scalastyle: http://www.scalastyle.org/
  */
 
-// Create a default Scalastyle task to run with tests
-val mainScalastyle = taskKey[Unit]("mainScalastyle")
-val testScalastyle = taskKey[Unit]("testScalastyle")
-
 val scalastyleConfiguration = Seq(
   scalastyleConfig := baseDirectory.in(LocalRootProject).value / "project" / "scalastyle-config.xml"
 , scalastyleConfig in Test := baseDirectory.in(LocalRootProject).value / "project" / "scalastyle-test-config.xml"
 , scalastyleFailOnError := true
-, mainScalastyle := scalastyle.in(Compile).toTask("").value
-, testScalastyle := scalastyle.in(Test).toTask("").value
-, test in Test := test.in(Test).dependsOn(testScalastyle).value
-, test in Test := test.in(Test).dependsOn(mainScalastyle).value
+, test in Test := test.in(Test)
+    .dependsOn(scalastyle.in(Test).toTask(""))
+    .dependsOn(scalastyle.in(Compile).toTask(""))
+    .value
 )
 
 /*
@@ -491,19 +480,15 @@ val wartremoverConfiguration = Seq(
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
 
-// Create a default Scapegoat task to run with tests
-val mainScapegoat = taskKey[Unit]("mainScapegoat")
-val testScapegoat = taskKey[Unit]("testScapegoat")
-
 val scapegoatConfiguration = Seq(
-  scapegoatVersion := "1.3.2"
+  scapegoatVersion := lib.v.scapegoat
 , scapegoatDisabledInspections := Seq.empty
 , scapegoatIgnoredFiles := Seq.empty
 , scapegoatReports := Seq("none")
-, mainScapegoat := scapegoat.in(Compile).value
-, testScapegoat := scapegoat.in(Test).value
-, test in Test := test.in(Test).dependsOn(testScapegoat).value
-, test in Test := test.in(Test).dependsOn(mainScapegoat).value
+, test in Test := test.in(Test)
+    .dependsOn(scapegoat.in(Test))
+    .dependsOn(scapegoat.in(Compile))
+    .value
 )
 
 /*
@@ -660,5 +645,5 @@ val codeCoverage = Seq(
 
 //val scalafmt = Seq(
 //  scalafmtConfig := baseDirectory.in(LocalRootProject).value / "project" / "scalafmt.conf"
-//, scalafmtVersion := "1.2.0"
+//, scalafmtVersion := lib.v.scalafmt
 //)

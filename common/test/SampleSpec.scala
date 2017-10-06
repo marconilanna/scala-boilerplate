@@ -18,6 +18,15 @@ package project
 import org.mockito.Mockito.when
 
 class SampleSpec extends Spec {
+  "Test:" - {
+    "Sample test" in new Context {
+      val result = obj.toString
+
+      assert(!result.isEmpty)
+      assert(result == expected)
+    }
+  }
+
   class Context {
     // shared objects
     val expected = "forty two"
@@ -31,14 +40,5 @@ class SampleSpec extends Spec {
     // helper functions
 
     // test setup
-  }
-
-  "Test:" - {
-    "Sample test" in new Context {
-      val result = obj.toString
-
-      assert(!result.isEmpty)
-      assert(result == expected)
-    }
   }
 }
