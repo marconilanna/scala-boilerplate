@@ -15,12 +15,13 @@
  */
 package project
 
-import org.mockito.Mockito.{RETURNS_SMART_NULLS => smartNulls}
+import org.mockito.Mockito.{RETURNS_DEEP_STUBS => deepStubs, RETURNS_SELF => returnsSelf, RETURNS_SMART_NULLS => smartNulls}
 import org.scalatest.{AsyncFreeSpec, DiagrammedAssertions, EitherValues, FreeSpec, OptionValues, TryValues}
 import org.scalatest.mockito.MockitoSugar
 
 import scala.reflect.ClassTag
 
+// scalastyle:off line.size.limit
 /**
  * Base trait for unit tests.
  *
@@ -73,8 +74,37 @@ trait SpecLike
   with EitherValues
   with OptionValues
   with TryValues
-  with MockitoSugar {
-  override def mock[T <: AnyRef: ClassTag]: T = mock(smartNulls)
+  with Mocking
+
+trait Mocking extends MockitoSugar {
+  /**
+   * Allows a chain of method calls to be stubbed at once.
+   *
+   * @tparam T the class to be mocked
+   * @return a mock object with `Answer` `RETURNS_DEEP_STUBS`
+   */
+  def mockDeepStub[T <: AnyRef: ClassTag]: T = mock(deepStubs)
+
+  /**
+   * Returns the mock itself whenever an unstubbed method is invoked
+   * that returns a type equal to the class or a superclass.
+   *
+   * @tparam T the class to be mocked
+   * @return a mock object with `Answer` `RETURNS_SELF`
+   */
+  def mockReturnSelf[T <: AnyRef: ClassTag]: T = mock(returnsSelf)
+
+  /**
+   * Unstubbed method invocations return `SmartNull` instead of `null`,
+   * pointing out the line where the unstubbed method was called.
+   *
+   * First tries to return ordinary values (zeros, empty collections, empty string, etc.)
+   * then it tries to return SmartNull, or plain `null` if the return type is final.
+   *
+   * @tparam T the class to be mocked
+   * @return a mock object with `Answer` `RETURNS_SMART_NULLS`
+   */
+  def mockSmartNull[T <: AnyRef: ClassTag]: T = mock(smartNulls)
 }
 
 /**
