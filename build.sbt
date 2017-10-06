@@ -114,8 +114,9 @@ val commonScalacOptions = Seq(
 //"-language:_" // Enable or disable language features (see list below)
 , "-opt:l:inline" // Enable optimizations (see list below)
 , "-opt-inline-from:**" // Classfile names from which to allow inlining
-//"-opt-warnings:none" // Enable optimizer warnings
+, "-opt-warnings:at-inline-failed" // Enable optimizer warnings: detailed warning for each @inline method call that could not be inlined
 , "-unchecked" // Enable additional warnings where generated code depends on assumptions
+//"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
 //"-Xmigration:<version>" // Warn about constructs whose behavior may have changed since version
@@ -302,6 +303,7 @@ import
 , java.net._
 , java.nio.file._
 , java.time.{Duration => jDuration, _}
+, java.util.Locale
 , System.{currentTimeMillis => now, nanoTime}
 
 def time[T](f: => T): T = {
