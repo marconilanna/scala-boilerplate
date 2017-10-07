@@ -18,5 +18,3 @@ package project.util
 import com.typesafe.scalalogging.StrictLogging
 
 trait Logging extends StrictLogging
-
-object Logging extends Logging
