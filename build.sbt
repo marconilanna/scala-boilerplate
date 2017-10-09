@@ -340,7 +340,7 @@ val sbtOptions = Seq(
 , incOptions := incOptions.value.withNameHashing(true)
   // Improved dependency management
 , updateOptions := updateOptions.value.withCachedResolution(true)
-  // Clean local cached project artifacts
+  // Clean locally cached project artifacts
 , publishLocal := publishLocal
     .dependsOn(cleanCache.toTask(""))
     .dependsOn(cleanLocal.toTask(""))
