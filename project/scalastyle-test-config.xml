@@ -80,8 +80,15 @@ limitations under the License.
   </check>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">,\s*(?://.*)?$</parameter>
-      <parameter name="line">false</parameter>
+      <parameter name="regex">\bdef\b.+\b=\s*(?:/[*/].*)?$</parameter>
+      <parameter name="line">true</parameter>
+    </parameters>
+    <customMessage>Multi-line methods require braces</customMessage>
+  </check>
+  <check class="org.scalastyle.file.RegexChecker" enabled="false" level="error">
+    <parameters>
+      <parameter name="regex">,\s*(?:/[*/].*)?$</parameter>
+      <parameter name="line">true</parameter>
     </parameters>
     <customMessage>No comma at end of line, use comma-first style</customMessage>
   </check>
