@@ -32,7 +32,7 @@ addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.2.1")
 addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.0.0")
 
 // http://github.com/danielnixon/extrawarts
-addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "0.3.0")
+addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.2")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat

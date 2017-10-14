@@ -479,6 +479,7 @@ val wartremoverConfiguration = Seq(
   , ExtraWart.GenTraversableOnceOps
   , ExtraWart.ScalaGlobalExecutionContext
   , ExtraWart.StringOpsPartial
+  , ExtraWart.ThrowablePartial
   , ExtraWart.TraversableOnceOps
   )
 )
