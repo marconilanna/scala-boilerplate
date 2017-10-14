@@ -25,7 +25,7 @@ trait Dependencies {
     val macwire = "2.3.0"
     val quartz = "2.3.0"
     val scala = "2.12.3"
-    val scalafmt = "1.2.0"
+    val scalafmt = "1.3.0"
     val scapegoat = "1.3.3"
     val slick = "3.2.1"
   }
@@ -56,7 +56,7 @@ trait Dependencies {
   val quartz            = "org.quartz-scheduler"        % "quartz"               % v.quartz
   val quartzJobs        = "org.quartz-scheduler"        % "quartz-jobs"          % v.quartz
   val typesafeConfig    = "com.typesafe"                % "config"               % "1.3.2"
-  val univocity         = "com.univocity"               % "univocity-parsers"    % "2.5.6"
+  val univocity         = "com.univocity"               % "univocity-parsers"    % "2.5.7"
 
   // Scala
   val akkaActor         = "com.typesafe.akka"          %% "akka-actor"           % v.akka
@@ -80,9 +80,10 @@ trait Dependencies {
   val akkaHttpTestkit   = "com.typesafe.akka"          %% "akka-http-testkit"    % v.akkaHttp % Test
   val akkaStreamTestkit = "com.typesafe.akka"          %% "akka-stream-testkit"  % v.akka     % Test
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"         % v.akka     % Test
-  val mockito           = "org.mockito"                 % "mockito-core"         % "2.10.0"   % Test
+  val mockito           = "org.mockito"                 % "mockito-core"         % "2.11.0"   % Test
   val scalatest         = "org.scalatest"              %% "scalatest"            % "3.0.4"    % Test
   val selenium          = "org.seleniumhq.selenium"     % "selenium-java"        % "3.6.0"    % Test
+  val slf4jNop          = "org.slf4j"                   % "slf4j-nop"            % "1.7.25"   % Test
   val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"        % v.slick    % Test
 
   // Compiler plug-ins
@@ -106,7 +107,7 @@ trait Dependencies {
   , postgresql, quartz, quartzJobs, typesafeConfig, univocity, akkaActor, akkaHttp, akkaStream
   , betterFiles, macwire, macwireProxy, macwireUtil, nscalaTime, quicklens, scalaLogging, scalameta
   , scalaCompiler, scalaLibrary, scalaReflect, slick, slickHikaricp, akkaHttpTestkit
-  , akkaStreamTestkit, akkaTestkit, mockito, scalatest, selenium, slickTestkit, linter
+  , akkaStreamTestkit, akkaTestkit, mockito, scalatest, selenium, slf4jNop, slickTestkit, linter
   , macrosParadise, metaParadise
   )
 }
