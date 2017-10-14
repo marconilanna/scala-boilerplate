@@ -15,6 +15,6 @@
  */
 package project.util
 
-import com.typesafe.scalalogging.StrictLogging
+import com.typesafe.scalalogging.LazyLogging
 
-trait Logging extends StrictLogging
+trait Logging extends LazyLogging
