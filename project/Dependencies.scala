@@ -24,7 +24,7 @@ trait Dependencies {
     val jvm = "1.8"
     val macwire = "2.3.0"
     val quartz = "2.3.0"
-    val scala = "2.12.3"
+    val scala = "2.12.4"
     val scalafmt = "1.3.0"
     val scapegoat = "1.3.3"
     val slick = "3.2.1"
@@ -35,10 +35,10 @@ trait Dependencies {
   )
 
   // Java
-  val commonsCodec      = "commons-codec"               % "commons-codec"        % "1.10"
-  val commonsCompress   = "org.apache.commons"          % "commons-compress"     % "1.14"
+  val commonsCodec      = "commons-codec"               % "commons-codec"        % "1.11"
+  val commonsCompress   = "org.apache.commons"          % "commons-compress"     % "1.15"
   val commonsCsv        = "org.apache.commons"          % "commons-csv"          % "1.5"
-  val commonsIo         = "commons-io"                  % "commons-io"           % "2.5"
+  val commonsIo         = "commons-io"                  % "commons-io"           % "2.6"
   val commonsLang       = "org.apache.commons"          % "commons-lang3"        % "3.6"
   val commonsMath       = "org.apache.commons"          % "commons-math3"        % "3.6.1"
   val commonsText       = "org.apache.commons"          % "commons-text"         % "1.1"
@@ -56,13 +56,13 @@ trait Dependencies {
   val quartz            = "org.quartz-scheduler"        % "quartz"               % v.quartz
   val quartzJobs        = "org.quartz-scheduler"        % "quartz-jobs"          % v.quartz
   val typesafeConfig    = "com.typesafe"                % "config"               % "1.3.2"
-  val univocity         = "com.univocity"               % "univocity-parsers"    % "2.5.7"
+  val univocity         = "com.univocity"               % "univocity-parsers"    % "2.5.8"
 
   // Scala
   val akkaActor         = "com.typesafe.akka"          %% "akka-actor"           % v.akka
   val akkaHttp          = "com.typesafe.akka"          %% "akka-http"            % v.akkaHttp
   val akkaStream        = "com.typesafe.akka"          %% "akka-stream"          % v.akka
-  val betterFiles       = "com.github.pathikrit"       %% "better-files"         % "3.1.0"
+  val betterFiles       = "com.github.pathikrit"       %% "better-files"         % "3.2.0"
   val macwire           = "com.softwaremill.macwire"   %% "macros"               % v.macwire  % Provided
   val macwireProxy      = "com.softwaremill.macwire"   %% "proxy"                % v.macwire
   val macwireUtil       = "com.softwaremill.macwire"   %% "util"                 % v.macwire
