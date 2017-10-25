@@ -15,8 +15,13 @@
  */
 package project
 
-import org.mockito.Mockito.{RETURNS_DEEP_STUBS => deepStubs, RETURNS_SELF => returnsSelf, RETURNS_SMART_NULLS => smartNulls}
-import org.scalatest.{AsyncFreeSpec, DiagrammedAssertions, EitherValues, FreeSpec, OptionValues, TryValues}
+import org.mockito.Mockito
+import org.scalatest.AsyncFreeSpec
+import org.scalatest.DiagrammedAssertions
+import org.scalatest.EitherValues
+import org.scalatest.FreeSpec
+import org.scalatest.OptionValues
+import org.scalatest.TryValues
 import org.scalatest.mockito.MockitoSugar
 
 import scala.reflect.ClassTag
@@ -83,7 +88,7 @@ trait Mocking extends MockitoSugar {
    * @tparam T the class to be mocked
    * @return a mock object with `Answer` `RETURNS_DEEP_STUBS`
    */
-  def mockDeepStub[T <: AnyRef: ClassTag]: T = mock(deepStubs)
+  def mockDeepStub[T <: AnyRef: ClassTag]: T = mock(Mockito.RETURNS_DEEP_STUBS)
 
   /**
    * Returns the mock itself whenever an unstubbed method is invoked
@@ -92,7 +97,7 @@ trait Mocking extends MockitoSugar {
    * @tparam T the class to be mocked
    * @return a mock object with `Answer` `RETURNS_SELF`
    */
-  def mockReturnSelf[T <: AnyRef: ClassTag]: T = mock(returnsSelf)
+  def mockReturnSelf[T <: AnyRef: ClassTag]: T = mock(Mockito.RETURNS_SELF)
 
   /**
    * Unstubbed method invocations return `SmartNull` instead of `null`,
@@ -104,7 +109,7 @@ trait Mocking extends MockitoSugar {
    * @tparam T the class to be mocked
    * @return a mock object with `Answer` `RETURNS_SMART_NULLS`
    */
-  def mockSmartNull[T <: AnyRef: ClassTag]: T = mock(smartNulls)
+  def mockSmartNull[T <: AnyRef: ClassTag]: T = mock(Mockito.RETURNS_SMART_NULLS)
 }
 
 /**

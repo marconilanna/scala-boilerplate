@@ -53,7 +53,7 @@ limitations under the License.
     <parameters>
       <parameter name="tabSize">2</parameter>
       <parameter name="methodParamIndentSize">2</parameter>
-      <parameter name="classParamIndentSize">4</parameter>
+      <parameter name="classParamIndentSize">2</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.file.NewlineAtEofChecker" enabled="true" level="error"/>
@@ -80,17 +80,24 @@ limitations under the License.
   </check>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">\bdef\b.+\b=\s*(?:/[*/].*)?$</parameter>
+      <parameter name="regex">\bdef\b.+ =\s*(?:/[*/].*)?$</parameter>
       <parameter name="line">true</parameter>
     </parameters>
     <customMessage>Multi-line methods require braces</customMessage>
   </check>
-  <check class="org.scalastyle.file.RegexChecker" enabled="false" level="error">
+  <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">,\s*(?:/[*/].*)?$</parameter>
+      <parameter name="regex">^(?!^\s+\* |.*/[*/]).*,\s*(?:/[*/].*)?$</parameter>
       <parameter name="line">true</parameter>
     </parameters>
     <customMessage>No comma at end of line, use comma-first style</customMessage>
+  </check>
+  <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="regex">^(?!^\s+\* |.*/[*/]).*[^ ] {2,}</parameter>
+      <parameter name="line">true</parameter>
+    </parameters>
+    <customMessage>Avoid vertical alignment</customMessage>
   </check>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
@@ -104,10 +111,10 @@ limitations under the License.
       <parameter name="ignoreWhitespaceLines">false</parameter>
     </parameters>
   </check>
-  <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="false" level="error"/>
+  <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.ClassNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[A-Z][A-Za-z0-9]*$</parameter>
+      <parameter name="regex">^[A-Z][a-zA-Z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ClassTypeParameterChecker" enabled="true" level="error">
@@ -125,31 +132,31 @@ limitations under the License.
   <check class="org.scalastyle.scalariform.DeprecatedJavaChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.DisallowSpaceAfterTokenChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="tokens">LPAREN</parameter>
+      <parameter name="tokens">LBRACKET, LPAREN</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.DisallowSpaceBeforeTokenChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="tokens">COLON, COMMA, RPAREN, SEMICOLON</parameter>
+      <parameter name="tokens">COLON, COMMA, LBRACKET, RBRACKET, RPAREN, SEMICOLON</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.EmptyClassChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.EmptyInterpolatedStringChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.EnsureSingleSpaceAfterTokenChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="tokens">COLON, COMMA, IF, SEMICOLON, WHILE</parameter>
+      <parameter name="tokens">ARROW, COLON, COMMA, DO, EQUALS, FOR, IF, LARROW, SEMICOLON, WHILE</parameter>
     </parameters>
   </check>
-  <check class="org.scalastyle.scalariform.EnsureSingleSpaceBeforeTokenChecker" enabled="false" level="error">
+  <check class="org.scalastyle.scalariform.EnsureSingleSpaceBeforeTokenChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="tokens">LPAREN</parameter>
+      <parameter name="tokens">ARROW, EQUALS, LARROW, LINE_COMMENT, MULTILINE_COMMENT</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.EqualsHashCodeChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.FieldNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
-      <parameter name="objectFieldRegex">^[A-Za-z0-9]+$</parameter>
+      <parameter name="regex">^[a-z][a-zA-Z0-9]*$</parameter>
+      <parameter name="objectFieldRegex">^[a-zA-Z0-9]+$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ForBraceChecker" enabled="true" level="error"/>
@@ -160,7 +167,10 @@ limitations under the License.
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.IllegalImportsChecker" enabled="true" level="error">
-    <parameter name="illegalImports">sun._,java.awt._,scala.collection.JavaConversions._,scala.collection.mutable._,scala.language.postfix</parameter>
+    <parameters>
+      <parameter name="illegalImports">collection.JavaConversions._,collection.mutable._,java.awt._,language.postfixOps,language.reflectiveCalls,scala.collection.JavaConversions._,scala.collection.mutable._,scala.language.postfixOps,scala.language.reflectiveCalls,sun._</parameter>
+      <parameter name="exemptImports">scala.collection.mutable</parameter>
+    </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ImportGroupingChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ImportOrderChecker" enabled="true" level="error">
@@ -185,7 +195,7 @@ limitations under the License.
   </check>
   <check class="org.scalastyle.scalariform.MethodArgumentNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
+      <parameter name="regex">^[a-z][a-zA-Z0-9]*$</parameter>
       <parameter name="ignoreRegex">^$</parameter>
     </parameters>
   </check>
@@ -197,7 +207,7 @@ limitations under the License.
   </check>
   <check class="org.scalastyle.scalariform.MethodNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z0-9]*(?:_=)?$</parameter>
+      <parameter name="regex">^[a-z][a-zA-Z0-9]*(?:_=)?$</parameter>
       <parameter name="ignoreRegex">^$</parameter>
       <parameter name="ignoreOverride">true</parameter>
     </parameters>
@@ -238,18 +248,18 @@ limitations under the License.
   </check>
   <check class="org.scalastyle.scalariform.ObjectNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[A-Za-z][A-Za-z0-9]*$</parameter>
+      <parameter name="regex">^[a-zA-Z][a-zA-Z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.OverrideJavaChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.PackageNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
+      <parameter name="regex">^[a-z][a-zA-Z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.PackageObjectNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][A-Za-z0-9]*$</parameter>
+      <parameter name="regex">^[a-z][a-zA-Z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.ParameterNumberChecker" enabled="true" level="error">
@@ -308,6 +318,12 @@ limitations under the License.
     </parameters>
     <customMessage>'Some' found: avoid pattern matching on Option or use Option.apply instead</customMessage>
   </check>
+  <check class="org.scalastyle.scalariform.TokenChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="regex">^return$</parameter>
+    </parameters>
+    <customMessage>Avoid explicit returns</customMessage>
+  </check>
   <check class="org.scalastyle.scalariform.UnderscoreImportChecker" enabled="true" level="error">
     <parameters>
       <!-- <parameter name="ignoreRegex">collection\.JavaConverters\._|concurrent\.duration\._</parameter> -->
@@ -316,6 +332,6 @@ limitations under the License.
   <check class="org.scalastyle.scalariform.UppercaseLChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.VarFieldChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.VarLocalChecker" enabled="true" level="error"/>
-  <check class="org.scalastyle.scalariform.WhileChecker" enabled="false" level="error"/>
+  <check class="org.scalastyle.scalariform.WhileChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.XmlLiteralChecker" enabled="true" level="error"/>
 </scalastyle>
