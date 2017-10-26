@@ -303,7 +303,8 @@ import
 , java.net._
 , java.nio.file._
 , java.time.{Duration => jDuration, _}
-, java.util.Locale
+, java.util.{Locale, UUID}
+, java.util.regex.{Matcher, Pattern}
 , System.{currentTimeMillis => now, nanoTime}
 
 def time[T](f: => T): T = {

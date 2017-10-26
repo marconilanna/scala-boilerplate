@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#!/bin/bash
 # Copyright 2011-2017 Marconi Lanna
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,12 +17,12 @@ set -euo pipefail
 dirs=(src test)
 
 for module in "$@"; do
-  for dir in ${dirs[@]}; do
+  for dir in "${dirs[@]}"; do
     d="$module/$dir/resources"
     f=$d/.keep
 
-    mkdir -p $d &&
-    touch $f &&
-    git add -f $f
+    mkdir -p "$d" &&
+    touch "$f" &&
+    git add -f "$f"
   done
 done
