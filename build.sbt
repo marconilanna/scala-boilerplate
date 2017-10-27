@@ -130,6 +130,7 @@ val commonScalacOptions = Seq(
 //"-Yvirtpatmat" // Enable pattern matcher virtualization
 , "-Ywarn-dead-code" // Warn when dead code is identified
 , "-Ywarn-extra-implicit" // Warn when more than one implicit parameter section is defined
+, "-Ywarn-macros:before" // Enable lint warnings on macro expansions (see list below)
 , "-Ywarn-numeric-widen" // Warn when numerics are widened
 , "-Ywarn-unused:_" // Enable or disable specific (see list below)
 )
@@ -211,8 +212,18 @@ unused                     Enable -Ywarn-unused:imports,privates,locals,implicit
 
 *//*
 
+scalac -Ywarn-macros:help
+
+after   Only inspect expanded trees when generating unused symbol warnings
+before  Only inspect unexpanded user-written code for unused symbols
+both    Inspect both user-written code and expanded trees when generating unused symbol warnings
+none    Do not inspect expansions or their original trees when generating unused symbol warnings
+
+*//*
+
 scalac -Ywarn-unused:help
 
+explicits  Warn if an explicit parameter is unused
 implicits  Warn if an implicit parameter is unused
 imports    Warn if an import selector is not referenced
 linted     -Xlint:unused
