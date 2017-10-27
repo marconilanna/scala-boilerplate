@@ -43,15 +43,15 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
 
 // http://github.com/scala-ide/scalariform
 // http://github.com/sbt/sbt-scalariform
-//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.0")
+//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.1")
 
 // http://scalameta.org/scalafmt
 // http://github.com/lucidsoftware/neo-sbt-scalafmt
-//addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.12")
+//addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.14")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.2")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.3")
 
 // http://github.com/jrudolph/sbt-dependency-graph
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.9.0")
@@ -73,4 +73,4 @@ addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC12")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
-//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.2")
+//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.3")
