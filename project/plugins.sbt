@@ -43,7 +43,7 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
 
 // http://github.com/scala-ide/scalariform
 // http://github.com/sbt/sbt-scalariform
-//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.1")
+//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.2")
 
 // http://scalameta.org/scalafmt
 // http://github.com/lucidsoftware/neo-sbt-scalafmt
