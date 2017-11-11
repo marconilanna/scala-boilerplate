@@ -310,7 +310,7 @@ limitations under the License.
     <parameters>
       <parameter name="regex">^print(?:ln)?$</parameter>
     </parameters>
-    <customMessage>Avoid print statements</customMessage>
+    <customMessage>Avoid print statements: use logger or ScalaTest's info method</customMessage>
   </check>
   <check class="org.scalastyle.scalariform.TokenChecker" enabled="true" level="error">
     <parameters>

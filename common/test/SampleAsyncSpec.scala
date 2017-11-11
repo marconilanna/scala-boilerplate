@@ -44,7 +44,6 @@ class SampleAsyncSpec extends AsyncSpec {
         assert(a < 6)
         assert(b || !b) // that is the question
 
-        note(s"a was $a, b was $b")
         // async tests must end with assertion; use `succeed` if they don't
         succeed
       }
