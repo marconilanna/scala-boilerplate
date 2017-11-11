@@ -152,7 +152,8 @@ val scalacConfiguration = Seq(
   scalaVersion := lib.v.scala
 //crossScalaVersions := Seq(scalaVersion.value)
 , scalacOptions ++= coreScalacOptions ++ commonScalacOptions ++ compileScalacOptions
-, scalacOptions in (Test, compile) := coreScalacOptions ++ commonScalacOptions ++ testScalacOptions
+, scalacOptions in (Test, compile) ++= testScalacOptions
+, scalacOptions in (Test, compile) --= compileScalacOptions
 , scalacOptions in (Compile, console) := coreScalacOptions ++ consoleScalacOptions
 , scalacOptions in (Test, console) := scalacOptions.in(Compile, console).value
 , compileOrder := CompileOrder.JavaThenScala
@@ -274,14 +275,19 @@ serial         static         try            unchecked      varargs
  * Macros
  */
 
-val scalaMacros = Seq(
-  addCompilerPlugin(lib.macrosParadise)
-, libraryDependencies += lib.scalaReflect
+val scalaCompiler = libraryDependencies += lib.scalaCompiler
+
+val scalaReflect = libraryDependencies += lib.scalaReflect
+
+val scalameta = libraryDependencies ++= Seq(
+  lib.scalameta
+, lib.scalametaContrib
 )
 
-val scalameta = Seq(
+val macrosParadise = addCompilerPlugin(lib.macrosParadise)
+
+val metaParadise = Seq(
   addCompilerPlugin(lib.metaParadise)
-, libraryDependencies += lib.scalameta
 , scalacOptions += "-Xplugin-require:macroparadise"
 )
 
