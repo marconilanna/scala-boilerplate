@@ -32,7 +32,7 @@ addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.2.1")
 addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.0.0")
 
 // http://github.com/danielnixon/extrawarts
-addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.2")
+addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
@@ -69,7 +69,7 @@ addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.0")
 addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.1.0")
 
 // http://github.com/coursier/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC12")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC13")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
