@@ -486,10 +486,13 @@ val wartremoverConfiguration = Seq(
   , Wart.TryPartial
   , Wart.Var
   //Wart.While
+  //ContribWart.Apply
   , ContribWart.ExposedTuples
   , ContribWart.OldTime
   , ContribWart.SealedCaseClass
   , ContribWart.SomeApply
+  //ContribWart.SymbolicName
+  //ContribWart.UnsafeInheritance
   , ExtraWart.EnumerationPartial
   , ExtraWart.FutureObject
   , ExtraWart.GenMapLikePartial
