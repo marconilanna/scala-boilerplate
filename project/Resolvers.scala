@@ -44,5 +44,6 @@ trait Resolvers {
   val shared = defaultShared
 
   // Custom repositories
-  val flyway = "Flyway" at "https://flywaydb.org/repo"
+  val flyway = "Flyway" at "https://davidmweber.github.io/flyway-sbt.repo"
+  val tsec = bintray("jmcardon", "tsec")
 }
