@@ -319,7 +319,9 @@ import
 , scala.concurrent.{Await, ExecutionContext, Future}
 , scala.concurrent.ExecutionContext.Implicits.global
 , scala.concurrent.duration._
+, scala.language.experimental.macros
 , scala.math._
+, scala.reflect.macros.{blackbox, whitebox}
 , scala.reflect.runtime.{currentMirror => mirror}
 , scala.reflect.runtime.universe._
 , scala.tools.reflect.ToolBox
@@ -333,7 +335,7 @@ import
 , java.util.regex.{Matcher, Pattern}
 , System.{currentTimeMillis => now, nanoTime}
 
-val toolbox = scala.reflect.runtime.currentMirror.mkToolBox()
+val toolbox = mirror.mkToolBox()
 
 import toolbox.{PATTERNmode, TERMmode, TYPEmode}
 
@@ -343,12 +345,6 @@ def time[T](f: => T): T = {
     println("Elapsed: " + (now - start)/1000.0 + " s")
   }
 }
-"""
-
-val desugarMacro = """
-import
-  scala.language.experimental.macros
-, scala.reflect.macros.blackbox
 
 def desugar[T](expr: => T): Unit = macro desugarImpl[T]
 
@@ -368,19 +364,18 @@ cleanKeepFiles += target.in(LocalRootProject).value / ".history"
 
 val sbtOptions = Seq(
   // Statements executed when starting the Scala REPL (sbt's `console` task)
-  initialCommands in console += consoleDefinitions + desugarMacro
-, initialCommands in consoleProject := consoleDefinitions
+  initialCommands += consoleDefinitions
   // Statements executed before the Scala REPL exits
 //cleanupCommands := ""
-  // Improved incremental compilation
-, incOptions := incOptions.value.withNameHashing(true)
   // Improved dependency management
 , updateOptions := updateOptions.value.withCachedResolution(true)
   // Clean locally cached project artifacts
-, publishLocal := publishLocal
-    .dependsOn(cleanCache.toTask(""))
-    .dependsOn(cleanLocal.toTask(""))
-    .value
+  // no sbt 1.x support
+//, publishLocal := publishLocal
+//    .dependsOn(cleanCache.toTask(""))
+//    .dependsOn(cleanLocal.toTask(""))
+//    .value
+, isSnapshot in ThisBuild := true // workaround for above
   // Share history among all projects instead of using a different history for each project
 , historyPath := Option(target.in(LocalRootProject).value / ".history")
 , cleanKeepFiles := cleanKeepFiles.value filterNot { file =>
@@ -530,9 +525,10 @@ val wartremoverConfiguration = Seq(
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
 
+scapegoatVersion in ThisBuild := lib.v.scapegoat
+
 val scapegoatConfiguration = Seq(
-  scapegoatVersion := lib.v.scapegoat
-, scapegoatDisabledInspections := Seq.empty
+  scapegoatDisabledInspections := Seq.empty
 , scapegoatIgnoredFiles := Seq.empty
 , scapegoatReports := Seq("none")
 , test in Test := test.in(Test)

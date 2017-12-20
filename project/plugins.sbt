@@ -36,7 +36,7 @@ addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
-addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
+addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.7")
 
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
@@ -66,7 +66,7 @@ addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
 addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.0")
 
 // http://github.com/sbt/sbt-dirty-money
-addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.1.0")
+//addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.1.0") // no sbt 1.x support
 
 // http://github.com/coursier/coursier
 addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0")

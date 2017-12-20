@@ -16,7 +16,7 @@
 import sbt.CrossVersion
 import sbt.Provided
 import sbt.Test
-import sbt.toGroupID
+import sbt.stringToOrganization
 
 object Dependencies extends Dependencies
 

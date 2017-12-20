@@ -26,6 +26,7 @@ trait Resolvers {
   val jcenter = jcenterRepo
 
   def sbtPlugin(status: String) = sbtPluginRepo(status)
+  def sbtIvy(status: String) = sbtIvyRepo(status)
 
   val sonatypePublic = sonatypeRepo("public")
   val sonatypeReleases = sonatypeRepo("releases")
