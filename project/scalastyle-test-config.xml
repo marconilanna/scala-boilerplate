@@ -126,7 +126,7 @@ limitations under the License.
   <check class="org.scalastyle.scalariform.CyclomaticComplexityChecker" enabled="true" level="error">
     <parameters>
       <parameter name="maximum">10</parameter>
-      <parameter name="countCases">true</parameter>
+      <parameter name="countCases">false</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.DeprecatedJavaChecker" enabled="true" level="error"/>

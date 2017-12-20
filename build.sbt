@@ -119,9 +119,15 @@ val commonScalacOptions = Seq(
 //"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss
 , "-Xfatal-warnings" // Fail the compilation if there are any warnings
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
+, "-Xlog-free-terms" // Print a message when reification creates a free term
+, "-Xlog-free-types" // Print a message when reification resorts to generating a free type
+//"-Xlog-implicits" // Show more detail on why some implicits are not applicable
+, "-Xlog-reflective-calls" // Print a message when a reflective method call is generated
 //"-Xmigration:<version>" // Warn about constructs whose behavior may have changed since version
 //"-Xprint:typer" // Print out program after phase: all, parser, jvm (last), etc.
 , "-Xstrict-inference" // Don't infer known-unsound types
+//"-Ymacro-debug-lite" // Trace essential macro-related activities
+//"-Ymacro-debug-verbose" // Trace all macro-related activities
 , "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
 //"-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
 //"-Yno-predef" // Compile without importing Predef
@@ -279,12 +285,12 @@ val scalaCompiler = libraryDependencies += lib.scalaCompiler
 
 val scalaReflect = libraryDependencies += lib.scalaReflect
 
+val macrosParadise = addCompilerPlugin(lib.macrosParadise)
+
 val scalameta = libraryDependencies ++= Seq(
   lib.scalameta
 , lib.scalametaContrib
 )
-
-val macrosParadise = addCompilerPlugin(lib.macrosParadise)
 
 val metaParadise = Seq(
   addCompilerPlugin(lib.metaParadise)
@@ -314,6 +320,9 @@ import
 , scala.concurrent.ExecutionContext.Implicits.global
 , scala.concurrent.duration._
 , scala.math._
+, scala.reflect.runtime.{currentMirror => mirror}
+, scala.reflect.runtime.universe._
+, scala.tools.reflect.ToolBox
 , scala.util.{Failure, Random, Success, Try}
 , scala.util.control.NonFatal
 , java.io._
@@ -323,6 +332,10 @@ import
 , java.util.{Locale, UUID}
 , java.util.regex.{Matcher, Pattern}
 , System.{currentTimeMillis => now, nanoTime}
+
+val toolbox = scala.reflect.runtime.currentMirror.mkToolBox()
+
+import toolbox.{PATTERNmode, TERMmode, TYPEmode}
 
 def time[T](f: => T): T = {
   val start = now
@@ -337,23 +350,28 @@ import
   scala.language.experimental.macros
 , scala.reflect.macros.blackbox
 
-def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
+def desugar[T](expr: => T): Unit = macro desugarImpl[T]
+
+def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]) = {
   import c.universe._, scala.io.AnsiColor.{BOLD, GREEN, RESET}
 
-  val exp = show(expr.tree)
+  val exp = showCode(expr.tree)
   val typ = expr.actualType.toString takeWhile '('.!=
 
   println(s"$exp: $BOLD$GREEN$typ$RESET")
-  reify { (): Unit }
-}
 
-def desugar[T](expr: T): Unit = macro desugarImpl[T]
+  q"()"
+}
 """
+
+cleanKeepFiles += target.in(LocalRootProject).value / ".history"
 
 val sbtOptions = Seq(
   // Statements executed when starting the Scala REPL (sbt's `console` task)
-  initialCommands := consoleDefinitions + desugarMacro
+  initialCommands in console += consoleDefinitions + desugarMacro
 , initialCommands in consoleProject := consoleDefinitions
+  // Statements executed before the Scala REPL exits
+//cleanupCommands := ""
   // Improved incremental compilation
 , incOptions := incOptions.value.withNameHashing(true)
   // Improved dependency management
@@ -365,6 +383,9 @@ val sbtOptions = Seq(
     .value
   // Share history among all projects instead of using a different history for each project
 , historyPath := Option(target.in(LocalRootProject).value / ".history")
+, cleanKeepFiles := cleanKeepFiles.value filterNot { file =>
+    file.getPath.endsWith(".history")
+  }
   // Do not exit sbt when Ctrl-C is used to stop a running app
 , cancelable in Global := true
 , logLevel in Global := Level.Info
