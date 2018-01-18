@@ -692,4 +692,5 @@ val codeCoverage = Seq(
 //val scalafmt = Seq(
 //  scalafmtConfig := baseDirectory.in(LocalRootProject).value / "project" / "scalafmt.conf"
 //, scalafmtVersion := lib.v.scalafmt
+//, scalafmtShowDiff in scalafmt := false
 //)

@@ -47,11 +47,11 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
 
 // http://scalameta.org/scalafmt
 // http://github.com/lucidsoftware/neo-sbt-scalafmt
-//addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.14")
+//addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.15")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.3")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.4")
 
 // http://github.com/jrudolph/sbt-dependency-graph
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.9.0")
