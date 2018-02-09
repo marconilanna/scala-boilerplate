@@ -370,12 +370,10 @@ val sbtOptions = Seq(
   // Improved dependency management
 , updateOptions := updateOptions.value.withCachedResolution(true)
   // Clean locally cached project artifacts
-  // no sbt 1.x support
-//, publishLocal := publishLocal
-//    .dependsOn(cleanCache.toTask(""))
-//    .dependsOn(cleanLocal.toTask(""))
-//    .value
-, isSnapshot in ThisBuild := true // workaround for above
+, publishLocal := publishLocal
+    .dependsOn(cleanCache.toTask(""))
+    .dependsOn(cleanLocal.toTask(""))
+    .value
   // Share history among all projects instead of using a different history for each project
 , historyPath := Option(target.in(LocalRootProject).value / ".history")
 , cleanKeepFiles := cleanKeepFiles.value filterNot { file =>

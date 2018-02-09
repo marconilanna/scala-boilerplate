@@ -66,10 +66,10 @@ addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
 addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.0")
 
 // http://github.com/sbt/sbt-dirty-money
-//addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.1.0") // no sbt 1.x support
+addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.2.0")
 
 // http://github.com/coursier/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.2")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse

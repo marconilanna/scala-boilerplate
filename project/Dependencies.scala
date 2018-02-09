@@ -29,8 +29,8 @@ trait Dependencies {
     val quartz = "2.3.0"
     val scala = "2.12.4"
     val scalafmt = "1.4.0"
-    val scalameta = "2.1.5"
-    val scapegoat = "1.3.3"
+    val scalameta = "3.2.0"
+    val scapegoat = "1.3.4"
     val slick = "3.2.1"
     val tsec = "0.0.1-M7"
   }
@@ -42,7 +42,7 @@ trait Dependencies {
 
   // Java
   val commonsCodec      = "commons-codec"               % "commons-codec"         % "1.11"
-  val commonsCompress   = "org.apache.commons"          % "commons-compress"      % "1.15"
+  val commonsCompress   = "org.apache.commons"          % "commons-compress"      % "1.16"
   val commonsCsv        = "org.apache.commons"          % "commons-csv"           % "1.5"
   val commonsIo         = "commons-io"                  % "commons-io"            % "2.6"
   val commonsLang       = "org.apache.commons"          % "commons-lang3"         % "3.7"
@@ -50,7 +50,7 @@ trait Dependencies {
   val commonsText       = "org.apache.commons"          % "commons-text"          % "1.2"
   val commonsValidator  = "commons-validator"           % "commons-validator"     % "1.6"
   val guava             = "com.google.guava"            % "guava"                 % "23.0"
-  val httpClient        = "org.apache.httpcomponents"   % "httpclient"            % "4.5.4"
+  val httpClient        = "org.apache.httpcomponents"   % "httpclient"            % "4.5.5"
   val icu4j             = "com.ibm.icu"                 % "icu4j"                 % "60.2"
   val jBCrypt           = "de.svenkubiak"               % "jBCrypt"               % "0.4.1"
   val jodaMoney         = "org.joda"                    % "joda-money"            % "0.12"
@@ -58,7 +58,7 @@ trait Dependencies {
   val jsoup             = "org.jsoup"                   % "jsoup"                 % "1.11.2"
   val logback           = "ch.qos.logback"              % "logback-classic"       % "1.2.3"
   val mysql             = "mysql"                       % "mysql-connector-java"  % "6.0.6"
-  val postgresql        = "org.postgresql"              % "postgresql"            % "42.2.0"
+  val postgresql        = "org.postgresql"              % "postgresql"            % "42.2.1"
   val quartz            = "org.quartz-scheduler"        % "quartz"                % v.quartz
   val quartzJobs        = "org.quartz-scheduler"        % "quartz-jobs"           % v.quartz
   val typesafeConfig    = "com.typesafe"                % "config"                % "1.3.2"
@@ -83,7 +83,7 @@ trait Dependencies {
   val scalametaContrib  = "org.scalameta"              %% "contrib"               % v.scalameta % Provided
   val slick             = "com.typesafe.slick"         %% "slick"                 % v.slick
   val slickHikaricp     = "com.typesafe.slick"         %% "slick-hikaricp"        % v.slick
-  val sttp              = "com.softwaremill.sttp"      %% "core"                  % "1.1.4"
+  val sttp              = "com.softwaremill.sttp"      %% "core"                  % "1.1.5"
   val tsec              = "io.github.jmcardon"         %% "tsec-common"           % v.tsec
   val tsecDigest        = "io.github.jmcardon"         %% "tsec-md"               % v.tsec
   val tsecJwtMac        = "io.github.jmcardon"         %% "tsec-jwt-mac"          % v.tsec
@@ -98,8 +98,8 @@ trait Dependencies {
   val akkaStreamTestkit = "com.typesafe.akka"          %% "akka-stream-testkit"   % v.akka      % Test
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"          % v.akka      % Test
   val mockito           = "org.mockito"                 % "mockito-core"          % "2.13.0"    % Test
-  val scalatest         = "org.scalatest"              %% "scalatest"             % "3.0.4"     % Test
-  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"         % "3.8.1"     % Test
+  val scalatest         = "org.scalatest"              %% "scalatest"             % "3.0.5"     % Test
+  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"         % "3.9.1"     % Test
   val slf4jNop          = "org.slf4j"                   % "slf4j-nop"             % "1.7.25"    % Test
   val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"         % v.slick     % Test
 
