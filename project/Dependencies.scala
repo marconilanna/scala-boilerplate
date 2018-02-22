@@ -29,10 +29,10 @@ trait Dependencies {
     val quartz = "2.3.0"
     val scala = "2.12.4"
     val scalafmt = "1.4.0"
-    val scalameta = "3.2.0"
+    val scalameta = "3.3.1"
     val scapegoat = "1.3.4"
     val slick = "3.2.1"
-    val tsec = "0.0.1-M7"
+    val tsec = "0.0.1-M9"
   }
 
   // Resolvers
@@ -42,7 +42,7 @@ trait Dependencies {
 
   // Java
   val commonsCodec      = "commons-codec"               % "commons-codec"         % "1.11"
-  val commonsCompress   = "org.apache.commons"          % "commons-compress"      % "1.16"
+  val commonsCompress   = "org.apache.commons"          % "commons-compress"      % "1.16.1"
   val commonsCsv        = "org.apache.commons"          % "commons-csv"           % "1.5"
   val commonsIo         = "commons-io"                  % "commons-io"            % "2.6"
   val commonsLang       = "org.apache.commons"          % "commons-lang3"         % "3.7"
@@ -61,7 +61,7 @@ trait Dependencies {
   val postgresql        = "org.postgresql"              % "postgresql"            % "42.2.1"
   val quartz            = "org.quartz-scheduler"        % "quartz"                % v.quartz
   val quartzJobs        = "org.quartz-scheduler"        % "quartz-jobs"           % v.quartz
-  val typesafeConfig    = "com.typesafe"                % "config"                % "1.3.2"
+  val typesafeConfig    = "com.typesafe"                % "config"                % "1.3.3"
   val univocity         = "com.univocity"               % "univocity-parsers"     % "2.5.9"
 
   // Scala
@@ -78,12 +78,12 @@ trait Dependencies {
   val scalaCompiler     = "org.scala-lang"              % "scala-compiler"        % v.scala
   val scalaLibrary      = "org.scala-lang"              % "scala-library"         % v.scala
   val scalaReflect      = "org.scala-lang"              % "scala-reflect"         % v.scala
-  val scalaLogging      = "com.typesafe.scala-logging" %% "scala-logging"         % "3.7.2"
+  val scalaLogging      = "com.typesafe.scala-logging" %% "scala-logging"         % "3.8.0"
   val scalameta         = "org.scalameta"              %% "scalameta"             % v.scalameta % Provided
   val scalametaContrib  = "org.scalameta"              %% "contrib"               % v.scalameta % Provided
   val slick             = "com.typesafe.slick"         %% "slick"                 % v.slick
   val slickHikaricp     = "com.typesafe.slick"         %% "slick-hikaricp"        % v.slick
-  val sttp              = "com.softwaremill.sttp"      %% "core"                  % "1.1.5"
+  val sttp              = "com.softwaremill.sttp"      %% "core"                  % "1.1.6"
   val tsec              = "io.github.jmcardon"         %% "tsec-common"           % v.tsec
   val tsecDigest        = "io.github.jmcardon"         %% "tsec-md"               % v.tsec
   val tsecJwtMac        = "io.github.jmcardon"         %% "tsec-jwt-mac"          % v.tsec
@@ -97,7 +97,7 @@ trait Dependencies {
   val akkaHttpTestkit   = "com.typesafe.akka"          %% "akka-http-testkit"     % v.akkaHttp  % Test
   val akkaStreamTestkit = "com.typesafe.akka"          %% "akka-stream-testkit"   % v.akka      % Test
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"          % v.akka      % Test
-  val mockito           = "org.mockito"                 % "mockito-core"          % "2.13.0"    % Test
+  val mockito           = "org.mockito"                 % "mockito-core"          % "2.15.0"    % Test
   val scalatest         = "org.scalatest"              %% "scalatest"             % "3.0.5"     % Test
   val selenium          = "org.seleniumhq.selenium"     % "selenium-java"         % "3.9.1"     % Test
   val slf4jNop          = "org.slf4j"                   % "slf4j-nop"             % "1.7.25"    % Test
