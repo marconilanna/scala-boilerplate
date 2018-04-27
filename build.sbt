@@ -101,6 +101,7 @@ val projectLayout = Seq(
 
 val coreScalacOptions = Seq(
   "-encoding", utf8 // Specify character encoding used by source files
+//"-release 8" // Compile for a specific version of the Java platform (only supported on Java 9 and higher)
 , "-target:jvm-" + lib.v.jvm // Target platform for object files
 , "-Xexperimental" // Enable experimental extensions
 , "-Xfuture" // Turn on future language features
@@ -126,6 +127,10 @@ val commonScalacOptions = Seq(
 //"-Xmigration:<version>" // Warn about constructs whose behavior may have changed since version
 //"-Xprint:typer" // Print out program after phase: all, parser, jvm (last), etc.
 , "-Xstrict-inference" // Don't infer known-unsound types
+, "-Ybackend-parallelism", "8" // Maximum worker threads for backend
+, "-Ybackend-worker-queue", "8" // Backend threads worker queue
+, "-Ycache-macro-class-loader:last-modified" // Policy for caching class loaders for macros that are dynamically loaded
+, "-Ycache-plugin-class-loader:last-modified" // Policy for caching class loaders for compiler plugins that are dynamically loaded
 //"-Ymacro-debug-lite" // Trace essential macro-related activities
 //"-Ymacro-debug-verbose" // Trace all macro-related activities
 , "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
@@ -138,6 +143,7 @@ val commonScalacOptions = Seq(
 , "-Ywarn-extra-implicit" // Warn when more than one implicit parameter section is defined
 , "-Ywarn-macros:before" // Enable lint warnings on macro expansions (see list below)
 , "-Ywarn-numeric-widen" // Warn when numerics are widened
+, "-Ywarn-self-implicit" // "Warn when an implicit resolves to an enclosing self-definition
 , "-Ywarn-unused:_" // Enable or disable specific (see list below)
 )
 
