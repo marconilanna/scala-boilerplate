@@ -298,11 +298,6 @@ val scalameta = libraryDependencies ++= Seq(
 , lib.scalametaContrib
 )
 
-val metaParadise = Seq(
-  addCompilerPlugin(lib.metaParadise)
-, scalacOptions += "-Xplugin-require:macroparadise"
-)
-
 /*
  * Managed dependencies
  */
