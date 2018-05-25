@@ -30,7 +30,7 @@ trait Dependencies {
     val scala = "2.12.6"
     val scalafmt = "1.5.1"
     val scalameta = "3.7.4"
-    val scapegoat = "1.3.4"
+    val scapegoat = "1.3.5"
     val slick = "3.2.3"
     val tsec = "0.0.1-M11"
   }
@@ -57,6 +57,7 @@ trait Dependencies {
   val jodaTime          = "joda-time"                   % "joda-time"             % "2.9.9"
   val jsoup             = "org.jsoup"                   % "jsoup"                 % "1.11.3"
   val logback           = "ch.qos.logback"              % "logback-classic"       % "1.2.3"
+  val modeshapeCommon   = "org.modeshape"               % "modeshape-common"      % "5.4.1.Final"
   val mysql             = "mysql"                       % "mysql-connector-java"  % "8.0.11"
   val postgresql        = "org.postgresql"              % "postgresql"            % "42.2.2"
   val quartz            = "org.quartz-scheduler"        % "quartz"                % v.quartz
@@ -68,12 +69,12 @@ trait Dependencies {
   val akkaActor         = "com.typesafe.akka"          %% "akka-actor"            % v.akka
   val akkaHttp          = "com.typesafe.akka"          %% "akka-http"             % v.akkaHttp
   val akkaStream        = "com.typesafe.akka"          %% "akka-stream"           % v.akka
-  val betterFiles       = "com.github.pathikrit"       %% "better-files"          % "3.4.0"
+  val betterFiles       = "com.github.pathikrit"       %% "better-files"          % "3.5.0"
   val macwire           = "com.softwaremill.macwire"   %% "macros"                % v.macwire   % Provided
   val macwireAkka       = "com.softwaremill.macwire"   %% "macrosakka"            % v.macwire   % Provided
   val macwireProxy      = "com.softwaremill.macwire"   %% "proxy"                 % v.macwire
   val macwireUtil       = "com.softwaremill.macwire"   %% "util"                  % v.macwire
-  val nscalaTime        = "com.github.nscala-time"     %% "nscala-time"           % "2.18.0"
+  val nscalaTime        = "com.github.nscala-time"     %% "nscala-time"           % "2.20.0"
   val quicklens         = "com.softwaremill.quicklens" %% "quicklens"             % "1.4.11"
   val scalaCompiler     = "org.scala-lang"              % "scala-compiler"        % v.scala
   val scalaLibrary      = "org.scala-lang"              % "scala-library"         % v.scala
@@ -83,7 +84,7 @@ trait Dependencies {
   val scalametaContrib  = "org.scalameta"              %% "contrib"               % v.scalameta % Provided
   val slick             = "com.typesafe.slick"         %% "slick"                 % v.slick
   val slickHikaricp     = "com.typesafe.slick"         %% "slick-hikaricp"        % v.slick
-  val sttp              = "com.softwaremill.sttp"      %% "core"                  % "1.1.13"
+  val sttp              = "com.softwaremill.sttp"      %% "core"                  % "1.1.14"
   val tsec              = "io.github.jmcardon"         %% "tsec-common"           % v.tsec
   val tsecCipher        = "io.github.jmcardon"         %% "tsec-cipher-jca"       % v.tsec
   val tsecCipherBouncy  = "io.github.jmcardon"         %% "tsec-cipher-bouncy"    % v.tsec
@@ -101,7 +102,7 @@ trait Dependencies {
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"          % v.akka      % Test
   val mockito           = "org.mockito"                 % "mockito-core"          % "2.18.3"    % Test
   val scalatest         = "org.scalatest"              %% "scalatest"             % "3.0.5"     % Test
-  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"         % "3.11.0"    % Test
+  val selenium          = "org.seleniumhq.selenium"     % "selenium-java"         % "3.12.0"    % Test
   val slf4jNop          = "org.slf4j"                   % "slf4j-nop"             % "1.7.25"    % Test
   val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"         % v.slick     % Test
 
@@ -121,12 +122,12 @@ trait Dependencies {
 
   val allDependencies = Seq( // for dependencyUpdates task
     commonsCodec, commonsCompress, commonsCsv, commonsIo, commonsLang, commonsMath, commonsText
-  , commonsValidator, guava, httpClient, icu4j, jBCrypt, jodaMoney, jodaTime, jsoup, logback, mysql
-  , postgresql, quartz, quartzJobs, typesafeConfig, univocity, akkaActor, akkaHttp, akkaStream
-  , betterFiles, macwire, macwireAkka, macwireProxy, macwireUtil, nscalaTime, quicklens
-  , scalaCompiler, scalaLibrary, scalaReflect, scalaLogging, scalameta, scalametaContrib, slick
-  , slickHikaricp, sttp, tsec, tsecCipher, tsecCipherBouncy, tsecHash, tsecHashBouncy, tsecJwtMac
-  , tsecJwtSig, tsecMac, tsecPassword, tsecSignature, akkaHttpTestkit, akkaStreamTestkit
+  , commonsValidator, guava, httpClient, icu4j, jBCrypt, jodaMoney, jodaTime, jsoup, logback
+  , modeshapeCommon, mysql, postgresql, quartz, quartzJobs, typesafeConfig, univocity, akkaActor
+  , akkaHttp, akkaStream, betterFiles, macwire, macwireAkka, macwireProxy, macwireUtil, nscalaTime
+  , quicklens, scalaCompiler, scalaLibrary, scalaReflect, scalaLogging, scalameta, scalametaContrib
+  , slick, slickHikaricp, sttp, tsec, tsecCipher, tsecCipherBouncy, tsecHash, tsecHashBouncy
+  , tsecJwtMac, tsecJwtSig, tsecMac, tsecPassword, tsecSignature, akkaHttpTestkit, akkaStreamTestkit
   , akkaTestkit, mockito, scalatest, selenium, slf4jNop, slickTestkit, linter, macrosParadise
   ) map (_.withSources.withJavadoc)
 }
