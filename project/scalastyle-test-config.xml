@@ -175,13 +175,14 @@ limitations under the License.
   <check class="org.scalastyle.scalariform.ImportGroupingChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ImportOrderChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="groups">PROJECT,com,net,org,others,play,scala,java,javax</parameter>
+      <parameter name="groups">PROJECT,com,net,org,others,play,akka,scala,java,javax</parameter>
       <parameter name="group.PROJECT">PROJECT\..+</parameter>
       <parameter name="group.com">com\..+</parameter>
       <parameter name="group.net">net\..+</parameter>
       <parameter name="group.org">org\..+</parameter>
-      <parameter name="group.others">(?!(?:PROJECT|com|net|org|play|scala|java|javax)\.).+</parameter>
+      <parameter name="group.others">(?!(?:PROJECT|com|net|org|play|akka|scala|java|javax)\.).+</parameter>
       <parameter name="group.play">play\..+</parameter>
+      <parameter name="group.akka">akka\..+</parameter>
       <parameter name="group.scala">scala\..+</parameter>
       <parameter name="group.java">java\..+</parameter>
       <parameter name="group.javax">javax\..+</parameter>
