@@ -22,7 +22,7 @@ object Dependencies extends Dependencies
 
 trait Dependencies {
   object v {
-    val akka = "2.5.12"
+    val akka = "2.5.13"
     val akkaHttp = "10.1.1"
     val jvm = "1.8"
     val macwire = "2.3.1"
@@ -42,7 +42,7 @@ trait Dependencies {
 
   // Java
   val commonsCodec      = "commons-codec"               % "commons-codec"         % "1.11"
-  val commonsCompress   = "org.apache.commons"          % "commons-compress"      % "1.16.1"
+  val commonsCompress   = "org.apache.commons"          % "commons-compress"      % "1.17"
   val commonsCsv        = "org.apache.commons"          % "commons-csv"           % "1.5"
   val commonsIo         = "commons-io"                  % "commons-io"            % "2.6"
   val commonsLang       = "org.apache.commons"          % "commons-lang3"         % "3.7"
@@ -54,7 +54,7 @@ trait Dependencies {
   val icu4j             = "com.ibm.icu"                 % "icu4j"                 % "61.1"
   val jBCrypt           = "de.svenkubiak"               % "jBCrypt"               % "0.4.1"
   val jodaMoney         = "org.joda"                    % "joda-money"            % "0.12"
-  val jodaTime          = "joda-time"                   % "joda-time"             % "2.9.9"
+  val jodaTime          = "joda-time"                   % "joda-time"             % "2.10"
   val jsoup             = "org.jsoup"                   % "jsoup"                 % "1.11.3"
   val logback           = "ch.qos.logback"              % "logback-classic"       % "1.2.3"
   val modeshapeCommon   = "org.modeshape"               % "modeshape-common"      % "5.4.1.Final"
