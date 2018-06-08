@@ -407,13 +407,15 @@ val sbtOptions = Seq(
     val ansi = System.getProperty("sbt.log.noformat", "false") != "true"
     if (ansi) System.setProperty("scala.color", "true")
   }
-  // Clear the console between triggered runs (e.g, ~test)
+  // Draw a separator between triggered runs (e.g, ~test)
 , triggeredMessage := { ws =>
   if (ws.count > 1) {
     val nl = System.lineSeparator * 2
-    nl + "#" * 80 + nl + Watched.clearScreen
+    nl + "#" * 72 + nl
   } else ""
 }
+  // Alternative: clear the console between triggered runs
+//triggeredMessage := Watched.clearWhenTriggered
 , shellPrompt := { state =>
     import scala.Console.{BLUE, BOLD, RESET}
     s"$BLUE$BOLD${name.value}$RESET $BOLD\u25b6$RESET "
