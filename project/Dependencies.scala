@@ -30,7 +30,7 @@ trait Dependencies {
     val scala = "2.12.7"
     val scalafmt = "1.5.1"
     val scalameta = "4.0.0"
-    val scapegoat = "1.3.5"
+    val scapegoat = "1.3.8"
     val slick = "3.2.3"
     val tsec = "0.0.1-RC1"
   }

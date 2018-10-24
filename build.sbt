@@ -510,10 +510,13 @@ val wartremoverConfiguration = Seq(
   //Wart.While
   //ContribWart.Apply
   , ContribWart.ExposedTuples
+  , ContribWart.MissingOverride
   , ContribWart.OldTime
+  , ContribWart.RefinedClasstag
   , ContribWart.SealedCaseClass
   , ContribWart.SomeApply
   //ContribWart.SymbolicName
+  //ContribWart.UnintendedLaziness
   //ContribWart.UnsafeInheritance
   , ExtraWart.EnumerationPartial
   , ExtraWart.FutureObject
