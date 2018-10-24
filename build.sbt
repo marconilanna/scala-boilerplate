@@ -101,7 +101,7 @@ val projectLayout = Seq(
 
 val coreScalacOptions = Seq(
   "-encoding", utf8 // Specify character encoding used by source files
-//"-release 8" // Compile for a specific version of the Java platform (only supported on Java 9 and higher)
+//"-release 11" // Compile for a specific version of the Java platform (supported by Java 9 and higher)
 , "-target:jvm-" + lib.v.jvm // Target platform for object files
 , "-Xexperimental" // Enable experimental extensions
 , "-Xfuture" // Turn on future language features
@@ -143,8 +143,8 @@ val commonScalacOptions = Seq(
 , "-Ywarn-extra-implicit" // Warn when more than one implicit parameter section is defined
 , "-Ywarn-macros:before" // Enable lint warnings on macro expansions (see list below)
 , "-Ywarn-numeric-widen" // Warn when numerics are widened
-, "-Ywarn-self-implicit" // "Warn when an implicit resolves to an enclosing self-definition
-, "-Ywarn-unused:_" // Enable or disable specific (see list below)
+, "-Ywarn-self-implicit" // Warn when an implicit resolves to an enclosing self-definition
+, "-Ywarn-unused:_" // Enable or disable specific unused warnings (see list below)
 )
 
 val compileScalacOptions = Seq(
@@ -382,7 +382,7 @@ val sbtOptions = Seq(
   }
   // Do not exit sbt when Ctrl-C is used to stop a running app
 , cancelable in Global := true
-, logLevel in Global := Level.Info
+, logLevel in Global := { if (insideCI.value) Level.Error else Level.Info }
 , logBuffered in Test := false
 , showSuccess := true
 , showTiming := true

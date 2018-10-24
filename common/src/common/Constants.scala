@@ -17,6 +17,7 @@ package project.common
 
 object Constants extends Constants
 
+// $COVERAGE-OFF$
 trait Constants {
   /**
    * Pre-defined constants to exclude a specific piece of code from one or more Scapegoat checks

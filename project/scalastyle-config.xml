@@ -101,7 +101,7 @@ limitations under the License.
   </check>
   <check class="org.scalastyle.file.RegexChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">case\s+[^:]+:\s+(?:Throwable|Exception|VirtualMachineError|ThreadDeath|InterruptedException|LinkageError|ControlThrowable)\s+=></parameter>
+      <parameter name="regex">case\s+[^:(]+:\s*(?:Throwable|Exception|VirtualMachineError|ThreadDeath|InterruptedException|LinkageError|ControlThrowable)\b</parameter>
       <parameter name="line">true</parameter>
     </parameters>
     <customMessage>Do not catch Throwable or Exception, use scala.util.control.NonFatal instead</customMessage>
@@ -119,7 +119,7 @@ limitations under the License.
   </check>
   <check class="org.scalastyle.scalariform.ClassTypeParameterChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[A-Z_]$</parameter>
+      <parameter name="regex">^[A-Z][a-zA-Z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.CovariantEqualsChecker" enabled="true" level="error"/>

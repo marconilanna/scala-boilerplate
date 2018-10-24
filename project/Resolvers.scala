@@ -19,6 +19,10 @@ import sbt.toRepositoryName
 object Resolvers extends Resolvers
 
 trait Resolvers {
+  val public = "public"
+  val releases = "releases"
+  val snapshots = "snapshots"
+
   // Default repositories
   def bintray(owner: String, repo: String) = bintrayRepo(owner, repo)
   def bintrayIvy(owner: String, repo: String) = bintrayIvyRepo(owner, repo)
@@ -28,15 +32,15 @@ trait Resolvers {
   def sbtPlugin(status: String) = sbtPluginRepo(status)
   def sbtIvy(status: String) = sbtIvyRepo(status)
 
-  val sonatypePublic = sonatypeRepo("public")
-  val sonatypeReleases = sonatypeRepo("releases")
-  val sonatypeSnapshots = sonatypeRepo("snapshots")
+  val sonatypePublic = sonatypeRepo(public)
+  val sonatypeReleases = sonatypeRepo(releases)
+  val sonatypeSnapshots = sonatypeRepo(snapshots)
 
-  val typesafeReleases = typesafeRepo("releases")
-  val typesafeSnapshots = typesafeRepo("snapshots")
+  val typesafeReleases = typesafeRepo(releases)
+  val typesafeSnapshots = typesafeRepo(snapshots)
 
-  val typesafeIvyReleases = typesafeIvyRepo("releases")
-  val typesafeIvySnapshots = typesafeIvyRepo("snapshots")
+  val typesafeIvyReleases = typesafeIvyRepo(releases)
+  val typesafeIvySnapshots = typesafeIvyRepo(snapshots)
 
   // File repositories
   def user(id: String) = defaultUserFileRepository(id)
