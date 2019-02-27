@@ -75,6 +75,20 @@ Coverage reports are saved to `target/scala-2.12/scoverage-report/`.
 
 The `coverage` command is sticky; to turn it off, use `coverageOff`.
 
+Microbenchmarking
+-----------------
+
+The `jmh` subproject showcases the `sbt-jmh`
+[microbenchmarking](http://openjdk.java.net/projects/code-tools/jmh/)
+[plugin](http://github.com/ktoso/sbt-jmh).
+
+To execute a sample benchmark, use the `jmh/jmh:run project.jmh.BenchmarkExample` task.
+Use `jmh/jmh:clean` if things get weird or `jmh:run -h` to display the full list of options.
+
+For more information, refer to the
+[project documentation](http://jar-download.com/artifacts/org.openjdk.jmh/jmh-core/1.21/documentation) or
+[samples in Scala](https://github.com/ktoso/sbt-jmh/tree/master/plugin/src/sbt-test/sbt-jmh/run/src/main/scala/org/openjdk/jmh/samples)
+
 Database migration
 ------------------
 

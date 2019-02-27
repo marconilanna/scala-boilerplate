@@ -46,6 +46,14 @@ lazy val module = project.settings(
   common % withTests
 )
 
+lazy val jmh = project.settings(
+  commonSettings
+, scalacOptions -= valueDiscard
+).dependsOn(
+  common
+  // add the project you are benchmarking here
+).enablePlugins(JmhPlugin)
+
 lazy val commonSettings =
   projectMetadata ++
   projectLayout ++
@@ -147,8 +155,10 @@ val commonScalacOptions = Seq(
 , "-Ywarn-unused:_" // Enable or disable specific unused warnings (see list below)
 )
 
+val valueDiscard = "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
+
 val compileScalacOptions = Seq(
-  "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
+  valueDiscard
 )
 
 val testScalacOptions = Seq(
