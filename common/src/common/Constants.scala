@@ -196,10 +196,13 @@ trait Constants {
     // http://github.com/wartremover/wartremover-contrib/
     final val Apply = "org.wartremover.contrib.warts.Apply"
     final val ExposedTuples = "org.wartremover.contrib.warts.ExposedTuples"
+    final val MissingOverride = "org.wartremover.contrib.warts.MissingOverride"
     final val OldTime = "org.wartremover.contrib.warts.OldTime"
+    final val RefinedClasstag = "org.wartremover.contrib.warts.RefinedClasstag"
     final val SealedCaseClass = "org.wartremover.contrib.warts.SealedCaseClass"
     final val SomeApply = "org.wartremover.contrib.warts.SomeApply"
     final val SymbolicName = "org.wartremover.contrib.warts.SymbolicName"
+    final val UnintendedLaziness = "org.wartremover.contrib.warts.UnintendedLaziness"
     final val UnsafeInheritance = "org.wartremover.contrib.warts.UnsafeInheritance"
 
     // http://github.com/danielnixon/extrawarts
