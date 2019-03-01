@@ -15,8 +15,6 @@
  */
 package project
 
-import org.mockito.Mockito.when
-
 import scala.concurrent.Future
 import scala.util.Random
 
@@ -47,7 +45,7 @@ class SampleAsyncSpec extends AsyncSpec {
         // async tests must end with assertion; use `succeed` if they don't
         succeed
       }
-      // but be careful to not put it here, outside the future mapping
+      // but be careful to not put `succeed` here, outside the future mapping
     }
   }
 
@@ -59,7 +57,7 @@ class SampleAsyncSpec extends AsyncSpec {
     val obj = mock[AnyRef]
 
     // common expectations
-    when(obj.toString) thenReturn expected
+    obj.toString shouldReturn expected
 
     // helper functions
 

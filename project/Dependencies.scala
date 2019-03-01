@@ -102,6 +102,7 @@ trait Dependencies {
   val akkaStreamTestkit = "com.typesafe.akka"          %% "akka-stream-testkit"   % v.akka      % Test
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"          % v.akka      % Test
   val mockito           = "org.mockito"                 % "mockito-core"          % "2.25.0"    % Test
+  val mockitoScala      = "org.mockito"                %% "mockito-scala"         % "1.2.0"     % Test
   val scalatest         = "org.scalatest"              %% "scalatest"             % "3.0.6"     % Test
   val selenium          = "org.seleniumhq.selenium"     % "selenium-java"         % "3.141.59"  % Test
   val slf4jNop          = "org.slf4j"                   % "slf4j-nop"             % "1.7.26"    % Test
@@ -117,7 +118,7 @@ trait Dependencies {
   )
 
   val testDependencies = Seq(
-    mockito
+    mockitoScala
   , scalatest
   )
 
@@ -129,6 +130,7 @@ trait Dependencies {
   , macwireUtil, nscalaTime, quicklens, scalaCompiler, scalaLibrary, scalaReflect, scalaLogging
   , scalameta, scalametaContrib, slick, slickHikaricp, sttp, tsec, tsecBouncy, tsecCipher, tsecHash
   , tsecJwtMac, tsecJwtSig, tsecMac, tsecPassword, tsecSignature, akkaHttpTestkit, akkaStreamTestkit
-  , akkaTestkit, mockito, scalatest, selenium, slf4jNop, slickTestkit, linter, macrosParadise
+  , akkaTestkit, mockito, mockitoScala, scalatest, selenium, slf4jNop, slickTestkit, linter
+  , macrosParadise
   ) map (_.withSources.withJavadoc)
 }

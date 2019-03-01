@@ -15,8 +15,6 @@
  */
 package project
 
-import org.mockito.Mockito.when
-
 class SampleSpec extends Spec {
   "Test:" - {
     "Sample test" in new Context {
@@ -35,7 +33,7 @@ class SampleSpec extends Spec {
     val obj = mock[AnyRef]
 
     // common expectations
-    when(obj.toString) thenReturn expected
+    obj.toString shouldReturn expected
 
     // helper functions
 
