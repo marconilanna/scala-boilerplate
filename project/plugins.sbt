@@ -23,7 +23,7 @@ resolvers ++= Seq(
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 
 // http://github.com/wartremover/wartremover
-addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.4.1")
+addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.4.2")
 
 // http://github.com/wartremover/wartremover-contrib/
 addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.3.0")
