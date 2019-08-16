@@ -148,7 +148,7 @@ to create Eclipse project definitions.
 License
 -------
 
-Copyright 2011-2018 Marconi Lanna
+Copyright 2011-2019 Marconi Lanna
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
