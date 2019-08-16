@@ -8,8 +8,8 @@ Assortment of default settings, best practices, and general goodies for Scala pr
 Scala REPL
 ----------
 
-The `console` and `consoleQuick` sbt tasks start the Scala REPL with a few commonly used imports such
-as `JavaConverters`, `collection.mutable`, `Future`, `Random`, `Try` and `NonFatal` already in scope.
+The `console` and `consoleQuick` sbt tasks start the Scala REPL with commonly used imports such as
+`JavaConverters`, `collection.mutable`, `Future`, `Random`, `Try` and `NonFatal` already in scope.
 
 The REPL also defines a `desugar` macro that expands an expression to its desugared form and inferred type.
 Try, for instance, `desugar(1 to 3)`.
