@@ -59,6 +59,7 @@ lazy val commonSettings =
   projectLayout ++
   scalacConfiguration ++
   scaladocConfiguration ++
+  javacConfiguration ++
   dependencies ++
   sbtOptions ++
   staticAnalysis ++
@@ -71,13 +72,12 @@ val withTests = "compile->compile;test->test"
  */
 
 val projectMetadata = Seq(
-  version := "0.1"
 //organization := "org.example"
 //organizationName := "Example, Inc."
 //organizationHomepage := Option(url("http://example.org"))
 //homepage := Option(url("http://example.org/project"))
 //apiURL := Option(url("http://example.org/project/api"))
-, startYear := Option(2011)
+  startYear := Option(2011)
 , licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
   // "MIT " -> url("https://opensource.org/licenses/MIT")
   // "BSD-2-Clause" -> url("https://opensource.org/licenses/BSD-2-Clause")
@@ -109,7 +109,7 @@ val projectLayout = Seq(
 
 val coreScalacOptions = Seq(
   "-encoding", utf8 // Specify character encoding used by source files
-//"-release 11" // Compile for a specific version of the Java platform (supported by Java 9 and higher)
+//"-release 11" // Compile for a specific version of the Java platform (Java 9 and higher)
 , "-target:jvm-" + lib.v.jvm // Target platform for object files
 , "-Xexperimental" // Enable experimental extensions
 , "-Xfuture" // Turn on future language features
@@ -279,7 +279,7 @@ val javacConfiguration = Seq(
   , "-g:none" // Generate no debugging info
   , "-target", lib.v.jvm // Generate class files for specific VM version
   , "-Werror" // Terminate compilation if warnings occur
-  , "-Xdoclint:all" // Enable recommended checks for problems in javadoc comments
+  //"-Xdoclint:all" // Enable recommended checks for problems in javadoc comments
   , "-Xlint:all" // Enable recommended warnings (see list below)
   )
 )
@@ -342,7 +342,7 @@ import
 , java.net._
 , java.nio.file._
 , java.time.{Duration => jDuration, _}
-, java.util.{Locale, UUID}
+, java.util.{Date, Locale, UUID}
 , java.util.regex.{Matcher, Pattern}
 , System.{currentTimeMillis => now, nanoTime}
 
@@ -392,6 +392,10 @@ val sbtOptions = Seq(
   }
   // Do not exit sbt when Ctrl-C is used to stop a running app
 , cancelable in Global := true
+, fork in run := true
+, trapExit := false
+, connectInput := true
+, outputStrategy := Option(StdoutOutput)
 , logLevel in Global := { if (insideCI.value) Level.Error else Level.Info }
 , logBuffered in Test := false
 , showSuccess := true

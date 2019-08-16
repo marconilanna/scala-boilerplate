@@ -19,6 +19,7 @@ import sbt.toRepositoryName
 object Resolvers extends Resolvers
 
 trait Resolvers {
+  val maven = "maven"
   val public = "public"
   val releases = "releases"
   val snapshots = "snapshots"
