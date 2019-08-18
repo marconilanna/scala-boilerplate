@@ -26,7 +26,7 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.4.2")
 
 // http://github.com/wartremover/wartremover-contrib/
-addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.3.0")
+addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.3.1")
 
 // http://github.com/danielnixon/extrawarts
 addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
@@ -35,26 +35,25 @@ addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
 // http://github.com/sksamuel/sbt-scapegoat
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.9")
 
-// http://github.com/scala-ide/scalariform
-// http://github.com/sbt/sbt-scalariform
-//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.2")
-
-// http://scalameta.org/scalafmt
-// http://github.com/lucidsoftware/neo-sbt-scalafmt
-//addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.16")
-
 // http://github.com/scoverage/sbt-scoverage
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0")
 
 // http://github.com/ktoso/sbt-jmh
-addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.3.4")
+addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.3.7")
 
 // http://flywaydb.org/documentation/sbt/
-addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.2.0")
+addSbtPlugin("io.github.davidmweber" % "flyway-sbt" % "5.2.0")
+
+// http://github.com/scala-ide/scalariform
+// http://github.com/sbt/sbt-scalariform
+//addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.3")
+
+// http://scalameta.org/scalafmt
+//addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.0.3")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.4.0")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.4.2")
 
 // http://github.com/jrudolph/sbt-dependency-graph
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.9.2")
@@ -72,7 +71,7 @@ addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.3")
 addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.2.0")
 
 // http://github.com/coursier/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.1.0-M11")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "2.0.0-RC3-3")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
