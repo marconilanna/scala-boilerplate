@@ -446,6 +446,7 @@ addCommandAlias("du", "dependencyUpdates")
 addCommandAlias("rdu", ";reload ;dependencyUpdates")
 addCommandAlias("ru", ";reload ;test:update")
 addCommandAlias("tc", "test:compile")
+addCommandAlias("testCoverage", ";clean ;coverageOn ;test ;coverageAggregate ;coverageOff")
 
 // Uncomment to enable offline mode
 //offline in ThisBuild := true
@@ -801,7 +802,7 @@ val staticAnalysis =
 val codeCoverage = Seq(
   coverageMinimum := 90
 , coverageFailOnMinimum := true
-, coverageOutputCobertura := false
+, coverageOutputCobertura := true
 , coverageOutputHTML := true
 , coverageOutputXML := false
 )

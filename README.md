@@ -2,6 +2,7 @@ Scala Boilerplate
 =================
 
 [![Build Status](https://travis-ci.org/marconilanna/scala-boilerplate.svg)](https://travis-ci.org/marconilanna/scala-boilerplate)
+[![Coverage Status](https://coveralls.io/repos/github/marconilanna/scala-boilerplate/badge.svg)](https://coveralls.io/github/marconilanna/scala-boilerplate)
 
 Assortment of default settings, best practices, and general goodies for Scala projects.
 

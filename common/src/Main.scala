@@ -17,6 +17,7 @@ package project
 
 import project.util.Logging
 
+// $COVERAGE-OFF$
 object Main extends Logging {
   def main(args: Array[String]): Unit = {
     args foreach {

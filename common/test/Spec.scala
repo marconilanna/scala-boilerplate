@@ -91,7 +91,6 @@ trait SpecLike
   with EitherValues
   with OptionValues
   with TryValues
-  with Mocking
 
 trait Mocking
   extends IdiomaticMockito
@@ -159,6 +158,7 @@ object Mocking {
 abstract class Spec
   extends FreeSpec
   with SpecLike
+  with Mocking
 
 /**
  * Base class for non-blocking asynchronous tests.
@@ -173,3 +173,4 @@ abstract class Spec
 abstract class AsyncSpec
   extends AsyncFreeSpec
   with SpecLike
+  with Mocking

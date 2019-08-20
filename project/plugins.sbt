@@ -37,6 +37,8 @@ addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.9")
 
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0")
+// http://github.com/scoverage/sbt-coveralls
+addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.2.7")
 
 // http://github.com/ktoso/sbt-jmh
 addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.3.7")
