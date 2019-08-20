@@ -143,8 +143,8 @@
                         <a href="Main$.html" title="">Main</a>
                       </li><li class="current-entities indented1">
                         <a class="object" href="Mocking$.html" title=""></a>
-                        <a class="trait" href="Mocking.html" title=""></a>
-                        <a href="Mocking.html" title="">Mocking</a>
+                        <a class="trait" href="Mocking.html" title="Base trait for mocking."></a>
+                        <a href="Mocking.html" title="Base trait for mocking.">Mocking</a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
                         <a class="class" href="SampleAsyncSpec.html" title=""></a>
@@ -189,9 +189,9 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Base class for non-blocking asynchronous tests.</p><p>Based on <a href="http://doc.scalatest.org/3.0.0/index.html#org.scalatest.AsyncFreeSpec" target="_blank"><code>AsyncFreeSpec</code></a>:
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Base class for non-blocking asynchronous tests.</p><p>Based on <a href="http://doc.scalatest.org/3.0.8/org/scalatest/AsyncFreeSpec.html" target="_blank"><code>AsyncFreeSpec</code></a>:
 nested tests are written inside text clauses denoted with the dash operator (-).
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://doc.scalatest.org/3.0.0/index.html#org.scalatest.AsyncFreeSpec" target="_blank"><code>AsyncFreeSpec</code></a></p></span><span class="cmt"><p><a href="Spec.html" class="extype" name="project.Spec"><code>Spec</code></a> for general tests</p></span><span class="cmt"><p><a href="SpecLike.html" class="extype" name="project.SpecLike"><code>SpecLike</code></a> base trait</p></span></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://doc.scalatest.org/3.0.8/org/scalatest/AsyncFreeSpec.html" target="_blank"><code>AsyncFreeSpec</code></a></p></span><span class="cmt"><p><a href="Spec.html" class="extype" name="project.Spec"><code>Spec</code></a> for general tests</p></span><span class="cmt"><p><a href="SpecLike.html" class="extype" name="project.SpecLike"><code>SpecLike</code></a> base trait</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -3131,7 +3131,7 @@ nested tests are written inside text clauses denoted with the dash operator (-).
       
       <p class="shortcomment cmt">Allows a chain of method calls to be stubbed at once.</p><div class="fullcomment"><div class="comment cmt"><p>Allows a chain of method calls to be stubbed at once.
 Falls back to <code>SmartNull</code>, pointing out the line where the unstubbed method was called.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the class to be mocked</p></dd><dt>returns</dt><dd class="cmt"><p>a mock object with <code>Answer</code> <code>RETURNS_DEEP_STUBS</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Mocking.html" class="extype" name="project.Mocking">Mocking</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="https://static.javadoc.io/org.mockito/mockito-core/2.24.5/org/mockito/Mockito.html#RETURNS_DEEP_STUBS" target="_blank"><code>RETURNS_DEEP_STUBS</code></a></p></span><span class="cmt"><p><a href="https://static.javadoc.io/org.mockito/mockito-core/2.24.5/org/mockito/Mockito.html#RETURNS_SMART_NULLS" target="_blank"><code>RETURNS_SMART_NULLS</code></a></p></span></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the class to be mocked</p></dd><dt>returns</dt><dd class="cmt"><p>a mock object with <code>Answer</code> <code>RETURNS_DEEP_STUBS</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Mocking.html" class="extype" name="project.Mocking">Mocking</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_DEEP_STUBS" target="_blank"><code>RETURNS_DEEP_STUBS</code></a></p></span><span class="cmt"><p><a href="http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_SMART_NULLS" target="_blank"><code>RETURNS_SMART_NULLS</code></a></p></span></dd></dl></div>
     </li><li name="project.Mocking#mockEmptyValues" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mockEmptyValues[T&lt;:AnyRef](implicitevidence$3:scala.reflect.ClassTag[T],implicitevidence$4:reflect.runtime.universe.WeakTypeTag[T]):T"></a><a id="mockEmptyValues[T&lt;:AnyRef](ClassTag[T],scala.reflect.api.JavaUniverse.WeakTypeTag[T]):T"></a>
       <span class="permalink">
@@ -3150,7 +3150,7 @@ Falls back to <code>SmartNull</code>, pointing out the line where the unstubbed 
       <p class="shortcomment cmt">Unstubbed method invocations return an &quot;empty&quot; object for well known types.</p><div class="fullcomment"><div class="comment cmt"><p>Unstubbed method invocations return an &quot;empty&quot; object for well known types.
 Falls back to <code>SmartNull</code>, pointing out the line where the unstubbed method was called.</p><p>First tries to return ordinary values (zeros, empty collections, empty string, etc.)
 then it tries to return <code>SmartNull</code>, or plain <code>null</code> if the return type is final.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the class to be mocked</p></dd><dt>returns</dt><dd class="cmt"><p>a mock object with <code>DefaultAnswer</code> <code>ReturnsEmptyValues</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Mocking.html" class="extype" name="project.Mocking">Mocking</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="https://static.javadoc.io/org.mockito/mockito-core/2.24.5/org/mockito/Mockito.html#RETURNS_SMART_NULLS" target="_blank"><code>RETURNS_SMART_NULLS</code></a></p></span></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the class to be mocked</p></dd><dt>returns</dt><dd class="cmt"><p>a mock object with <code>DefaultAnswer</code> <code>ReturnsEmptyValues</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Mocking.html" class="extype" name="project.Mocking">Mocking</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_SMART_NULLS" target="_blank"><code>RETURNS_SMART_NULLS</code></a></p></span></dd></dl></div>
     </li><li name="project.Mocking#mockReturnsSelf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mockReturnsSelf[T&lt;:AnyRef](implicitevidence$5:scala.reflect.ClassTag[T],implicitevidence$6:reflect.runtime.universe.WeakTypeTag[T]):T"></a><a id="mockReturnsSelf[T&lt;:AnyRef](ClassTag[T],scala.reflect.api.JavaUniverse.WeakTypeTag[T]):T"></a>
       <span class="permalink">
@@ -3170,7 +3170,7 @@ then it tries to return <code>SmartNull</code>, or plain <code>null</code> if th
 that returns a type equal to the class or a superclass.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the mock itself whenever an unstubbed method is invoked
 that returns a type equal to the class or a superclass.
 Falls back to <code>SmartNull</code>, pointing out the line where the unstubbed method was called.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the class to be mocked</p></dd><dt>returns</dt><dd class="cmt"><p>a mock object with <code>Answer</code> <code>RETURNS_SELF</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Mocking.html" class="extype" name="project.Mocking">Mocking</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="https://static.javadoc.io/org.mockito/mockito-core/2.24.5/org/mockito/Mockito.html#RETURNS_SELF" target="_blank"><code>RETURNS_SELF</code></a></p></span><span class="cmt"><p><a href="https://static.javadoc.io/org.mockito/mockito-core/2.24.5/org/mockito/Mockito.html#RETURNS_SMART_NULLS" target="_blank"><code>RETURNS_SMART_NULLS</code></a></p></span></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the class to be mocked</p></dd><dt>returns</dt><dd class="cmt"><p>a mock object with <code>Answer</code> <code>RETURNS_SELF</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Mocking.html" class="extype" name="project.Mocking">Mocking</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_SELF" target="_blank"><code>RETURNS_SELF</code></a></p></span><span class="cmt"><p><a href="http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_SMART_NULLS" target="_blank"><code>RETURNS_SMART_NULLS</code></a></p></span></dd></dl></div>
     </li><li name="org.mockito.MockitoEnhancer#mockingDetails" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mockingDetails(toInspect:AnyRef):org.mockito.MockingDetails"></a><a id="mockingDetails(AnyRef):MockingDetails"></a>
       <span class="permalink">
