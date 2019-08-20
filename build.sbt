@@ -83,13 +83,13 @@ val projectMetadata = Seq(
 //apiURL := Option(url("http://example.org/project/api"))
   startYear := Option(2011)
 , licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html")
-  // "MIT " -> url("https://opensource.org/licenses/MIT")
-  // "BSD-2-Clause" -> url("https://opensource.org/licenses/BSD-2-Clause")
-  // "BSD-3-Clause" -> url("https://opensource.org/licenses/BSD-3-Clause")
+  // "MIT " -> url("http://opensource.org/licenses/MIT")
+  // "BSD-2-Clause" -> url("http://opensource.org/licenses/BSD-2-Clause")
+  // "BSD-3-Clause" -> url("http://opensource.org/licenses/BSD-3-Clause")
   // "GPL-2.0" -> url("http://www.gnu.org/licenses/gpl-2.0.html")
-  // "LGPL-2.1" -> url("https://www.gnu.org/licenses/lgpl-2.1.html")
+  // "LGPL-2.1" -> url("http://www.gnu.org/licenses/lgpl-2.1.html")
 , developers := List(
-    Developer("marconilanna", "Marconi Lanna", "@marconilanna", url("https://github.com/marconilanna"))
+    Developer("marconilanna", "Marconi Lanna", "@marconilanna", url("http://github.com/marconilanna"))
   )
 )
 

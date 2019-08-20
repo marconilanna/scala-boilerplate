@@ -44,7 +44,7 @@ addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.2.7")
 // http://github.com/ktoso/sbt-jmh
 addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.3.7")
 
-// http://flywaydb.org/documentation/sbt/
+// http://github.com/flyway/flyway-sbt
 addSbtPlugin("io.github.davidmweber" % "flyway-sbt" % "5.2.0")
 
 // http://github.com/scala-ide/scalariform

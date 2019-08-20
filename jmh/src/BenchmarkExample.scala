@@ -38,7 +38,7 @@ import scala.util.Random
  * - [[http://openjdk.java.net/projects/code-tools/jmh/ Project homepage]]
  * - [[http://jar-download.com/artifacts/org.openjdk.jmh/jmh-core/1.21/documentation Javadocs]]
  * - [[http://github.com/ktoso/sbt-jmh sbt plugin]]
- * - [[https://bit.ly/2CKKao3 Samples in Scala]]
+ * - [[http://bit.ly/2CKKao3 Samples in Scala]]
  */
 @BenchmarkMode(Array(Mode.AverageTime))
 class BenchmarkExample {

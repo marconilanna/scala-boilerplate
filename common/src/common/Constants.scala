@@ -108,6 +108,7 @@ trait Constants {
     final val ParameterlessMethodReturnsUnit = "ParameterlessMethodReturnsUnit"
     final val PartialFunctionInsteadOfMatch = "PartialFunctionInsteadOfMatch"
     final val PointlessTypeBounds = "PointlessTypeBounds"
+    final val PreferMapEmpty = "PreferMapEmpty"
     final val PreferSeqEmpty = "PreferSeqEmpty"
     final val PreferSetEmpty = "PreferSetEmpty"
     final val ProductWithSerializableInferred = "ProductWithSerializableInferred"

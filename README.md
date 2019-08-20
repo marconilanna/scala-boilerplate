@@ -88,7 +88,7 @@ Use `jmh/jmh:clean` if things get weird or `jmh:run -h` to display the full list
 
 For more information, refer to the
 [project documentation](http://jar-download.com/artifacts/org.openjdk.jmh/jmh-core/1.21/documentation) or
-[samples in Scala](https://github.com/ktoso/sbt-jmh/tree/master/plugin/src/sbt-test/sbt-jmh/run/src/main/scala/org/openjdk/jmh/samples)
+[samples in Scala](http://github.com/ktoso/sbt-jmh/tree/master/plugin/src/sbt-test/sbt-jmh/run/src/main/scala/org/openjdk/jmh/samples)
 
 Database migration
 ------------------
