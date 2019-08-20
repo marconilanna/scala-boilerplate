@@ -24,10 +24,14 @@ lazy val root = project.in(file(".")).settings(
   name := "PROJECT"
 , description := "PROJECT DESCRIPTION"
 , commonSettings
+, scaladocPublishing
 , libraryDependencies ++= lib.allDependencies // for dependencyUpdates task
 ).aggregate(
   common
 , module
+).enablePlugins(
+  GhpagesPlugin
+, ScalaUnidocPlugin
 )
 
 lazy val common = project.settings(
@@ -267,6 +271,19 @@ val scaladocConfiguration = Seq(
   )
 , scalacOptions in (Compile, doc) := coreScalacOptions ++ Seq("-author", "-groups", "-implicits")
 , scalacOptions in (Test, doc) := scalacOptions.in(Compile, doc).value
+)
+
+/*
+ * Scaladoc publishing (Scala Unidoc, sbt-site, GitHub Pages)
+ */
+
+val scaladocPublishing = Seq(
+  addMappingsToSiteDir(mappings.in(ScalaUnidoc, packageDoc), siteSubdirName.in(ScalaUnidoc))
+, ghpagesNoJekyll := true
+, git.remoteRepo := "git@github.com:marconilanna/scala-boilerplate.git"
+//scalacOptions in (ScalaUnidoc, unidoc) += "-Ymacro-expand:none"
+, siteSubdirName in ScalaUnidoc := "/"
+, unidocConfigurationFilter in (ScalaUnidoc, unidoc) := inConfigurations(Compile, Test)
 )
 
 /*

@@ -37,6 +37,7 @@ addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.9")
 
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0")
+
 // http://github.com/scoverage/sbt-coveralls
 addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.2.7")
 
@@ -52,6 +53,15 @@ addSbtPlugin("io.github.davidmweber" % "flyway-sbt" % "5.2.0")
 
 // http://scalameta.org/scalafmt
 //addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.0.3")
+
+// http://github.com/sbt/sbt-unidoc
+addSbtPlugin("com.eed3si9n" % "sbt-unidoc" % "0.4.2")
+
+// http://github.com/sbt/sbt-site
+addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.4.0")
+
+// http://github.com/sbt/sbt-ghpages
+addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.6.3")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
