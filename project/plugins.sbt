@@ -63,6 +63,12 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.4.0")
 // http://github.com/sbt/sbt-ghpages
 addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.6.3")
 
+// http://github.com/sbt/sbt-pgp
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.2")
+
+// http://github.com/xerial/sbt-sonatype
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.5")
+
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.4.2")

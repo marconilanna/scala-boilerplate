@@ -66,6 +66,7 @@ lazy val commonSettings =
   javacConfiguration ++
   dependencies ++
   sbtOptions ++
+  publishing ++
   staticAnalysis ++
   codeCoverage
 
@@ -402,6 +403,7 @@ val sbtOptions = Seq(
     .dependsOn(cleanCache.toTask(""))
     .dependsOn(cleanLocal.toTask(""))
     .value
+, credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
   // Share history among all projects instead of using a different history for each project
 , historyPath := Option(target.in(LocalRootProject).value / ".history")
 , cleanKeepFiles := cleanKeepFiles.value filterNot { file =>
@@ -467,6 +469,23 @@ addCommandAlias("testCoverage", ";clean ;coverageOn ;test ;coverageAggregate ;co
 
 // Uncomment to enable offline mode
 //offline in ThisBuild := true
+
+/*
+ * Publishing settings
+ */
+
+import xerial.sbt.Sonatype.GitHubHosting
+val publishing = Seq(
+  scmInfo := Option(ScmInfo(
+    url("http://github.com/marconilanna/scala-boilerplate"),
+    "scm:git@github.com:marconilanna/scala-boilerplate.git"
+  ))
+//sonatypeProfileName := ""
+//sonatypeProjectHosting := Option(GitHubHosting("username", "projectName", "user@example.com"))
+, pomIncludeRepository := { _ => false }
+, publishTo := sonatypePublishTo.value
+, publishMavenStyle := true
+)
 
 /*
  * Database migration
