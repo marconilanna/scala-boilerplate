@@ -265,12 +265,27 @@ privates   Warn if a private member is unused
  * Scaladoc configuration
  */
 
+def docSourceUrl(version: String) = {
+  s"http://github.com/marconilanna/scala-boilerplate/blob/${version}€{FILE_PATH_EXT}#L€{FILE_LINE}"
+}
+
 val scaladocConfiguration = Seq(
   autoAPIMappings := true
 , apiMappings += (
     scalaInstance.value.libraryJar -> url(s"http://www.scala-lang.org/api/${scalaVersion.value}/")
   )
-, scalacOptions in (Compile, doc) := coreScalacOptions ++ Seq("-author", "-groups", "-implicits")
+, scalacOptions in (Compile, doc) := coreScalacOptions ++ Seq(
+    "-author" // Include authors
+  //"-diagrams" // Create inheritance diagrams for classes, traits and packages
+  //"-doc-footer", "footer" // A footer on every Scaladoc page
+  //"-doc-root-content", "path" // The file from which the root package documentation should be imported
+  , "-doc-source-url", docSourceUrl("v" + version.value) // A URL pattern used to link to the source file
+  , "-doc-title", "Scala Boilerplate" // The overall name of the Scaladoc site
+  , "-doc-version", version.value // An optional version number, to be appended to the title
+  , "-groups" // Group similar functions together (based on the @group annotation)
+  , "-implicits" // Document members inherited by implicit conversions
+  , "-sourcepath", baseDirectory.in(ThisBuild).value.toString // To obtain a relative path for €{FILE_PATH_EXT} instead of an absolute one
+  )
 , scalacOptions in (Test, doc) := scalacOptions.in(Compile, doc).value
 )
 
