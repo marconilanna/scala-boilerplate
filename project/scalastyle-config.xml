@@ -112,6 +112,7 @@ limitations under the License.
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.BlockImportChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.CaseBraceChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.ClassNamesChecker" enabled="true" level="error">
     <parameters>
       <parameter name="regex">^[A-Z][a-zA-Z0-9]*$</parameter>
@@ -123,6 +124,7 @@ limitations under the License.
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.CovariantEqualsChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.CurliesImportChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.CyclomaticComplexityChecker" enabled="true" level="error">
     <parameters>
       <parameter name="maximum">10</parameter>
@@ -159,7 +161,12 @@ limitations under the License.
       <parameter name="objectFieldRegex">^[a-zA-Z0-9]+$</parameter>
     </parameters>
   </check>
-  <check class="org.scalastyle.scalariform.ForBraceChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.ForBraceChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="singleLineAllowed">true</parameter>
+    </parameters>
+  </check>
+  <check class="org.scalastyle.scalariform.ForLoopChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.IfBraceChecker" enabled="true" level="error">
     <parameters>
       <parameter name="singleLineAllowed">true</parameter>
@@ -204,6 +211,7 @@ limitations under the License.
     <parameters>
       <parameter name="maxLength">50</parameter>
       <parameter name="ignoreComments">true</parameter>
+      <parameter name="ignoreEmpty">true</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.MethodNamesChecker" enabled="true" level="error">
@@ -230,7 +238,11 @@ limitations under the License.
   <check class="org.scalastyle.scalariform.NoWhitespaceAfterLeftBracketChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.NoWhitespaceBeforeLeftBracketChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.NoWhitespaceBeforeRightBracketChecker" enabled="true" level="error"/>
-  <check class="org.scalastyle.scalariform.NonASCIICharacterChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.NonASCIICharacterChecker" enabled="true" level="error">
+    <parameters>
+      <parameter name="allowStringLiterals">true</parameter>
+    </parameters>
+  </check>
   <check class="org.scalastyle.scalariform.NotImplementedErrorUsage" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.NullChecker" enabled="true" level="error">
     <parameters>
@@ -255,7 +267,7 @@ limitations under the License.
   <check class="org.scalastyle.scalariform.OverrideJavaChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.PackageNamesChecker" enabled="true" level="error">
     <parameters>
-      <parameter name="regex">^[a-z][a-zA-Z0-9]*$</parameter>
+      <parameter name="regex">^[a-z][a-z0-9]*$</parameter>
     </parameters>
   </check>
   <check class="org.scalastyle.scalariform.PackageObjectNamesChecker" enabled="true" level="error">
@@ -333,6 +345,7 @@ limitations under the License.
   <check class="org.scalastyle.scalariform.UppercaseLChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.VarFieldChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.VarLocalChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.WhileBraceChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.WhileChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.XmlLiteralChecker" enabled="true" level="error"/>
 </scalastyle>

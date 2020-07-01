@@ -18,9 +18,9 @@ resolvers ++= Seq(
 , Resolvers.sonatypeReleases
 )
 
-// http://www.scalastyle.org/
-// http://github.com/scalastyle/scalastyle-sbt-plugin
-addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
+// http://scalastyle.beautiful-scala.com
+// http://github.com/beautiful-scala/sbt-scalastyle
+addSbtPlugin("com.beautiful-scala" % "sbt-scalastyle" % "1.4.0")
 
 // http://github.com/wartremover/wartremover
 addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.4.9")
