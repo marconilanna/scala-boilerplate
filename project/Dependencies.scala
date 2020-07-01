@@ -30,7 +30,7 @@ trait Dependencies {
     val scailCommons = "1.0.0"
     val scala = "2.12.11"
     val scalatest = "3.2.0"
-    val scapegoat = "1.3.10"
+    val scapegoat = "1.4.4"
     val slick = "3.3.2"
     val slickPg = "0.19.0"
     val tsec = "0.2.1"
