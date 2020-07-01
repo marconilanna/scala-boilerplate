@@ -36,7 +36,7 @@ addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.9")
 
 // http://github.com/scoverage/sbt-scoverage
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
 
 // http://github.com/scoverage/sbt-coveralls
 addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.2.7")
@@ -45,17 +45,17 @@ addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.2.7")
 addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.3.7")
 
 // http://github.com/flyway/flyway-sbt
-addSbtPlugin("io.github.davidmweber" % "flyway-sbt" % "5.2.0")
+addSbtPlugin("io.github.davidmweber" % "flyway-sbt" % "6.4.2")
 
 // http://github.com/scala-ide/scalariform
 // http://github.com/sbt/sbt-scalariform
 //addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.8.3")
 
 // http://scalameta.org/scalafmt
-//addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.0.3")
+//addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.0")
 
 // http://github.com/sbt/sbt-unidoc
-addSbtPlugin("com.eed3si9n" % "sbt-unidoc" % "0.4.2")
+addSbtPlugin("com.eed3si9n" % "sbt-unidoc" % "0.4.3")
 
 // http://github.com/sbt/sbt-site
 addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.4.0")
@@ -64,14 +64,14 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "1.4.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.6.3")
 
 // http://github.com/sbt/sbt-pgp
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.2")
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "2.0.1")
 
 // http://github.com/xerial/sbt-sonatype
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.5")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.3")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.4.2")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.1")
 
 // http://github.com/jrudolph/sbt-dependency-graph
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.9.2")
