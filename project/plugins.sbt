@@ -88,9 +88,6 @@ addSbtPlugin("org.duhemm" % "sbt-errors-summary" % "0.6.3")
 // http://github.com/sbt/sbt-dirty-money
 addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.2.0")
 
-// http://github.com/coursier/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "2.0.0-RC3-3")
-
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
 //addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
