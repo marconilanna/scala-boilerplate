@@ -29,6 +29,7 @@ trait Dependencies {
     val quartz = "2.3.1"
     val scailCommons = "1.0.0"
     val scala = "2.12.11"
+    val scalatest = "3.2.0"
     val scapegoat = "1.3.10"
     val slick = "3.3.2"
     val tsec = "0.2.0-M1"
@@ -104,7 +105,9 @@ trait Dependencies {
   val mockito           = "org.mockito"                 % "mockito-core"            % "3.0.0"        % Test
   val mockitoScala      = "org.mockito"                %% "mockito-scala-scalatest" % "1.5.14"       % Test
   val scailCommonsTest  = "io.github.scailio"          %% "commons-test"            % v.scailCommons % Test
-  val scalatest         = "org.scalatest"              %% "scalatest"               % "3.0.8"        % Test
+  val scalatest         = "org.scalatest"              %% "scalatest-freespec"      % v.scalatest    % Test
+  val scalatestDiagrams = "org.scalatest"              %% "scalatest-diagrams"      % v.scalatest    % Test
+  val scalatestSelenium = "org.scalatestplus"          %% "selenium-3-141"          % "3.2.0.0"      % Test
   val selenium          = "org.seleniumhq.selenium"     % "selenium-java"           % "3.141.59"     % Test
   val slf4jNop          = "org.slf4j"                   % "slf4j-nop"               % "1.7.28"       % Test
   val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"           % v.slick        % Test
@@ -121,6 +124,7 @@ trait Dependencies {
   val testDependencies = Seq(
     mockitoScala
   , scalatest
+  , scalatestDiagrams
   )
 
   val allDependencies = Seq( // for dependencyUpdates task

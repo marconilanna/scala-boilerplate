@@ -451,9 +451,6 @@ val sbtOptions = Seq(
     //    replace with G (or T) to show reminders with full (or short) stack traces
     // K: exclude canceled tests from reminder
   , "-oDI"
-    // enforce chosen testing styles
-  , "-y", "org.scalatest.FreeSpec"
-  , "-y", "org.scalatest.AsyncFreeSpec"
     // Periodic notification of slowpokes (tests that have been running longer than 30s)
   , "-W", "30", "30"
   )

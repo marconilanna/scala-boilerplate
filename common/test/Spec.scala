@@ -20,12 +20,12 @@ import org.mockito.ArgumentMatchersSugar
 import org.mockito.DefaultAnswers
 import org.mockito.IdiomaticMockito
 import org.mockito.stubbing.DefaultAnswer
-import org.scalatest.AsyncFreeSpec
-import org.scalatest.DiagrammedAssertions
 import org.scalatest.EitherValues
-import org.scalatest.FreeSpec
 import org.scalatest.OptionValues
 import org.scalatest.TryValues
+import org.scalatest.diagrams.Diagrams
+import org.scalatest.freespec.AnyFreeSpec
+import org.scalatest.freespec.AsyncFreeSpec
 
 import scala.reflect.ClassTag
 import scala.reflect.runtime.universe.WeakTypeTag
@@ -40,43 +40,43 @@ import scala.reflect.runtime.universe.WeakTypeTag
  *
  * Mixed-in traits include:
  *
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/DiagrammedAssertions.html `DiagrammedAssertions`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/diagrams/Diagrams.html `Diagrams`]]:
  *  show diagram of expression values when the assertion fails
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/EitherValues.html `EitherValues`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/EitherValues.html `EitherValues`]]:
  *  `left.value` and `right.value` methods for `Either`
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/OptionValues.html `OptionValues`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/OptionValues.html `OptionValues`]]:
  *  `value` method for `Option`
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/TryValues.html `TryValues`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/TryValues.html `TryValues`]]:
  *  `success` and `failure` methods for `Try`
  *
  * Also consider mixing:
  *
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/Inside.html `Inside`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/Inside.html `Inside`]]:
  *  make assertions about nested object graphs using pattern matching
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/Inspectors.html `Inspectors`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/Inspectors.html `Inspectors`]]:
  *  enable assertions to be made about collections
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/PartialFunctionValues.html `PartialFunctionValues`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/PartialFunctionValues.html `PartialFunctionValues`]]:
  *  `valueAt` method for `PartialFunction`
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/PrivateMethodTester.html `PrivateMethodTester`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/PrivateMethodTester.html `PrivateMethodTester`]]:
  *  testing of private methods
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/prop/TableDrivenPropertyChecks.html `TableDrivenPropertyChecks`]]:
+ *  - [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/prop/TableDrivenPropertyChecks.html `TableDrivenPropertyChecks`]]:
  *  property checks against tables of data
- *  - [[http://doc.scalatest.org/3.0.8/org/scalatest/selenium/WebBrowser.html `WebBrowser`]]:
+ *  - [[http://javadoc.io/doc/org.scalatestplus/selenium-3-141_2.12/latest/org/scalatestplus/selenium/WebBrowser.html `WebBrowser`]]:
  *  domain specific language for browser-based tests
  *
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/DiagrammedAssertions.html `DiagrammedAssertions`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/EitherValues.html `EitherValues`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/OptionValues.html `OptionValues`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/TryValues.html `TryValues`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/Inside.html `Inside`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/Inspectors.html `Inspectors`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/PartialFunctionValues.html `PartialFunctionValues`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/PrivateMethodTester.html `PrivateMethodTester`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/prop/TableDrivenPropertyChecks.html `TableDrivenPropertyChecks`]]
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/selenium/WebBrowser.html `WebBrowser`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/diagrams/Diagrams.html `Diagrams`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/EitherValues.html `EitherValues`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/OptionValues.html `OptionValues`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/TryValues.html `TryValues`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/Inside.html `Inside`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/Inspectors.html `Inspectors`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/PartialFunctionValues.html `PartialFunctionValues`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/PrivateMethodTester.html `PrivateMethodTester`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/prop/TableDrivenPropertyChecks.html `TableDrivenPropertyChecks`]]
+ * @see [[http://javadoc.io/doc/org.scalatestplus/selenium-3-141_2.12/latest/org/scalatestplus/selenium/WebBrowser.html `WebBrowser`]]
  */
 trait SpecLike
-  extends DiagrammedAssertions
+  extends Diagrams
   with EitherValues
   with OptionValues
   with TryValues
@@ -86,12 +86,12 @@ trait SpecLike
  *
  * Mixed-in traits include:
  *
- *  - [[http://static.javadoc.io/org.mockito/mockito-scala_2.12/1.5.4/org/mockito/IdiomaticMockito.html `IdiomaticMockito`]]
- *  - [[http://static.javadoc.io/org.mockito/mockito-scala_2.12/1.5.4/org/mockito/ArgumentMatchersSugar.html `ArgumentMatchersSugar`]]:
+ *  - [[http://javadoc.io/doc/org.mockito/mockito-scala_2.12/latest/org/mockito/IdiomaticMockito.html `IdiomaticMockito`]]
+ *  - [[http://javadoc.io/doc/org.mockito/mockito-scala_2.12/latest/org/mockito/ArgumentMatchersSugar.html `ArgumentMatchersSugar`]]:
  *  syntax sugar for [[http://github.com/mockito/mockito-scala Mockito]]
  *
- * @see [[http://static.javadoc.io/org.mockito/mockito-scala_2.12/1.5.4/org/mockito/IdiomaticMockito.html `IdiomaticMockito`]]
- * @see [[http://static.javadoc.io/org.mockito/mockito-scala_2.12/1.5.4/org/mockito/ArgumentMatchersSugar.html `ArgumentMatchersSugar`]]
+ * @see [[http://javadoc.io/doc/org.mockito/mockito-scala_2.12/latest/org/mockito/IdiomaticMockito.html `IdiomaticMockito`]]
+ * @see [[http://javadoc.io/doc/org.mockito/mockito-scala_2.12/latest/org/mockito/ArgumentMatchersSugar.html `ArgumentMatchersSugar`]]
  * @see [[http://github.com/mockito/mockito-scala Mockito Scala]]
  * @see [[http://github.com/mockito/mockito-scala#idiomatic-mockito Idiomatic Mockito]]
  * @see [[http://medium.com/@bruno.bonanno/introduction-to-mockito-scala-ede30769cbda Introduction to mockito-scala - Part 1]]
@@ -106,8 +106,8 @@ trait Mocking
    * Allows a chain of method calls to be stubbed at once.
    * Falls back to `SmartNull`, pointing out the line where the unstubbed method was called.
    *
-   * @see [[http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_DEEP_STUBS `RETURNS_DEEP_STUBS`]]
-   * @see [[http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
+   * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_DEEP_STUBS `RETURNS_DEEP_STUBS`]]
+   * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
    *
    * @tparam T the class to be mocked
    * @return a mock object with `Answer` `RETURNS_DEEP_STUBS`
@@ -123,7 +123,7 @@ trait Mocking
    * First tries to return ordinary values (zeros, empty collections, empty string, etc.)
    * then it tries to return `SmartNull`, or plain `null` if the return type is final.
    *
-   * @see [[http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
+   * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
    *
    * @tparam T the class to be mocked
    * @return a mock object with `DefaultAnswer` `ReturnsEmptyValues`
@@ -137,8 +137,8 @@ trait Mocking
    * that returns a type equal to the class or a superclass.
    * Falls back to `SmartNull`, pointing out the line where the unstubbed method was called.
    *
-   * @see [[http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_SELF `RETURNS_SELF`]]
-   * @see [[http://static.javadoc.io/org.mockito/mockito-core/3.0.0/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
+   * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_SELF `RETURNS_SELF`]]
+   * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
    *
    * @tparam T the class to be mocked
    * @return a mock object with `Answer` `RETURNS_SELF`
@@ -155,25 +155,25 @@ object Mocking {
 /**
  * Base class for general tests.
  *
- * Based on [[http://doc.scalatest.org/3.0.8/org/scalatest/FreeSpec.html `FreeSpec`]]:
+ * Based on [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/freespec/AnyFreeSpec.html `AnyFreeSpec`]]:
  * nested tests are written inside text clauses denoted with the dash operator (-).
  *
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/FreeSpec.html `FreeSpec`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/freespec/AnyFreeSpec.html `AnyFreeSpec`]]
  * @see [[AsyncSpec `AsyncSpec`]] for non-blocking asynchronous tests
  * @see [[SpecLike `SpecLike`]] base trait
  */
 abstract class Spec
-  extends FreeSpec
+  extends AnyFreeSpec
   with SpecLike
   with Mocking
 
 /**
  * Base class for non-blocking asynchronous tests.
  *
- * Based on [[http://doc.scalatest.org/3.0.8/org/scalatest/AsyncFreeSpec.html `AsyncFreeSpec`]]:
+ * Based on [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/freespec/AsyncFreeSpec.html `AsyncFreeSpec`]]:
  * nested tests are written inside text clauses denoted with the dash operator (-).
  *
- * @see [[http://doc.scalatest.org/3.0.8/org/scalatest/AsyncFreeSpec.html `AsyncFreeSpec`]]
+ * @see [[http://scalatest.org/scaladoc/3.2.0/org/scalatest/freespec/AsyncFreeSpec.html `AsyncFreeSpec`]]
  * @see [[Spec `Spec`]] for general tests
  * @see [[SpecLike `SpecLike`]] base trait
  */
