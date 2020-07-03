@@ -302,7 +302,9 @@ val scaladocPublishing = Seq(
 , ghpagesNoJekyll := true
 , git.remoteRepo := "git@github.com:marconilanna/scala-boilerplate.git"
 //scalacOptions in (ScalaUnidoc, unidoc) += "-Ymacro-expand:none"
-, siteSubdirName in ScalaUnidoc := "/"
+, siteSubdirName in ScalaUnidoc := version.value
+, includeFilter in ghpagesCleanSite := new sbt.io.PrefixFilter(version.value)
+, excludeFilter in ghpagesCleanSite := NothingFilter
 , unidocConfigurationFilter in (ScalaUnidoc, unidoc) := inConfigurations(Compile, Test)
 )
 
