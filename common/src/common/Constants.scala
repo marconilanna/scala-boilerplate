@@ -209,16 +209,5 @@ trait Constants {
     final val SymbolicName = "org.wartremover.contrib.warts.SymbolicName"
     final val UnintendedLaziness = "org.wartremover.contrib.warts.UnintendedLaziness"
     final val UnsafeInheritance = "org.wartremover.contrib.warts.UnsafeInheritance"
-
-    // http://github.com/danielnixon/extrawarts
-    final val EnumerationPartial = "org.danielnixon.extrawarts.EnumerationPartial"
-    final val FutureObject = "org.danielnixon.extrawarts.FutureObject"
-    final val GenMapLikePartial = "org.danielnixon.extrawarts.GenMapLikePartial"
-    final val GenTraversableLikeOps = "org.danielnixon.extrawarts.GenTraversableLikeOps"
-    final val GenTraversableOnceOps = "org.danielnixon.extrawarts.GenTraversableOnceOps"
-    final val ScalaGlobalExecutionContext = "org.danielnixon.extrawarts.ScalaGlobalExecutionContext"
-    final val StringOpsPartial = "org.danielnixon.extrawarts.StringOpsPartial"
-    final val ThrowablePartial = "org.danielnixon.extrawarts.ThrowablePartial"
-    final val TraversableOnceOps = "org.danielnixon.extrawarts.TraversableOnceOps"
   }
 }

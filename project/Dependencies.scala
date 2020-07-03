@@ -27,8 +27,7 @@ trait Dependencies {
     val jvm = "1.8"
     val macwire = "2.3.7"
     val quartz = "2.3.2"
-    val scailCommons = "1.0.0"
-    val scala = "2.12.11"
+    val scala = "2.13.3"
     val scalatest = "3.2.0"
     val scapegoat = "1.4.4"
     val slick = "3.3.2"
@@ -80,13 +79,11 @@ trait Dependencies {
   val macwireUtil       = "com.softwaremill.macwire"   %% "util"                    % v.macwire
   val nscalaTime        = "com.github.nscala-time"     %% "nscala-time"             % "2.24.0"
   val quicklens         = "com.softwaremill.quicklens" %% "quicklens"               % "1.6.0"
-  val scailCommons      = "io.github.scailio"          %% "commons"                 % v.scailCommons
   val scalaCompiler     = "org.scala-lang"              % "scala-compiler"          % v.scala
   val scalaLibrary      = "org.scala-lang"              % "scala-library"           % v.scala
   val scalaReflect      = "org.scala-lang"              % "scala-reflect"           % v.scala
   val scalaLogging      = "com.typesafe.scala-logging" %% "scala-logging"           % "3.9.2"
-  val scalameta         = "org.scalameta"              %% "scalameta"               % "4.3.18"        % Provided
-  val scalametaContrib  = "org.scalameta"              %% "contrib"                 % "4.1.6"        % Provided
+  val scalameta         = "org.scalameta"              %% "scalameta"               % "4.3.18"       % Provided
   val slick             = "com.typesafe.slick"         %% "slick"                   % v.slick
   val slickHikaricp     = "com.typesafe.slick"         %% "slick-hikaricp"          % v.slick
   val slickJoda         = "com.github.tototoshi"       %% "slick-joda-mapper"       % "2.4.2"
@@ -110,7 +107,6 @@ trait Dependencies {
   val akkaTestkit       = "com.typesafe.akka"          %% "akka-testkit"            % v.akka         % Test
   val mockito           = "org.mockito"                 % "mockito-core"            % "3.3.3"        % Test
   val mockitoScala      = "org.mockito"                %% "mockito-scala-scalatest" % "1.14.8"       % Test
-  val scailCommonsTest  = "io.github.scailio"          %% "commons-test"            % v.scailCommons % Test
   val scalatest         = "org.scalatest"              %% "scalatest-freespec"      % v.scalatest    % Test
   val scalatestDiagrams = "org.scalatest"              %% "scalatest-diagrams"      % v.scalatest    % Test
   val scalatestSelenium = "org.scalatestplus"          %% "selenium-3-141"          % "3.2.0.0"      % Test
@@ -119,8 +115,6 @@ trait Dependencies {
   val slickTestkit      = "com.typesafe.slick"         %% "slick-testkit"           % v.slick        % Test
 
   // Compiler plug-ins
-  val linter            = "org.psywerx.hairyfotr"      %% "linter"                  % "0.1.17"
-  val macrosParadise    = "org.scalamacros"             % "paradise"                % "2.1.1"        cross CrossVersion.full
 
   val commonDependencies = Seq(
     logback
@@ -140,12 +134,11 @@ trait Dependencies {
   , commonsValidator, guava, httpClient, icu4j, jBCrypt, jodaConvert, jodaMoney, jodaTime, jsoup
   , logback, modeshapeCommon, mysql, postgresql, prettyTime, quartz, quartzJobs, typesafeConfig
   , univocity, akkaActor, akkaHttp, akkaStream, betterFiles, java8Compat, macwire, macwireAkka
-  , macwireProxy, macwireUtil, nscalaTime, quicklens, scailCommons, scalaCompiler, scalaLibrary
-  , scalaReflect, scalaLogging, scalameta, scalametaContrib, slick, slickHikaricp, slickJoda
-  , slickPg, slickPgJoda, slickPgPlayJson, sttp, tsec, tsecBouncy, tsecCipher, tsecHash, tsecJwtMac
-  , tsecJwtSig, tsecMac, tsecPassword, tsecSignature, akkaHttpTestkit, akkaStreamTestkit
-  , akkaTestkit, mockito, mockitoScala, scailCommonsTest, scalatest, scalatestDiagrams
-  , scalatestSelenium, selenium, slf4jNop, slickTestkit, linter, macrosParadise
+  , macwireProxy, macwireUtil, nscalaTime, quicklens, scalaCompiler, scalaLibrary, scalaReflect
+  , scalaLogging, scalameta, slick, slickHikaricp, slickJoda, slickPg, slickPgJoda, slickPgPlayJson
+  , sttp, tsec, tsecBouncy, tsecCipher, tsecHash, tsecJwtMac, tsecJwtSig, tsecMac, tsecPassword
+  , tsecSignature, akkaHttpTestkit, akkaStreamTestkit, akkaTestkit, mockito, mockitoScala, scalatest
+  , scalatestDiagrams, scalatestSelenium, selenium, slf4jNop, slickTestkit
   ) map { dependency =>
     if (noJavadoc(dependency)) dependency.withSources
     else dependency.withSources.withJavadoc
