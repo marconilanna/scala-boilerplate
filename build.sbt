@@ -108,6 +108,8 @@ val projectLayout = Seq(
 , sourcesInBase := false
 )
 
+SettingKey[Option[String]]("ide-package-prefix") := Option("org.example.project")
+
 /*
  * scalac configuration
  */
