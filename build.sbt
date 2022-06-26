@@ -51,8 +51,8 @@ lazy val module = project.settings(
 )
 
 lazy val jmh = project.settings(
+  description := "Benchmarking code"
   commonSettings
-, scalacOptions -= valueDiscard
 ).dependsOn(
   common
   // add the project you are benchmarking here
@@ -116,8 +116,6 @@ val coreScalacOptions = Seq(
   "-encoding", utf8 // Specify character encoding used by source files
 //"-release 11" // Compile for a specific version of the Java platform (Java 9 and higher)
 , "-target:jvm-" + lib.v.jvm // Target platform for object files
-, "-Xexperimental" // Enable experimental extensions
-, "-Xfuture" // Turn on future language features
 )
 
 val commonScalacOptions = Seq(
@@ -130,40 +128,23 @@ val commonScalacOptions = Seq(
 , "-opt-inline-from:**" // Classfile names from which to allow inlining
 , "-opt-warnings:at-inline-failed" // Enable optimizer warnings: detailed warning for each @inline method call that could not be inlined
 , "-unchecked" // Enable additional warnings where generated code depends on assumptions
-//"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss
-, "-Xfatal-warnings" // Fail the compilation if there are any warnings
+, "-Werror" // Fail the compilation if there are any warnings
+//"-Xasync" // Enable the async phase for scala.async.Async.{async,await}
+//"-Xdisable-assertions" // Generate no assertions or assumptions
 , "-Xlint:_" // Enable or disable specific warnings (see list below)
-, "-Xlog-free-terms" // Print a message when reification creates a free term
-, "-Xlog-free-types" // Print a message when reification resorts to generating a free type
-//"-Xlog-implicits" // Show more detail on why some implicits are not applicable
-, "-Xlog-reflective-calls" // Print a message when a reflective method call is generated
 //"-Xmigration:<version>" // Warn about constructs whose behavior may have changed since version
-//"-Xprint:typer" // Print out program after phase: all, parser, jvm (last), etc.
-, "-Xstrict-inference" // Don't infer known-unsound types
+//"-Xsource:<version>" // Enable features that will be available in a future version of Scala
 , "-Ybackend-parallelism", "8" // Maximum worker threads for backend
 , "-Ybackend-worker-queue", "8" // Backend threads worker queue
 , "-Ycache-macro-class-loader:last-modified" // Policy for caching class loaders for macros that are dynamically loaded
 , "-Ycache-plugin-class-loader:last-modified" // Policy for caching class loaders for compiler plugins that are dynamically loaded
-//"-Ymacro-debug-lite" // Trace essential macro-related activities
-//"-Ymacro-debug-verbose" // Trace all macro-related activities
-, "-Yno-adapted-args" // Do not adapt an argument list to match the receiver
+//"-Ymacro-annotations" // Enable support for macro annotations
 //"-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
 //"-Yno-predef" // Compile without importing Predef
-//"-Ypartial-unification" // Enable partial unification in type constructor inference
 //"-Yprofile-enabled" // Enable profiling
-//"-Yvirtpatmat" // Enable pattern matcher virtualization
-, "-Ywarn-dead-code" // Warn when dead code is identified
-, "-Ywarn-extra-implicit" // Warn when more than one implicit parameter section is defined
-, "-Ywarn-macros:before" // Enable lint warnings on macro expansions (see list below)
-, "-Ywarn-numeric-widen" // Warn when numerics are widened
-, "-Ywarn-self-implicit" // Warn when an implicit resolves to an enclosing self-definition
-, "-Ywarn-unused:_" // Enable or disable specific unused warnings (see list below)
 )
 
-val valueDiscard = "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
-
 val compileScalacOptions = Seq(
-  valueDiscard
 )
 
 val testScalacOptions = Seq(
@@ -201,46 +182,60 @@ reflectiveCalls      Allow reflective access to members of structural types
 
 scalac -opt:help
 
-box-unbox            Eliminate box-unbox pairs within the same method
-closure-invocations  Rewrite closure invocations to the implementation method
-compact-locals       Eliminate empty slots in the sequence of local variables
-copy-propagation     Eliminate redundant local variables and unused values
-inline               Inline method invocations according to -Yopt-inline-heuristics and -opt-inline-from
-nullness-tracking    Track nullness / non-nullness of local variables and apply optimizations
-redundant-casts      Eliminate redundant casts using a type propagation analysis
-simplify-jumps       Simplify branching instructions, eliminate unnecessary ones
-unreachable-code     Eliminate unreachable code, exception handlers guarding no instructions, redundant metadata
-l:none               Disable optimizations
-l:default            Enable default optimizations: unreachable-code
-l:method             Enable intra-method optimizations: unreachable-code,simplify-jumps,compact-locals,copy-propagation,redundant-casts,box-unbox,nullness-tracking,closure-invocations
-l:inline             Enable cross-method optimizations: l:method,inline
+allow-skip-class-loading     Allow optimizations that can skip or delay class loading
+allow-skip-core-module-init  Allow eliminating unused module loads for core modules of the standard library
+assume-modules-non-null      Assume loading a module never results in null
+box-unbox                    Eliminate box-unbox pairs within the same method
+closure-invocations          Rewrite closure invocations to the implementation method
+compact-locals               Eliminate empty slots in the sequence of local variables
+copy-propagation             Eliminate redundant local variables and unused values
+inline                       Inline method invocations according to -Yopt-inline-heuristics and -opt-inline-from
+nullness-tracking            Track nullness / non-nullness of local variables and apply optimizations
+redundant-casts              Eliminate redundant casts using a type propagation analysis
+simplify-jumps               Simplify branching instructions, eliminate unnecessary ones
+unreachable-code             Eliminate unreachable code, exception handlers guarding no instructions, redundant metadata
+l:none                       Disable optimizations
+l:default                    Enable default optimizations: unreachable-code
+l:method                     Enable intra-method optimizations: allow-skip-class-loading, allow-skip-core-module-init,
+                             assume-modules-non-null, box-unbox, closure-invocations, compact-locals, copy-propagation,
+                             nullness-tracking, redundant-casts, simplify-jumps, unreachable-code
+l:inline                     Enable cross-method optimizations: l:method, inline
 
 *//*
 
 scalac -Xlint:help
 
-adapted-args               Warn if an argument list is modified to match the receiver
-by-name-right-associative  By-name parameter of right associative operator
-constant                   Evaluation of a constant arithmetic expression results in an error
-delayedinit-select         Selecting member of DelayedInit
-doc-detached               A Scaladoc comment appears to be detached from its element
-inaccessible               Warn about inaccessible types in method signatures
-infer-any                  Warn when a type argument is inferred to be `Any`
-missing-interpolator       A string literal appears to be missing an interpolator id
-nullary-override           Warn when non-nullary `def f()' overrides nullary `def f'
-nullary-unit               Warn when nullary methods return Unit
-option-implicit            Option.apply used implicit view
-package-object-classes     Class or object defined in package object
-poly-implicit-overload     Parameterized overloaded implicit methods are not visible as view bounds
-private-shadow             A private field (or class parameter) shadows a superclass field
-stars-align                Pattern sequence wildcard must align with sequence component
-type-parameter-shadow      A local type parameter shadows a type already in scope
-unsound-match              Pattern match may not be typesafe
-unused                     Enable -Ywarn-unused:imports,privates,locals,implicits
+adapted-args            An argument list was modified to match the receiver
+byname-implicit         Block adapted by implicit with by-name parameter
+constant                Evaluation of a constant arithmetic expression resulted in an error
+delayedinit-select      Selecting member of DelayedInit
+deprecation             Enable -deprecation and also check @deprecated annotations
+doc-detached            When running scaladoc, warn if a doc comment is discarded
+eta-sam                 The Java-defined target interface for eta-expansion was not annotated @FunctionalInterface
+eta-zero                Usage `f` of parameterless `def f()` resulted in eta-expansion, not empty application `f()`
+implicit-not-found      Check @implicitNotFound and @implicitAmbiguous messages
+implicit-recursion      Implicit resolves to an enclosing definition
+inaccessible            Warn about inaccessible types in method signatures
+infer-any               A type argument was inferred as Any
+missing-interpolator    A string literal appears to be missing an interpolator id
+multiarg-infix          Infix operator was defined or used with multiarg operand
+nonlocal-return         A return statement used an exception for flow control
+nullary-unit            `def f: Unit` looks like an accessor; add parens to look side-effecting
+option-implicit         Option.apply used an implicit view
+package-object-classes  Class or object defined in package object
+poly-implicit-overload  Parameterized overloaded implicit methods are not visible as view bounds
+private-shadow          A private field (or class parameter) shadows a superclass field
+recurse-with-default    Recursive call used default argument
+serial                  @SerialVersionUID on traits and non-serializable classes
+stars-align             In a pattern, a sequence wildcard `_*` should match all of a repeated parameter
+type-parameter-shadow   A local type parameter shadows a type already in scope
+unit-special            Warn for specialization of Unit in parameter position
+unused                  Enable -Wunused: imports, privates, locals, implicits, nowarn
+valpattern              Enable pattern checks in val definitions
 
 *//*
 
-scalac -Ywarn-macros:help
+scalac -Wmacros:help
 
 after   Only inspect expanded trees when generating unused symbol warnings
 before  Only inspect unexpanded user-written code for unused symbols
@@ -249,13 +244,14 @@ none    Do not inspect expansions or their original trees when generating unused
 
 *//*
 
-scalac -Ywarn-unused:help
+scalac -Wunused:help
 
 explicits  Warn if an explicit parameter is unused
 implicits  Warn if an implicit parameter is unused
 imports    Warn if an import selector is not referenced
 linted     -Xlint:unused
 locals     Warn if a local definition is unused
+nowarn     Warn if a @nowarn annotation does not suppress any warnings
 params     Warn if a value parameter is unused
 patvars    Warn if a variable bound in a pattern is unused
 privates   Warn if a private member is unused
@@ -446,7 +442,7 @@ val sbtOptions = Seq(
     // S: show short stack traces
     // D: show duration for each test
     // I: print "reminders" of failed and canceled tests at the end of the summary,
-    //    eliminating the need to scroll and search to find failed or canceled tests.
+    //    eliminating the need to scroll and search to find failed or canceled tests
     //    replace with G (or T) to show reminders with full (or short) stack traces
     // K: exclude canceled tests from reminder
   , "-oDI"
