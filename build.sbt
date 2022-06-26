@@ -52,7 +52,7 @@ lazy val module = project.settings(
 
 lazy val jmh = project.settings(
   description := "Benchmarking code"
-  commonSettings
+, commonSettings
 ).dependsOn(
   common
   // add the project you are benchmarking here
@@ -71,13 +71,15 @@ lazy val commonSettings =
   codeCoverage
 
 val withTests = "compile->compile;test->test"
+val withIntegrationTests = "compile->compile;it,test->test"
+val forIntegrationTests = "it->compile"
 
 /*
  * Project metadata
  */
 
 val projectMetadata = Seq(
-//organization := "org.example"
+organization := "org.example"
 //organizationName := "Example, Inc."
 //organizationHomepage := Option(url("http://example.org"))
 //homepage := Option(url("http://example.org/project"))
@@ -114,7 +116,7 @@ val projectLayout = Seq(
 
 val coreScalacOptions = Seq(
   "-encoding", utf8 // Specify character encoding used by source files
-//"-release 11" // Compile for a specific version of the Java platform (Java 9 and higher)
+, "-release", "8" // Compile for a specific version of the Java platform (Java 9 and higher)
 , "-target:jvm-" + lib.v.jvm // Target platform for object files
 )
 

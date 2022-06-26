@@ -1,0 +1,358 @@
+sbt.keys
+
+======
+
+toda vez que mudar scala-boilerplate/build.sbt:
+
+dotfiles/ & ~/ (macbook & imac)
+  .sbt/*/global.sbt
+  .sbt/*/plugins/plugins.sbt
+
+  .bashrc: scalac flags
+  .repl.scala: initialCommands
+
+scail*/*
+
+---
+
+roubar somatix: macwire
+
+README: documentar test (static analysis), testQuick, testOnly, testOnly *
+
+publicar scaladoc: ghpagesPushSite
+publicar sonatype: publishSigned sonatypeRelease
+
+. Scalastyle & Scapegoat automatic execution
+. no static analysis: compile, testQuick, console
+. static analysis: test
+
+scalacOptions in testOnly ~= filterStaticAnalysis
+
+def filterStaticAnalysis(options: Seq[String]): Seq[String] = options filterNot { option =>
+  option.contains("wartremover") || option.contains("-P:linter:")
+}
+
+hence, one can emulate `~test` behaviour without incurring the static
+analysis tax with `testOnly *`
+
+> test-only *RedSuite
+
+> test-quick
+
+As with test-only, you can specify a space-separated list of fully
+qualified names and globs to further reduce the tests selected.
+
+> test-only org.acme.RedSuite -- -oD
+
+parallelExecution in Test := false
+
+---
+
+converter para gitter8
+
+fork & criar play template, too
+. http://github.com/danielnixon/playwarts
+. http://github.com/danielnixon/sbt-ignore-play-generated
+
+http://github.com/danielnixon/slickwarts
+
+http://github.com/KyleU/boilerplay
+
+--
+
+api mappings:
+ . update links no `Spec`
+
+(ver below)
+
+---
+
+projetos originate:
+. 6fusion/6fusion-online-system-test/meter-mock
+  * build.sbt
+. 6fusion/6fusion-online-system-test/system-test
+. 6fusion/6fusion-online
+. bcg/somatix
+
+--
+
+wartremoverExcluded += crossTarget.value / "routes" / "main" / "controllers" / "ReverseRoutes.scala"
+wartremoverExcluded += crossTarget.value / "routes" / "main" / "controllers" / "javascript" / "JavaScriptReverseRoutes.scala"
+wartremoverExcluded += crossTarget.value / "routes" / "main" / "router" / "Routes.scala"
+wartremoverExcluded += crossTarget.value / "routes" / "main" / "router" / "RoutesPrefix.scala"
+
+--
+
+ * - ScalaFutures: `futureValue` and `isReadyWithin` blocking methods for Future
+
+---
+
+lazy val MyIntegrationTest = config("it").extend(Test)
+lazy val FunctionalTest = config("fun").extend(Test)
+lazy val UnitTest = config("unit").extend(Test)
+
+def itFilter(name: String): Boolean = name endsWith "ISpec"
+def ftFilter(name: String): Boolean = name endsWith "FSpec"
+def unitFilter(name: String): Boolean = (name endsWith "Spec") && !itFilter(name) && !ftFilter(name)
+
+testOptions in FunctionalTest := Seq(Tests.Filter(ftFilter))
+testOptions in MyIntegrationTest := Seq(Tests.Filter(itFilter))
+testOptions in UnitTest := Seq(Tests.Filter(unitFilter))
+
+.configs(FunctionalTest, MyIntegrationTest, UnitTest)
+
+inConfig(FunctionalTest)(Defaults.testTasks) ++
+inConfig(MyIntegrationTest)(Defaults.testTasks) ++
+inConfig(UnitTest)(Defaults.testTasks)
+
+---
+
+publishArtifact in packageDoc := false // so esse ja funciona
+
+publishArtifact in (Compile, packageDoc) := false
+publishArtifact in Test := false
+publishArtifact in packageSrc := false
+sources in (Compile, doc) := Seq.empty
+publishArtifact := false
+
+-diagrams
+
+-doc-external-doc:<external-doc>
+comma-separated list of classpath_entry_path#doc_URL pairs describing external dependencies.
+
+-doc-source-url <url>
+A URL pattern used to link to the source file; the following variables are available:
+€{TPL_NAME}, €{TPL_OWNER} and respectively €{FILE_PATH}.
+For example, for `scala.collection.Seq`, the variables will be expanded to
+`Seq`, `scala.collection` and respectively `scala/collection/Seq` (without the backquotes).
+To obtain a relative path for €{FILE_PATH} instead of an absolute one, use the -sourcepath setting.
+
+-doc-title <title>
+The overall name of the Scaladoc site
+
+-skip-packages <<package1>:...:<packageN>>
+A colon-delimited list of fully qualified package names that will be skipped from scaladoc.
+
+--
+
+System.getProperty("sun.boot.class.path")
+
+java.value.libraryJar -> url("http://docs.oracle.com/javase/8/docs/api/")
+
+http://doc.scalatest.org/3.0.0/index.html
+
+http://github.com/ThoughtWorksInc/sbt-api-mappings
+
+--
+
+apiMappings ++= {
+  def mappingsFor(organization: String, names: List[String], location: String, revision: (String) => String = identity): Seq[(File, URL)] =
+    for {
+      entry: Attributed[File] <- (fullClasspath in Compile).value
+      module: ModuleID <- entry.get(moduleID.key)
+      if module.organization == organization
+      if names.exists(module.name.startsWith)
+    } yield entry.data -> url(location.format(revision(module.revision)))
+
+  val mappings: Seq[(File, URL)] =
+    mappingsFor("org.scala-lang", List("scala-library"), "http://scala-lang.org/api/%s/") ++
+      mappingsFor("com.typesafe.akka", List("akka-actor"), "http://doc.akka.io/api/akka/%s/") ++
+      mappingsFor("com.typesafe.play", List("play-iteratees", "play-json"), "http://playframework.com/documentation/%s/api/scala/index.html", _.replaceAll("[\\d]$", "x"))
+
+  mappings.toMap
+}
+
+--
+
+apiMappings ++= {
+  def findManagedDependency(organization: String, name: String): Option[File] = {
+    (for {
+      entry <- (fullClasspath in Runtime).value ++ (fullClasspath in Test).value
+      module <- entry.get(moduleID.key) if module.organization == organization && module.name.startsWith(name)
+    } yield entry.data).headOption
+  }
+  val links = Seq(
+    findManagedDependency("org.scala-lang", "scala-library").map(d => d -> url(s"http://www.scala-lang.org/api/$scalaVsn/")),
+    findManagedDependency("com.typesafe.akka", "akka-actor").map(d => d -> url(s"http://doc.akka.io/api/akka/$akkaVersion/")),
+    findManagedDependency("com.typesafe", "config").map(d => d -> url("http://typesafehub.github.io/config/latest/api/")),
+    findManagedDependency("com.fasterxml.jackson.core", "jackson-core").map(d => d -> url("http://fasterxml.github.io/jackson-core/javadoc/2.3.1/")),
+    findManagedDependency("io.spray", "spray-http").map(d => d -> url("http://spray.io/documentation/1.1-SNAPSHOT/api/")),
+    findManagedDependency("io.spray", "spray-routing").map(d => d -> url("http://spray.io/documentation/1.1-SNAPSHOT/api/")),
+    findManagedDependency("org.slf4j", "slf4j-api").map(d => d -> url("http://www.slf4j.org/api/")),
+    findManagedDependency("com.typesafe.akka", "akka-testkit").map(d => d -> url(s"http://doc.akka.io/api/akka/$akkaVersion/")),
+    findManagedDependency("org.specs2", "specs2").map(d => d -> url(s"http://etorreborre.github.io/specs2/api/SPECS2-$specs2Version/"))
+  )
+  links.collect { case Some(d) => d }.toMap
+}
+
+---
+
+scalacOptions in Deploy := scalacOptions.in(Compile, console).value
+-g:none
+-opt:_
+
+? -Xdisable-assertions           Generate no assertions or assumptions
+? -Xelide-below <n>              Calls to @elidable methods are omitted if method priority is lower than argument
+
+---
+
+scalacOptions := {
+  val old = scalacOptions.value
+  scalaBinaryVersion.value match {
+    case "2.12" => old
+    case _      => old filterNot (Set("-Xfatal-warnings", "-deprecation").apply)
+  }
+}
+
+---
+
+val scoverage = Resolver.bintrayRepo("sksamuel", "sbt-plugins")
+Resolver.url(scoverage.name, url(scoverage.root))(Resolver.ivyStylePatterns)
+
+http://github.com/leifwickland/static-analysis-skeleton/blob/master/lint.sbt
+http://github.com/leifwickland/static-analysis-skeleton/blob/master/src/main/scala/BadThings.scala
+
+set javaOptions in run += "-agentlib:hprof=cpu=samples"
+
+micro benchmark:
+. http://gatling.io/
+  addSbtPlugin("io.gatling" % "gatling-sbt" % "2.2.2")
+  "io.gatling" % "gatling-test-framework" % gatlingVersion % "test,it",
+  "io.gatling.highcharts" % "gatling-charts-highcharts" % gatlingVersion % "test,it"
+. http://scalameter.github.io/
+. http://github.com/sirthias/scala-benchmarking-template
+. coda hale metrics, jmeter, google caliper, jmh
+. profiler
+
+http://stackoverflow.com/questions/19201509/how-to-format-the-sbt-build-files-with-scalariform-automatically
+
+codacy ?
+http://github.com/sbt/sbt-cpd
+http://github.com/sbt/sbt-findbugs
+
+http://github.com/RadoBuransky/sonar-scoverage-plugin
+
+http://github.com/tototoshi/sbt-build-files-watcher
+http://github.com/sbt/sbt-header
+http://github.com/sbt/sbt-fresh
+http://github.com/sbt/sbt-git
+http://github.com/spray/sbt-revolver
+http://github.com/tkawachi/sbt-doctest
+http://github.com/sbt/sbt-buildinfo
+
+http://github.com/lihaoyi/sourcecode
+
+http://github.com/wsargent/play-slick-3.0
+http://github.com/tototoshi/sbt-slick-codegen
+http://github.com/tototoshi/sbt-slick-codegen-example
+http://github.com/pedrorijo91/play-slick3-steps
+
+http://github.com/sbt/sbt-release (?)
+http://github.com/sbt/sbt-assembly
+http://github.com/sbt/sbt-bintray
+http://github.com/sbt/sbt-native-packager
+
+http://github.com/reactivecodes/scala-time
+
+lista com varios plugins: http://www.scala-sbt.org/1.x/docs/Credits.html
+
+quill
+scala-async
+cats
+scalaz
+
+http://github.com/scala/make-release-notes/blob/2.12.x/projects-2.12.md (olhar se tem algo interessante para usar)
+
+==========
+
+
+scalafmt:
+
+
+onTestFailure =
+project.files = []
+align.openParenCallSite = true
+align.openParenDefnSite = true
+align.ifWhileOpenParen = true
+align.treeCategory.Defn.Trait = class/object/trait
+align.treeCategory.Enumerator.Val = for
+align.treeCategory.Defn.Class = class/object/trait
+align.treeCategory.Defn.Object = class/object/trait
+align.treeCategory.Defn.Val = val/var/def
+align.treeCategory.Defn.Def = val/var/def
+align.treeCategory.Defn.Var = val/var/def
+align.treeCategory.Enumerator.Generator = for
+align.arrowEnumeratorGenerator = false
+align.tokens = [
+  code = "=>"
+  owner = Case
+]
+optIn.configStyleArguments = true
+optIn.selfAnnotationNewline = true
+optIn.annotationNewlines = true
+runner.optimizer.maxEscapes = 16
+runner.optimizer.dequeueOnNewStatements = true
+runner.optimizer.maxVisitsPerToken = 513
+runner.optimizer.acceptOptimalAtHints = true
+runner.optimizer.maxDepth = 100
+runner.optimizer.forceConfigStyleMinArgCount = 2
+runner.optimizer.disableOptimizationsInsideSensitiveAreas = true
+runner.optimizer.recurseOnBlocks = true
+runner.optimizer.escapeInPathologicalCases = true
+runner.optimizer.pruneSlowStates = true
+runner.eventCallback = org.scalafmt.config.ScalafmtRunner$$$Lambda$4011/1848609946@680de095
+runner.parser = scala.meta.internal.parsers.ScalametaParser$$anon$202@2f9d8a4f
+runner.debug = false
+runner.fatalWarnings = false
+runner.maxStateVisits = 1000000
+runner.ignoreWarnings = false
+runner.dialect = Dialect(true, true, true, true, true, true, true, true, false, true, false, false, true, true, true, true, true, )
+encoding = UTF-8
+newlines.afterImplicitKWInVerticalMultiline = false
+newlines.neverInResultType = false
+newlines.afterCurlyLambda = never
+newlines.neverBeforeJsNative = false
+newlines.alwaysBeforeCurlyBraceLambdaParams = false
+newlines.beforeImplicitKWInVerticalMultiline = false
+version = 1.1.0
+unindentTopLevelOperators = false
+poorMansTrailingCommasInConfigStyle = false
+indentOperator.include = ".*"
+indentOperator.exclude = "^(&&|\|\|)$"
+rewrite.redundantBraces.includeUnitMethods = true
+rewrite.redundantBraces.maxLines = 100
+rewrite.neverInfix.includeFilters = ["[\w\d_]+"]
+rewrite.neverInfix.excludeFilters = [
+  until
+  to
+  by
+  eq
+  ne
+  should.*
+  contain.*
+  must.*
+  in
+  be
+  taggedAs
+  thrownBy
+  synchronized
+  have
+  when
+]
+danglingParentheses = false
+binPack.literalsInclude = [".*"]
+binPack.literalsExclude = [
+  String
+  Term.Name
+]
+binPack.literalsMinArgCount = 5
+binPack.unsafeCallSite = false
+binPack.unsafeDefnSite = false
+indentYieldKeyword = true
+importSelectors = noBinPack
+verticalMultilineAtDefinitionSite = false
+spaces.neverAroundInfixTypes = []
+spaces.beforeContextBoundColon = Never
+spaces.afterTripleEquals = false
+spaces.inImportCurlyBraces = false
+spaces.inParentheses = false

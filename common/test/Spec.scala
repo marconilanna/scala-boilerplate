@@ -26,6 +26,7 @@ import org.scalatest.TryValues
 import org.scalatest.diagrams.Diagrams
 import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.freespec.AsyncFreeSpec
+import project.util.Logging
 
 import scala.reflect.ClassTag
 import scala.reflect.runtime.universe.WeakTypeTag
@@ -80,6 +81,7 @@ trait SpecLike
   with EitherValues
   with OptionValues
   with TryValues
+  with Logging
 
 /**
  * Base trait for mocking.
@@ -109,10 +111,10 @@ trait Mocking
    * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_DEEP_STUBS `RETURNS_DEEP_STUBS`]]
    * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
    *
-   * @tparam T the class to be mocked
+   * @tparam A the class to be mocked
    * @return a mock object with `Answer` `RETURNS_DEEP_STUBS`
    */
-  def mockDeepStubs[T <: AnyRef: ClassTag: WeakTypeTag]: T = {
+  def mockDeepStubs[A <: AnyRef: ClassTag: WeakTypeTag]: A = {
     mock(DefaultAnswers.ReturnsDeepStubs orElse DefaultAnswers.ReturnsSmartNulls)
   }
 
@@ -125,10 +127,10 @@ trait Mocking
    *
    * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
    *
-   * @tparam T the class to be mocked
+   * @tparam A the class to be mocked
    * @return a mock object with `DefaultAnswer` `ReturnsEmptyValues`
    */
-  def mockEmptyValues[T <: AnyRef: ClassTag: WeakTypeTag]: T = {
+  def mockEmptyValues[A <: AnyRef: ClassTag: WeakTypeTag]: A = {
     mock(DefaultAnswers.ReturnsEmptyValues orElse DefaultAnswers.ReturnsSmartNulls)
   }
 
@@ -140,10 +142,10 @@ trait Mocking
    * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_SELF `RETURNS_SELF`]]
    * @see [[http://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#RETURNS_SMART_NULLS `RETURNS_SMART_NULLS`]]
    *
-   * @tparam T the class to be mocked
+   * @tparam A the class to be mocked
    * @return a mock object with `Answer` `RETURNS_SELF`
    */
-  def mockReturnsSelf[T <: AnyRef: ClassTag: WeakTypeTag]: T = {
+  def mockReturnsSelf[A <: AnyRef: ClassTag: WeakTypeTag]: A = {
     mock(Mocking.ReturnsSelf orElse DefaultAnswers.ReturnsSmartNulls)
   }
 }

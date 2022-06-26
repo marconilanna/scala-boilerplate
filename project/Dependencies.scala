@@ -27,7 +27,7 @@ trait Dependencies {
     val jvm = "1.8"
     val macwire = "2.3.7"
     val quartz = "2.3.2"
-    val scala = "2.13.3"
+    val scala = "2.13.4"
     val scalatest = "3.2.0"
     val scapegoat = "1.4.4"
     val slick = "3.3.2"
